@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
-export async function login() {
+export async function login(): Promise<void | User> {
     return signInWithPopup(auth, provider)
         .then((result) => {
             // This gives you a Google Access Token. You can use it to access the Google API.
@@ -42,7 +42,7 @@ export async function login() {
         });
 }
 
-export async function logout() {
+export async function logout(): Promise<void | null> {
     return signOut(auth)
         .then(() => {
             // Sign-out successful.
