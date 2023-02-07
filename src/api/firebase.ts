@@ -19,40 +19,27 @@ const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
-export async function login(): Promise<void | User> {
-    return signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            // const credential = GoogleAuthProvider.credentialFromResult(result);
-            // const token = credential?.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            console.log(user);
-            return user;
-        })
-        .catch((error) => {
-            // Handle Errors here.
-            // const errorCode = error.code;
-            // const errorMessage = error.message;
-            // The email of the user's account used.
-            // const email = error.customData.email;
-            // The AuthCredential type that was used.
-            // const credential = GoogleAuthProvider.credentialFromError(error);
-            console.log(error);
-        });
+export function login() {
+    signInWithPopup(auth, provider).catch((error) => {
+        // Handle Errors here.
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // The email of the user's account used.
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(error);
+    });
 }
 
-export async function logout(): Promise<void | null> {
-    return signOut(auth)
-        .then(() => {
-            // Sign-out successful.
-            return null;
-        })
-        .catch((error) => {
-            // An error happened.
-        });
+export function logout() {
+    signOut(auth).catch((error) => {
+        // An error happened.
+    });
 }
 
 export function onUserStateChanged(callback: (user: User) => void) {
-    onAuthStateChanged(auth, (user) => callback(user!));
+    onAuthStateChanged(auth, (user) => {
+        callback(user!);
+    });
 }

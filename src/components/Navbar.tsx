@@ -4,6 +4,7 @@ import { BiShoppingBag } from 'react-icons/bi';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { login, logout, onUserStateChanged } from './../api/firebase';
 import { User } from 'firebase/auth';
+import UserInfo from './UserInfo';
 
 export default function Navbar() {
     const [user, setUser] = useState<User>();
@@ -11,14 +12,6 @@ export default function Navbar() {
         onUserStateChanged((user) => setUser(user));
     }, []);
 
-    const handleLogin = () => {
-        login().then((user) => {
-            user && setUser(user);
-        });
-    };
-    const handleLogout = () => {
-        logout().then(() => setUser(undefined));
-    };
     return (
         <header className="flex justify-between border-b border-gray-300 p-2">
             <Link to={'/'} className="flex items-center text-3xl text-brand">
@@ -31,8 +24,9 @@ export default function Navbar() {
                 <Link to={'/products/new'} className="text-2xl">
                     <AiOutlineEdit />
                 </Link>
-                {!user && <button onClick={handleLogin}>Login</button>}
-                {user && <button onClick={handleLogout}>Logout</button>}
+                {user && <UserInfo user={user} />}
+                {!user && <button onClick={login}>Login</button>}
+                {user && <button onClick={logout}>Logout</button>}
             </nav>
         </header>
     );
