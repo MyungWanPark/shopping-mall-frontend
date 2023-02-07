@@ -40,7 +40,9 @@ export function logout() {
     });
 }
 
-export function onUserStateChanged(callback: (user: User) => void) {
+export function onUserStateChanged(
+    callback: (user: User & { isAdmin: boolean }) => void
+) {
     onAuthStateChanged(auth, async (user) => {
         const considerAdmin = user ? await checkAdmin(user!) : null;
         callback(considerAdmin!);
