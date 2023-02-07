@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
 import { AiOutlineEdit } from 'react-icons/ai';
-import { login, logout, onUserStateChanged } from './../api/firebase';
-import { User } from 'firebase/auth';
 import UserInfo from './UserInfo';
 import Button from './ui/Button';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function Navbar() {
-    const [user, setUser] = useState<User & { isAdmin: boolean }>();
-    useEffect(() => {
-        onUserStateChanged(setUser);
-    }, []);
+    const { user, login, logout } = useAuthContext();
 
     return (
         <header className="flex justify-between border-b border-gray-300 p-2">
@@ -21,7 +17,7 @@ export default function Navbar() {
             </Link>
             <nav className="flex items-center gap-4 font-semibold">
                 <Link to={'/products'}>Products</Link>
-                <Link to={'/carts'}>Carts</Link>
+                {user && <Link to={'/carts'}>Carts</Link>}
                 {user && user.isAdmin && (
                     <Link to={'/products/new'} className="text-2xl">
                         <AiOutlineEdit />
