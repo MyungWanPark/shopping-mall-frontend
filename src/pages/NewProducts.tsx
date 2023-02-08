@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { uploadImg } from '../api/uploader';
 import Button from './../components/ui/Button';
 
 type Product = {
@@ -13,7 +14,10 @@ export default function NewProducts() {
     const [product, setProduct] = useState<Product>();
     const [file, setFile] = useState<File>();
 
-    const handleSubmit = (e: FormEvent) => {};
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        uploadImg(file!).then(console.log);
+    };
     const handleChange = (e: ChangeEvent) => {
         const { name, value, files } = e.target as HTMLInputElement;
         if (name === 'file') {
