@@ -4,7 +4,7 @@ import { uploadImg } from '../api/uploader';
 import Button from './../components/ui/Button';
 import Input from './../components/ui/Input';
 
-export type Product = {
+export type ProductType = {
     title?: string;
     price?: string;
     category?: string;
@@ -13,7 +13,7 @@ export type Product = {
 };
 
 export default function NewProducts() {
-    const [product, setProduct] = useState<Product>();
+    const [product, setProduct] = useState<ProductType>();
     const [file, setFile] = useState<File>();
     const [isLoading, setIsLoading] = useState(false);
     const [successMsg, setSuccessMsg] = useState<string | null>();

@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { getDatabase, ref, get, set } from 'firebase/database';
-import { Product } from '../pages/NewProducts';
+import { ProductType } from '../pages/NewProducts';
 import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
@@ -54,7 +54,7 @@ async function checkAdmin(user: User): Promise<User & { isAdmin: boolean }> {
     });
 }
 
-export async function addNewProduct(product: Product, imgURL: string): Promise<void> {
+export async function addNewProduct(product: ProductType, imgURL: string): Promise<void> {
     const id = uuid();
     return set(ref(database, `products/${id}`), {
         ...product,
@@ -62,5 +62,14 @@ export async function addNewProduct(product: Product, imgURL: string): Promise<v
         imgURL,
         price: parseInt(product.price!),
         options: product.options?.split(','),
+    });
+}
+
+export async function getProducts() {
+    return get(ref(database, 'products')).then((snapshot) => {
+        if (snapshot.exists()) {
+            return Object.values(snapshot.val());
+        }
+        return [];
     });
 }
