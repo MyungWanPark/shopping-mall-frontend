@@ -1,10 +1,11 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { addNewProduct } from '../api/firebase';
 import { uploadImg } from '../api/uploader';
 import Button from './../components/ui/Button';
 
-type Product = {
+export type Product = {
     title?: string;
-    price?: number;
+    price?: string;
     category?: string;
     description?: string;
     options?: string;
@@ -16,7 +17,10 @@ export default function NewProducts() {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        uploadImg(file!).then(console.log);
+        uploadImg(file!).then((res) => {
+            const imgURL = res.url;
+            addNewProduct(product!, imgURL);
+        });
     };
     const handleChange = (e: ChangeEvent) => {
         const { name, value, files } = e.target as HTMLInputElement;
