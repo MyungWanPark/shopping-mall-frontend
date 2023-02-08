@@ -54,9 +54,9 @@ async function checkAdmin(user: User): Promise<User & { isAdmin: boolean }> {
     });
 }
 
-export async function addNewProduct(product: Product, imgURL: string) {
+export async function addNewProduct(product: Product, imgURL: string): Promise<void> {
     const id = uuid();
-    set(ref(database, `products/${id}`), {
+    return set(ref(database, `products/${id}`), {
         ...product,
         id,
         imgURL,

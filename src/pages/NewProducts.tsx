@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { addNewProduct } from '../api/firebase';
 import { uploadImg } from '../api/uploader';
 import Button from './../components/ui/Button';
+import Input from './../components/ui/Input';
 
 export type Product = {
     title?: string;
@@ -14,13 +15,20 @@ export type Product = {
 export default function NewProducts() {
     const [product, setProduct] = useState<Product>();
     const [file, setFile] = useState<File>();
+    const [isLoading, setIsLoading] = useState(false);
+    const [successMsg, setSuccessMsg] = useState<string | null>();
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        uploadImg(file!).then((res) => {
-            const imgURL = res.url;
-            addNewProduct(product!, imgURL);
-        });
+        setIsLoading(true);
+        uploadImg(file!) //
+            .then(async (res) => {
+                const imgURL = res.url;
+                await addNewProduct(product!, imgURL);
+                setSuccessMsg('✅ 제품등록이 완료되었습니다');
+                setTimeout(() => setSuccessMsg(null), 4000);
+            })
+            .then(() => setIsLoading(false));
     };
     const handleChange = (e: ChangeEvent) => {
         const { name, value, files } = e.target as HTMLInputElement;
@@ -34,11 +42,13 @@ export default function NewProducts() {
         }));
     };
     return (
-        <section>
-            <form onSubmit={handleSubmit}>
-                {file && <img src={URL.createObjectURL(file)} alt="local_img" />}
-                <input type="file" name="file" accept="image/*" onChange={handleChange} required />
-                <input
+        <section className="w-full text-center">
+            <h1 className="text-2xl font-bold py-4">새로운 제품 등록하기</h1>
+            {successMsg && <p className="my-2">{successMsg}</p>}
+            <form onSubmit={handleSubmit} className="flex flex-col w-2/3 mx-auto gap-5 my-2">
+                {file && <img className="w-96 mx-auto" src={URL.createObjectURL(file)} alt="local_img" />}
+                <Input type="file" name="file" accept="image/*" onChange={handleChange} required />
+                <Input
                     type="text"
                     name="title"
                     value={product?.title ?? ''}
@@ -46,7 +56,7 @@ export default function NewProducts() {
                     onChange={handleChange}
                     required
                 />
-                <input
+                <Input
                     type="number"
                     name="price"
                     value={product?.price ?? ''}
@@ -54,7 +64,7 @@ export default function NewProducts() {
                     onChange={handleChange}
                     required
                 />
-                <input
+                <Input
                     type="text"
                     name="category"
                     value={product?.category ?? ''}
@@ -62,14 +72,14 @@ export default function NewProducts() {
                     onChange={handleChange}
                     required
                 />
-                <input
+                <Input
                     type="text"
                     name="description"
                     value={product?.description ?? ''}
                     placeholder="제품 설명"
                     onChange={handleChange}
                 />
-                <input
+                <Input
                     type="text"
                     name="options"
                     value={product?.options ?? ''}
@@ -77,7 +87,7 @@ export default function NewProducts() {
                     onChange={handleChange}
                     required
                 />
-                <Button text="제품 등록하기" onClick={() => {}} />
+                <Button text={isLoading ? '제품 등록중' : '제품 등록하기'} isDisabled={isLoading} />
             </form>
         </section>
     );
