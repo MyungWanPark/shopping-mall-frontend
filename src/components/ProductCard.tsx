@@ -6,13 +6,13 @@ type Props = {
 };
 export default function ProductCard({ product: { title, price, category, imgURL } }: Props) {
     return (
-        <li>
+        <li className="cursor-pointer shadow-md rounded-lg overflow-hidden">
             <img src={imgURL} alt={title} />
-            <div>
-                <h3>{title}</h3>
-                <p>₩{price} 원</p>
+            <div className="flex justify-between items-center text-xl p-2">
+                <h3 className="truncate">{title}</h3>
+                <p>₩{price.toLocaleString()} 원</p>
             </div>
-            <p>{category}</p>
+            <p className="text-gray-300 px-2 pb-2">{category}</p>
         </li>
     );
 }

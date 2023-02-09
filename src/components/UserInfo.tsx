@@ -7,16 +7,14 @@ type Props = {
 
 export default function UserInfo({ user }: Props) {
     return (
-        <div className="flex items-center">
+        <div className="flex items-center shrink-0">
             <img
                 src={user.photoURL!}
                 alt={user.displayName!}
                 referrerPolicy="no-referrer"
                 className="w-8 h-8 rounded-full mr-2"
             />
-            <span className="hidden md:block">
-                {user.displayName!.split(' ')[0]}
-            </span>
+            <span className="hidden md:block">{user.displayName!.split(' ')[0]}</span>
         </div>
     );
 }
