@@ -2,18 +2,26 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import { v4 as uuid } from 'uuid';
+import { addOrUpdateCart } from '../api/firebase';
+import { useAuthContext } from '../context/AuthContext';
 
 export default function ProductDetail() {
     const {
         state: {
             product: { title, price, category, description, options, id, imgURL },
+            product,
         },
     } = useLocation();
+    const {
+        user: { uid },
+    } = useAuthContext();
     const [selectedItem, setSelectedItem] = useState<string>(options && options[0]);
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedItem(e.target.value);
     };
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {};
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        addOrUpdateCart(uid, { ...product, options: selectedItem, quantity: 1 });
+    };
 
     return (
         <section>
