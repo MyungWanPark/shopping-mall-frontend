@@ -1,12 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UpdatedProductType } from '../types/product';
 
 type Props = {
     product: UpdatedProductType;
 };
-export default function ProductCard({ product: { title, price, category, imgURL } }: Props) {
+export default function ProductCard({ product: { title, price, category, imgURL, id }, product }: Props) {
+    const navigate = useNavigate();
+    const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+        navigate(`/products/${id}`, {
+            state: { product },
+        });
+    };
     return (
-        <li className="cursor-pointer shadow-md rounded-lg overflow-hidden">
+        <li
+            className="cursor-pointer shadow-md rounded-lg overflow-hidden transition-all hover:scale-105"
+            onClick={handleClick}
+        >
             <img src={imgURL} alt={title} />
             <div className="flex justify-between items-center text-xl p-2">
                 <h3 className="truncate">{title}</h3>
