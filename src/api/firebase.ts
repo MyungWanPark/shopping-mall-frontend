@@ -3,7 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 import { getDatabase, ref, get, set, remove } from 'firebase/database';
 import { ProductType } from '../pages/NewProducts';
 import { v4 as uuid } from 'uuid';
-import { CartProductType, UpdatedProductType } from '../types/product';
+import { CartProductType } from '../types/product';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -79,8 +79,6 @@ export async function getProducts() {
 export async function getCart(userId: string): Promise<CartProductType[] | unknown[]> {
     return get(ref(database, `carts/${userId}`)) //
         .then((snapshot) => {
-            console.log(Object.values(snapshot.val()));
-
             if (snapshot.exists()) {
                 return Object.values(snapshot.val());
             }
@@ -88,7 +86,7 @@ export async function getCart(userId: string): Promise<CartProductType[] | unkno
         });
 }
 
-export async function addOrUpdateCart(userId: string, product: UpdatedProductType & { quantity: number }) {
+export async function addOrUpdateCart(userId: string, product: CartProductType) {
     return set(ref(database, `carts/${userId}/${product.id}`), product);
 }
 

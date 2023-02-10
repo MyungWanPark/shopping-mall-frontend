@@ -20,7 +20,7 @@ export default function ProductDetail() {
         setSelectedItem(e.target.value);
     };
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        addOrUpdateCart(uid, { ...product, options: selectedItem, quantity: 1 });
+        addOrUpdateCart(uid, { ...product, option: selectedItem, quantity: 1 });
     };
 
     return (

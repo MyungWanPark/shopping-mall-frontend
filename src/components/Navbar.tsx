@@ -5,7 +5,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import UserInfo from './UserInfo';
 import Button from './ui/Button';
 import { useAuthContext } from '../context/AuthContext';
-import Cart from './Cart';
+import Cart from './CartIcon';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
