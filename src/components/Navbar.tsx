@@ -5,6 +5,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 import UserInfo from './UserInfo';
 import Button from './ui/Button';
 import { useAuthContext } from '../context/AuthContext';
+import Cart from './Cart';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
@@ -17,7 +18,11 @@ export default function Navbar() {
             </Link>
             <nav className="flex items-center gap-4 font-semibold">
                 <Link to={'/products'}>Products</Link>
-                {user && <Link to={'/carts'}>Carts</Link>}
+                {user && (
+                    <Link to={'/carts'}>
+                        <Cart />
+                    </Link>
+                )}
                 {user && user.isAdmin && (
                     <Link to={'/products/new'} className="text-2xl">
                         <AiOutlineEdit />
