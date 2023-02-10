@@ -8,10 +8,11 @@ import { useAuthContext } from '../context/AuthContext';
 export default function ProductDetail() {
     const {
         state: {
-            product: { title, price, category, description, options, id, imgURL },
+            product: { title, price, category, description, options, imgURL },
             product,
         },
     } = useLocation();
+    const [isUploaded, setIsUploaded] = useState(false);
     const {
         user: { uid },
     } = useAuthContext();
@@ -20,7 +21,9 @@ export default function ProductDetail() {
         setSelectedItem(e.target.value);
     };
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        addOrUpdateCart(uid, { ...product, option: selectedItem, quantity: 1 });
+        setIsUploaded(true);
+        addOrUpdateCart(uid, { ...product, option: selectedItem, quantity: 1 }) //
+            .then(() => setTimeout(() => setIsUploaded(false), 3000));
     };
 
     return (
@@ -51,6 +54,7 @@ export default function ProductDetail() {
                         ))}
                     </select>
                     <Button text="장바구니에 추가" onClick={handleClick} />
+                    {isUploaded && <p>✅ 장바구니에 추가되었습니다.</p>}
                 </article>
             </div>
         </section>
