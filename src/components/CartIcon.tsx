@@ -1,15 +1,10 @@
 import React from 'react';
 import { BsCartPlus } from 'react-icons/bs';
-import { useQuery } from '@tanstack/react-query';
-import { getCart } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
+import useCart from './../hooks/useCart';
 export default function CartIcon() {
     const {
-        user: { uid },
-    } = useAuthContext();
-    const { data: products } = useQuery(['carts'], () => {
-        return getCart(uid);
-    });
+        getCart: { data: products },
+    } = useCart();
 
     return (
         <div className="relative">

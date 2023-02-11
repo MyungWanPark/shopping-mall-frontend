@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { addNewProduct, fetchProducts } from '../api/firebase';
+import { addNewProduct, getProductsFromDB } from '../api/firebase';
 import { ProductType } from '../pages/NewProducts';
 import { UpdatedProductType } from '../types/product';
 
@@ -16,7 +16,7 @@ export default function useProducts() {
         isLoading: boolean;
         error: any;
         data?: UpdatedProductType[];
-    } = useQuery(['products'], () => fetchProducts(), {
+    } = useQuery(['products'], () => getProductsFromDB(), {
         staleTime: 1000 * 60 * 60 * 24,
     });
 

@@ -40,7 +40,6 @@ export function onUserStateChanged(callback: (user: User & { isAdmin: boolean })
     onAuthStateChanged(auth, async (user) => {
         const considerAdmin = user ? await checkAdmin(user!) : null;
         callback(considerAdmin!);
-        console.log(considerAdmin);
     });
 }
 
@@ -66,7 +65,7 @@ export async function addNewProduct(product: ProductType, imgURL: string): Promi
     });
 }
 
-export async function fetchProducts() {
+export async function getProductsFromDB() {
     return get(ref(database, 'products')) //
         .then((snapshot) => {
             if (snapshot.exists()) {
@@ -76,7 +75,7 @@ export async function fetchProducts() {
         });
 }
 
-export async function getCart(userId: string): Promise<CartProductType[] | unknown[]> {
+export async function getCartFromDB(userId: string): Promise<CartProductType[] | unknown[]> {
     return get(ref(database, `carts/${userId}`)) //
         .then((snapshot) => {
             if (snapshot.exists()) {
@@ -86,10 +85,10 @@ export async function getCart(userId: string): Promise<CartProductType[] | unkno
         });
 }
 
-export async function addOrUpdateCart(userId: string, product: CartProductType) {
+export async function changeItemFromCart(userId: string, product: CartProductType) {
     return set(ref(database, `carts/${userId}/${product.id}`), product);
 }
 
-export async function removeFromCart(userId: string, productId: string) {
+export async function removeItemFromCart(userId: string, productId: string) {
     return remove(ref(database, `carts/${userId}/${productId}`));
 }
