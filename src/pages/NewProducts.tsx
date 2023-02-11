@@ -1,9 +1,8 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { addNewProduct } from '../api/firebase';
 import { uploadImg } from '../api/uploader';
 import Button from './../components/ui/Button';
 import Input from './../components/ui/Input';
+import useProducts from './../hooks/useProducts';
 
 export type ProductType = {
     title?: string;
@@ -18,13 +17,7 @@ export default function NewProducts() {
     const [file, setFile] = useState<File>();
     const [isLoading, setIsLoading] = useState(false);
     const [successMsg, setSuccessMsg] = useState<string | null>();
-    const queryClient = useQueryClient();
-    const addProduct = useMutation(
-        ({ product, imgURL }: { product: ProductType; imgURL: string }) => addNewProduct(product, imgURL),
-        {
-            onSuccess: () => queryClient.invalidateQueries(['products']),
-        }
-    );
+    const { addProduct } = useProducts();
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
