@@ -5,13 +5,14 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 export default function SideBar() {
     function handleTitleClick(liSelector: string, arrowSelector: string) {
         const listItems = document.querySelectorAll<HTMLLIElement>(`.${liSelector}`);
-        const arrowBtn = document.querySelector<HTMLElement>(`.${arrowSelector}`);
+        const arrowBtn = document.querySelector<HTMLElement>(`.${arrowSelector}`)!;
 
-        arrowBtn!.classList.toggle('rotate-90');
+        arrowBtn.classList.toggle('rotate-90');
         listItems.forEach((item) => {
             if (item.classList.contains('h-0')) {
                 item.classList.replace('h-0', 'h-6');
                 item.classList.add('overflow-visible');
+                item.classList.toggle('opacity');
                 item.style.transition = 'height 0.5s ease';
             } else {
                 item.classList.replace('h-6', 'h-0');
@@ -20,6 +21,12 @@ export default function SideBar() {
                 item.classList.replace('border-brand', 'border-transparent');
             }
         });
+
+        if (liSelector === 'shopItem') {
+            closeUl('managementItem', 'arrowManagement');
+        } else {
+            closeUl('shopItem', 'arrowShop');
+        }
     }
 
     const handleListItemClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>, liSelector: string) => {
@@ -28,12 +35,6 @@ export default function SideBar() {
 
         listItems.forEach((item) => item.classList.replace('border-brand', 'border-transparent'));
         item.classList.replace('border-transparent', 'border-brand');
-
-        if (liSelector === 'shopItem') {
-            closeUl('managementItem', 'arrowManagement');
-        } else {
-            closeUl('shopItem', 'arrowShop');
-        }
     };
 
     function closeUl(liSelector: string, arrowSelector: string) {
