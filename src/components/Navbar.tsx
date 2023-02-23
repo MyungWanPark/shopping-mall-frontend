@@ -7,17 +7,19 @@ import UserInfo from './UserInfo';
 import Button from './ui/Button';
 import { useAuthContext } from '../context/AuthContext';
 import Cart from './CartIcon';
+import SearchInput from './SearchInput';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
 
     return (
         <header className="flex justify-between border-b border-gray-300 p-2">
-            <Link to={'/'} className="flex items-center text-3xl text-brand">
+            <Link to={'/'} className="flex basis-1/4 items-center text-3xl text-brand">
                 <BiShoppingBag />
                 <h1>Fashion Mall</h1>
             </Link>
-            <nav className="flex items-center gap-4 font-semibold">
+            <nav className="flex  basis-3/4 items-center gap-4 font-semibold">
+                <SearchInput />
                 <Link to={'/products'}>Shop</Link>
                 {user && (
                     <Link to={'/carts'}>

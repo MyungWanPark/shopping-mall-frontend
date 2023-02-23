@@ -8,7 +8,7 @@ type Props = {
 export default function Button({ text, onClick, isDisabled }: Props) {
     return (
         <button
-            className="bg-brand py-2 px-4 rounded-md w-full text-white hover:brightness-110"
+            className="bg-brand py-2 px-4 rounded-md text-white hover:brightness-110"
             onClick={onClick}
             disabled={isDisabled}
         >
