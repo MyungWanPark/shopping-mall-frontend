@@ -10,6 +10,7 @@ import NewProducts from './pages/NewProducts';
 import ProductDetail from './pages/ProductDetail';
 import MyCart from './pages/MyCart';
 import ProtectedRoute from './pages/ProtectedRoute';
+import Analytics from './pages/Analytics';
 
 /*
   /             =>  <Home />
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute requiredAdmin={true}>
                         <NewProducts />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: '/analytics',
+                element: (
+                    <ProtectedRoute requiredAdmin={false}>
+                        <Analytics />
                     </ProtectedRoute>
                 ),
             },
