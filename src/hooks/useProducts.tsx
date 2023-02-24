@@ -4,7 +4,7 @@ import { addNewProduct, getProductsFromDB } from '../api/firebase';
 import { ProductType } from '../pages/NewProducts';
 import { UpdatedProductType } from '../types/product';
 
-export default function useProducts() {
+export default function useProducts(path?: string) {
     const queryClient = useQueryClient();
     const addProduct = useMutation(
         ({ product, imgURL }: { product: ProductType; imgURL: string }) => addNewProduct(product, imgURL),
@@ -16,7 +16,7 @@ export default function useProducts() {
         isLoading: boolean;
         error: any;
         data?: UpdatedProductType[];
-    } = useQuery(['products'], () => getProductsFromDB(), {
+    } = useQuery(['products', `${path}`], () => getProductsFromDB(path), {
         staleTime: 1000 * 60 * 60 * 24,
     });
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { CartProductType } from '../types/product';
+import { CartProductType } from '../../types/product';
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
-import useCart from './../hooks/useCart';
+import useCart from '../../hooks/useCart';
 
 type Props = {
     product: CartProductType;

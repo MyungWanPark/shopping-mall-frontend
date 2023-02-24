@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UpdatedProductType } from '../types/product';
+import { UpdatedProductType } from '../../types/product';
 
 type Props = {
     product: UpdatedProductType;

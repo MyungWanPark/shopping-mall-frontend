@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
-import UserInfo from './UserInfo';
-import Button from './ui/Button';
-import { useAuthContext } from '../context/AuthContext';
-import Cart from './CartIcon';
-import SearchInput from './SearchInput';
+import UserInfo from '../UserInfo';
+import Button from '../ui/Button';
+import { useAuthContext } from '../../context/AuthContext';
+import Cart from '../cart/CartIcon';
+import SearchInput from '../SearchInput';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();

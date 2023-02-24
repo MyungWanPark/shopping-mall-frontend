@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsCartPlus } from 'react-icons/bs';
-import useCart from './../hooks/useCart';
+import useCart from '../../hooks/useCart';
 export default function CartIcon() {
     const {
         getCart: { data: products },

@@ -1,8 +1,8 @@
 import React from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { FaEquals } from 'react-icons/fa';
-import CartItem from './../components/CartItem';
-import PriceCard from './../components/PriceCard';
+import CartItem from '../components/cart/CartItem';
+import PriceCard from '../components/cart/PriceCard';
 import Button from '../components/ui/Button';
 import useCart from './../hooks/useCart';
 

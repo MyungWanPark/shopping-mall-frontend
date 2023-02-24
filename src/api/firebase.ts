@@ -65,7 +65,7 @@ export async function addNewProduct(product: ProductType, imgURL: string): Promi
     });
 }
 
-export async function getProductsFromDB() {
+export async function getProductsFromDB(path?: string) {
     return get(ref(database, 'products')) //
         .then((snapshot) => {
             if (snapshot.exists()) {
