@@ -54,33 +54,33 @@ export default function SideBar() {
     }
 
     return (
-        <nav>
+        <nav className="p-4">
             <div className="flex flex-col items-center">
                 <button className="flex items-end" onClick={() => handleTitleClick('shopItem', 'arrowShop')}>
                     Shop
                     <MdKeyboardArrowRight className="arrowShop" />
                 </button>
-                <ul className="flex flex-col items-center">
+                <ul className="flex flex-col items-center text-center">
                     <li
-                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent"
+                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => handleListItemClick(e, 'shopItem')}
                     >
                         Men
                     </li>
                     <li
-                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent"
+                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => handleListItemClick(e, 'shopItem')}
                     >
                         Women
                     </li>
                     <li
-                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent"
+                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => handleListItemClick(e, 'shopItem')}
                     >
                         Accessaries
                     </li>
                     <li
-                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent"
+                        className="shopItem h-0 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => handleListItemClick(e, 'shopItem')}
                     >
                         Shoes
@@ -95,18 +95,18 @@ export default function SideBar() {
                     Management
                     <MdKeyboardArrowRight className="arrowManagement" />
                 </button>
-                <ul className="flex flex-col items-center">
+                <ul className="flex flex-col items-center text-center">
                     <li
-                        className="managementItem h-0 overflow-hidden cursor-pointer border-b border-transparent"
+                        className="managementItem h-0 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => handleListItemClick(e, 'managementItem')}
                     >
                         Analytics
                     </li>
                     <li
-                        className="managementItem h-0 overflow-hidden cursor-pointer border-b border-transparent"
+                        className="managementItem h-0 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => handleListItemClick(e, 'managementItem')}
                     >
-                        Edit
+                        Add Product
                     </li>
                 </ul>
             </div>
