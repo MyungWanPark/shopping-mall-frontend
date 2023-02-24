@@ -16,8 +16,12 @@ function App() {
             <AuthContextProvider>
                 <Navbar />
                 <div className="flex">
-                    <SideBar />
-                    <Outlet />
+                    <div className="basis-1/5">
+                        <SideBar />
+                    </div>
+                    <div className="basis-4/5">
+                        <Outlet />
+                    </div>
                 </div>
             </AuthContextProvider>
         </QueryClientProvider>
