@@ -7,7 +7,7 @@ export default function SearchInput() {
         setKeyword(e.target.value);
     };
     return (
-        <div className="flex border border-brand rounded-full overflow-hidden w-1/3">
+        <div className="flex ml-10 border border-brand rounded-full overflow-hidden w-1/3">
             <input
                 type="text"
                 placeholder="Search product..."
