@@ -1,11 +1,14 @@
 import React from 'react';
 import AnalyticsSmallBox from '../components/ui/AnalyticsSmallBox';
 import { BiShoppingBag } from 'react-icons/bi';
+import DateRangePicker from '../components/analytics/DateRangePicker';
 
 export default function Analytics() {
     return (
         <section>
-            <article></article>
+            <article>
+                <DateRangePicker />
+            </article>
             <article className="grid grid-cols-4 gap-2">
                 <AnalyticsSmallBox
                     logoIcon={<BiShoppingBag />}
