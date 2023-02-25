@@ -2,6 +2,8 @@ import React from 'react';
 import AnalyticsSmallBox from '../components/ui/AnalyticsSmallBox';
 import { BiShoppingBag } from 'react-icons/bi';
 import DateRangePicker from '../components/analytics/DateRangePicker';
+import MixedChart from '../components/analytics/MixedChart';
+import PieChart from '../components/analytics/PieChart';
 
 export default function Analytics() {
     return (
@@ -34,6 +36,10 @@ export default function Analytics() {
                     value="3000만원"
                     color="bg-green-400"
                 />
+            </article>
+            <article className="flex">
+                <MixedChart />
+                <PieChart />
             </article>
         </section>
     );
