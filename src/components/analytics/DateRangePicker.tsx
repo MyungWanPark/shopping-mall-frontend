@@ -1,45 +1,40 @@
 import React from 'react';
-import { DateRange as Calendar, Range } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import { addDays } from 'date-fns';
-import { useState } from 'react';
-import { ko } from 'date-fns/locale';
+import { Dayjs } from 'dayjs';
+import TextField from '@mui/material/TextField';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 export default function DateRangePicker() {
-    const [state, setState] = useState<Range[]>([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 7),
-            key: 'selection',
-        },
-    ]);
-    // console.log(`state = ${state[0].startDate}`);
-    // console.log(`state = ${state[0].endDate}`);
+    const [startDate, setStartDate] = React.useState<Dayjs | null>(null);
+    const [endDate, setEndDate] = React.useState<Dayjs | null>(null);
+
+    function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+        console.log(`${startDate} ~ ${endDate} 기간의 데이터를 조회합니다.`);
+    }
 
     return (
-        <article>
-            <p>
-                지정하신 날짜는 시작시간: {`${changeToKoreanTimes(state[0].startDate!)}`} 종료시간:
-                {`${changeToKoreanTimes(state[0].endDate!)}`} 입니다.
-            </p>
-            <Calendar
-                // className="!hidden"
-                onChange={(item) => setState([item.selection])}
-                // showSelectionPreview={true}
-                moveRangeOnFirstSelection={false}
-                months={2}
-                ranges={state}
-                locale={ko}
-                rangeColors={['#f96162']}
-                direction="horizontal"
-                // showDateDisplay={false}
-                // showMonthAndYearPickers={false}
-                // showDateDisplay={false}
-            />
-        </article>
+        <form onSubmit={handleSubmit}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                    label="Start Date"
+                    value={startDate}
+                    onChange={(newValue) => {
+                        setStartDate(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+                <DatePicker
+                    label="End Date"
+                    value={endDate}
+                    onChange={(newValue) => {
+                        setEndDate(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                />
+            </LocalizationProvider>
+            <button>조회하기</button>
+        </form>
     );
-}
-
-function changeToKoreanTimes(date: Date) {
-    return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
 }
