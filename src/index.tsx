@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/notFound/NotFound';
 import Home from './pages/Home';
-import AllProducts from './pages/AllProducts';
-import NewProducts from './pages/NewProducts';
-import ProductDetail from './pages/ProductDetail';
-import MyCart from './pages/MyCart';
+import AllProducts from './pages/product/AllProducts';
+import NewProducts from './pages/product/NewProducts';
+import ProductDetail from './pages/product/ProductDetail';
+import MyCart from './pages/cart/MyCart';
 import ProtectedRoute from './pages/ProtectedRoute';
-import Analytics from './pages/Analytics';
+import Analytics from './pages/analytics/Analytics';
 
 /*
   /             =>  <Home />

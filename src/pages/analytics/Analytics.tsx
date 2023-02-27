@@ -1,11 +1,11 @@
 import React from 'react';
-import AnalyticsSmallBox from '../components/ui/AnalyticsSmallBox';
+import AnalyticsSmallBox from '../../components/ui/AnalyticsSmallBox';
 import { BiShoppingBag } from 'react-icons/bi';
-import DateRangePicker from '../components/analytics/DateRangePicker';
-import MixedChart from '../components/analytics/MixedChart';
-import PieChart from '../components/analytics/PieChart';
-import SalesTable from '../components/analytics/SalesTable';
-import InflowRoute from '../components/analytics/InflowRoute';
+import DateRangePicker from '../../components/analytics/DateRangePicker';
+import MixedChart from '../../components/analytics/MixedChart';
+import PieChart from '../../components/analytics/PieChart';
+import SalesTable from '../../components/analytics/SalesTable';
+import InflowRoute from '../../components/analytics/InflowRoute';
 
 export default function Analytics() {
     return (

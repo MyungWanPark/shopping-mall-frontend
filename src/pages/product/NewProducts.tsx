@@ -1,8 +1,8 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { uploadImg } from '../api/uploader';
-import Button from './../components/ui/Button';
-import Input from './../components/ui/Input';
-import useProducts from './../hooks/useProducts';
+import { uploadImg } from '../../api/uploader';
+import Button from '../../components/ui/Button';
+import Input from '../../components/ui/Input';
+import useProducts from '../../hooks/useProducts';
 
 export type ProductType = {
     title?: string;

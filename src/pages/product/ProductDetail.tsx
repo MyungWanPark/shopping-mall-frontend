@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Button from '../components/ui/Button';
+import Button from '../../components/ui/Button';
 import { v4 as uuid } from 'uuid';
-import useCart from './../hooks/useCart';
+import useCart from '../../hooks/useCart';
 
 export default function ProductDetail() {
     const {

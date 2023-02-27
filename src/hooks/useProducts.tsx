@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { addNewProduct, getProductsFromDB } from '../api/firebase';
-import { ProductType } from '../pages/NewProducts';
+import { ProductType } from '../pages/product/NewProducts';
 import { UpdatedProductType } from '../types/product';
 
 export default function useProducts(path?: string) {

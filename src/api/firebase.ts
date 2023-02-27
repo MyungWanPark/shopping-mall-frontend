@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { getDatabase, ref, get, set, remove } from 'firebase/database';
-import { ProductType } from '../pages/NewProducts';
+import { ProductType } from '../pages/product/NewProducts';
 import { v4 as uuid } from 'uuid';
 import { CartProductType } from '../types/product';
 
