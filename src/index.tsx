@@ -11,6 +11,9 @@ import ProductDetail from './pages/product/ProductDetail';
 import MyCart from './pages/cart/MyCart';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Analytics from './pages/analytics/Analytics';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/Login';
+import AuthContainer from './pages/auth/AuthContainer';
 
 /*
   /             =>  <Home />
@@ -40,14 +43,6 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
-            {
-                path: '/analytics',
-                element: (
-                    <ProtectedRoute requiredAdmin={false}>
-                        <Analytics />
-                    </ProtectedRoute>
-                ),
-            },
             { path: '/products/:id', element: <ProductDetail /> },
             {
                 path: '/carts',
@@ -57,6 +52,23 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: '/analytics',
+                element: (
+                    <ProtectedRoute requiredAdmin={false}>
+                        <Analytics />
+                    </ProtectedRoute>
+                ),
+            },
+        ],
+    },
+    {
+        path: '/',
+        element: <AuthContainer />,
+        errorElement: <NotFound />,
+        children: [
+            { path: '/register', element: <Register /> },
+            { path: '/login', element: <Login /> },
         ],
     },
 ]);
