@@ -27,6 +27,18 @@ export default function ProductDetail() {
         );
     };
 
+    const handleSize = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        const sizeBtns = document.querySelectorAll('.sizeBtn');
+        sizeBtns.forEach((btn) => btn.classList.remove('bg-gray-700'));
+        (e.target as HTMLSpanElement).classList.add('bg-gray-700');
+    };
+
+    const handleColor = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        const colorBtns = document.querySelectorAll('.colorBtn');
+        colorBtns.forEach((btn) => btn.classList.replace('opacity-100', 'opacity-50'));
+        (e.target as HTMLSpanElement).classList.replace('opacity-50', 'opacity-100');
+    };
+
     return (
         <section>
             <p className="text-center fontbold text-2xl py-4">{category}</p>
@@ -54,6 +66,50 @@ export default function ProductDetail() {
                             </option>
                         ))}
                     </select>
+                    <div>
+                        <span
+                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
+                            onClick={handleSize}
+                        >
+                            S
+                        </span>
+                        <span
+                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
+                            onClick={handleSize}
+                        >
+                            M
+                        </span>
+                        <span
+                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
+                            onClick={handleSize}
+                        >
+                            L
+                        </span>
+                        <span
+                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
+                            onClick={handleSize}
+                        >
+                            XL
+                        </span>
+                    </div>
+                    <div>
+                        <span
+                            className="colorBtn inline-block w-5 h-5 bg-pink-300 opacity-50 cursor-pointer"
+                            onClick={handleColor}
+                        ></span>
+                        <span
+                            className="colorBtn inline-block w-5 h-5 bg-blue-300 opacity-50 cursor-pointer"
+                            onClick={handleColor}
+                        ></span>
+                        <span
+                            className="colorBtn inline-block w-5 h-5 bg-green-300 opacity-50 cursor-pointer"
+                            onClick={handleColor}
+                        ></span>
+                        <span
+                            className="colorBtn inline-block w-5 h-5 bg-black opacity-50 cursor-pointer"
+                            onClick={handleColor}
+                        ></span>
+                    </div>
                     <Button text="장바구니에 추가" onClick={handleClick} />
                     {isUploaded && <p>✅ 장바구니에 추가되었습니다.</p>}
                 </article>
