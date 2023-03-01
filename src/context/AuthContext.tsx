@@ -1,21 +1,44 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { login, logout } from '../api/firebase';
-import { onUserStateChanged } from './../api/firebase';
-import { User } from 'firebase/auth';
+import { createContext, useContext, useEffect, useState } from 'react';
+import AuthService from '../service/auth';
+import { User } from '../types/user';
 
-type Props = {
-    children: ReactNode;
+type Context = {
+    user: any;
+    register: ({ email, password, name, gender, age, inflowRoute }: User) => Promise<void>;
+    login: ({ email, password }: User) => Promise<void>;
+    logout: () => Promise<void>;
 };
 
-const AuthContext = createContext({ user: {} as User & { isAdmin: boolean }, login, logout });
+const AuthContext = createContext<Context>({} as Context);
 
-export function AuthContextProvider({ children }: Props) {
-    const [user, setUser] = useState<User & { isAdmin: boolean }>();
+type Props = {
+    authService: AuthService;
+    children: React.ReactNode;
+};
+
+export function AuthProvider({ authService, children }: Props) {
+    const [user, setUser] = useState(undefined);
+
     useEffect(() => {
-        onUserStateChanged(setUser);
-    }, []);
+        authService.me().then(setUser).catch(console.error);
+    }, [authService]);
 
-    return <AuthContext.Provider value={{ user: user!, login, logout }}>{children}</AuthContext.Provider>;
+    const register = async ({ email, password, name, gender, age, inflowRoute }: User) =>
+        authService.register({ email, password, name, gender, age, inflowRoute }).then((user) => setUser(user));
+
+    const login = async ({ email, password }: User) =>
+        authService.login({ email, password }).then((user) => setUser(user));
+
+    const logout = async () => authService.logout().then(() => setUser(undefined));
+
+    const context = {
+        user,
+        register,
+        login,
+        logout,
+    };
+
+    return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>;
 }
 
 export function useAuthContext() {

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Button from '../../components/ui/Button';
 import { v4 as uuid } from 'uuid';
 import useCart from '../../hooks/useCart';
+import Review from '../../components/review/Review';
 
 export default function ProductDetail() {
     const {
@@ -114,6 +115,7 @@ export default function ProductDetail() {
                     {isUploaded && <p>✅ 장바구니에 추가되었습니다.</p>}
                 </article>
             </div>
+            <Review />
         </section>
     );
 }

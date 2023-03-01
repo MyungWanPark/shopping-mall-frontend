@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
 
@@ -8,22 +8,60 @@ const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300';
 const ageOptions = ['10대 ~ 20대', '20대 ~ 30대', '30대 ~ 40대', '40대 ~ 50대', '50대 ~ 60대', '60대 ~ '];
 const inflowRouteOptions = ['Instagram', 'Facebook', '네이버', '카카오', '구글', '기타'];
 
+type UserInfo = {
+    id?: string;
+    email?: string;
+    password?: string;
+    name?: string;
+    gender?: string;
+    age?: string;
+    InflowRoute?: string;
+    isAdmin?: boolean;
+};
+
 export default function Register() {
-    const [selectedAge, setSelectedAge] = useState<string>(ageOptions[0]);
-    const [selectedInflowRoute, setSelectedInflowRoute] = useState<string>(inflowRouteOptions[0]);
+    const [userInfo, setUserInfo] = useState<UserInfo>({
+        email: '',
+        password: '',
+        name: '',
+        gender: '',
+        age: ageOptions[0],
+        InflowRoute: inflowRouteOptions[0],
+    });
+    const navigate = useNavigate();
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log('handleSubmit!');
+
+        // fs.writeFile('tempDB/users')
+        // navigate('/login');
+    };
+    const handleEmail = (e: React.ChangeEvent) => {
+        setUserInfo((prev) => ({ ...prev, email: (e.target as HTMLInputElement).value }));
+    };
+
+    const handlePassword = (e: React.ChangeEvent) => {
+        setUserInfo((prev) => ({ ...prev, password: (e.target as HTMLInputElement).value }));
+    };
+
+    const handleName = (e: React.ChangeEvent) => {
+        setUserInfo((prev) => ({ ...prev, name: (e.target as HTMLInputElement).value }));
+    };
 
     const handleGender = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         const sizeBtns = document.querySelectorAll('.genderBtn');
         sizeBtns.forEach((btn) => btn.classList.remove('bg-gray-700'));
-        (e.target as HTMLSpanElement).classList.add('bg-gray-700');
+        const target = e.target as HTMLSpanElement;
+        target.classList.add('bg-gray-700');
+        setUserInfo((prev) => ({ ...prev, gender: target.textContent! }));
     };
 
     const handleAge = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedAge(e.target.value);
+        setUserInfo((prev) => ({ ...prev, age: (e.target as HTMLSelectElement).value }));
     };
 
     const handleInflowRoute = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedInflowRoute(e.target.value);
+        setUserInfo((prev) => ({ ...prev, InflowRoute: (e.target as HTMLSelectElement).value }));
     };
 
     return (
@@ -37,11 +75,29 @@ export default function Register() {
                     <p className="mb-5">Welcome!</p>
                     <form action="" className="mb-4 flex flex-col">
                         <p>Email</p>
-                        <input type="email" placeholder="enter your email.." className={INPUT_CLASSNAME} />
+                        <input
+                            type="email"
+                            placeholder="enter your email.."
+                            value={userInfo?.email}
+                            onChange={handleEmail}
+                            className={INPUT_CLASSNAME}
+                        />
                         <p>Password</p>
-                        <input type="password" placeholder="enter your password.." className={INPUT_CLASSNAME} />
+                        <input
+                            type="password"
+                            placeholder="enter your password.."
+                            value={userInfo?.password}
+                            onChange={handlePassword}
+                            className={INPUT_CLASSNAME}
+                        />
                         <p>Name</p>
-                        <input type="text" placeholder="enter your name.." className={INPUT_CLASSNAME} />
+                        <input
+                            type="text"
+                            placeholder="enter your name.."
+                            value={userInfo?.name}
+                            onChange={handleName}
+                            className={INPUT_CLASSNAME}
+                        />
                         <p>Gender</p>
                         <div>
                             <span
@@ -62,7 +118,7 @@ export default function Register() {
                             name=""
                             id="options"
                             onChange={handleAge}
-                            value={selectedAge}
+                            value={userInfo.age}
                             className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
                         >
                             {ageOptions.map((option: string) => (
@@ -76,7 +132,7 @@ export default function Register() {
                             name=""
                             id="options"
                             onChange={handleInflowRoute}
-                            value={selectedInflowRoute}
+                            value={userInfo.InflowRoute}
                             className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
                         >
                             {inflowRouteOptions.map((option: string) => (
@@ -85,11 +141,16 @@ export default function Register() {
                                 </option>
                             ))}
                         </select>
-                        <button className="block text-center bg-brand text-white mt-2 rounded-md">Register</button>
+                        <button
+                            className="block text-center bg-brand text-white mt-2 rounded-md"
+                            onClick={handleSubmit}
+                        >
+                            Register
+                        </button>
                     </form>
                     <p className="mt-5">
                         Already have an account?
-                        <Link to={'/login'} className="underline">
+                        <Link to={'/auth/login'} className="underline">
                             Login
                         </Link>
                     </p>

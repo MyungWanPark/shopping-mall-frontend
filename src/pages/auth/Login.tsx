@@ -30,7 +30,7 @@ export default function Login() {
                     <button className="bg-yellow-300 block w-full rounded-md">Kakao Login</button>
                     <p className="mt-5">
                         Don't have an account?{' '}
-                        <Link to={'/register'} className="underline">
+                        <Link to={'/auth/register'} className="underline">
                             Register
                         </Link>
                     </p>

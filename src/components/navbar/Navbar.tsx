@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
 import UserInfo from '../UserInfo';
 import Button from '../ui/Button';
-import { useAuthContext } from '../../context/AuthContext';
 import Cart from '../cart/CartIcon';
-import SearchInput from '../SearchInput';
+import SearchInput from './SearchInput';
+import { useAuthContext } from '../../context/AuthContext';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
@@ -26,7 +26,7 @@ export default function Navbar() {
                 {user && <UserInfo user={user} />}
                 {/*  {!user && <Button text={'Login'} onClick={login} />}
                 {user && <Button text={'Logout'} onClick={logout} />} */}
-                {!user && <Link to={'/login'}>Login</Link>}
+                {!user && <Link to={'/auth/login'}>Login</Link>}
                 {user && <Button text={'Logout'} onClick={logout} />}
             </nav>
         </header>
