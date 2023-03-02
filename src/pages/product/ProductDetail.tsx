@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../../components/ui/Button';
 import { v4 as uuid } from 'uuid';
-import useCart from '../../hooks/useCart';
+// import useCart from '../../hooks/useCart';
 import Review from '../../components/review/Review';
 
 export default function ProductDetail() {
@@ -13,19 +13,19 @@ export default function ProductDetail() {
         },
     } = useLocation();
     const [isUploaded, setIsUploaded] = useState(false);
-    const { addOrUpdateCart } = useCart();
+    // const { addOrUpdateCart } = useCart();
     const [selectedItem, setSelectedItem] = useState<string>(options && options[0]);
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedItem(e.target.value);
     };
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         setIsUploaded(true);
-        addOrUpdateCart.mutate(
+        /* addOrUpdateCart.mutate(
             { ...product, option: selectedItem, quantity: 1 },
             {
                 onSuccess: () => setTimeout(() => setIsUploaded(false), 3000),
             }
-        );
+        ); */
     };
 
     const handleSize = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {

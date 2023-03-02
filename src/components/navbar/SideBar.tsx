@@ -2,8 +2,8 @@ import React from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GoGraph } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext-firebase';
 import { handleListItemClick, handleTitleClick } from '../../utils/sideBarUtils';
+import { useAuthContext } from '../../context/AuthContext';
 
 export default function SideBar() {
     const navigate = useNavigate();

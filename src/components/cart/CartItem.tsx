@@ -2,7 +2,7 @@ import React from 'react';
 import { CartProductType } from '../../types/product';
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
-import useCart from '../../hooks/useCart';
+// import useCart from '../../hooks/useCart';
 
 type Props = {
     product: CartProductType;
@@ -11,22 +11,22 @@ type Props = {
 const ICON_CLASS = 'cursor-pointer transition-all hover:text-brand hover:scale-105';
 
 export default function CartItem({ product, product: { title, price, option, id, imgURL, quantity } }: Props) {
-    const { addOrUpdateCart, removeFromCart } = useCart();
+    // const { addOrUpdateCart, removeFromCart } = useCart();
     const handleMinus = (e: React.MouseEvent) => {
         if (quantity < 2) return;
-        addOrUpdateCart.mutate({
+        /* addOrUpdateCart.mutate({
             ...product,
             quantity: quantity - 1,
-        });
+        }); */
     };
     const handlePlus = (e: React.MouseEvent) => {
-        addOrUpdateCart.mutate({
+        /* addOrUpdateCart.mutate({
             ...product,
             quantity: quantity + 1,
-        });
+        }); */
     };
     const handleDelete = (e: React.MouseEvent) => {
-        removeFromCart.mutate(id);
+        // removeFromCart.mutate(id);
     };
     return (
         <li className="flex justify-between px-4 py-2">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
+import { useAuthContext } from '../../context/AuthContext';
 
 const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300';
 
@@ -29,10 +30,12 @@ export default function Register() {
         InflowRoute: inflowRouteOptions[0],
     });
     const navigate = useNavigate();
+    const { register } = useAuthContext();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log('handleSubmit!');
-
+        register(userInfo);
         // fs.writeFile('tempDB/users')
         // navigate('/login');
     };

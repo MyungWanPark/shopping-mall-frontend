@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+/* import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuthContext } from '../context/AuthContext-firebase';
 import { changeItemFromCart, getCartFromDB, removeItemFromCart } from '../api/firebase';
 import { CartProductType } from '../types/product';
@@ -28,3 +28,4 @@ export default function useCart() {
 
     return { getCart, addOrUpdateCart, removeFromCart };
 }
+ */
