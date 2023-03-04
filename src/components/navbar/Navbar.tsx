@@ -9,6 +9,8 @@ import { useAuthContext } from '../../context/AuthContext';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
+    console.log(`Navbar rendered!`);
+    console.log(`user = ${JSON.stringify(user)}`);
 
     return (
         <header className="flex justify-between border-b border-gray-300 py-2">

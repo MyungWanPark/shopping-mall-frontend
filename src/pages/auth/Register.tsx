@@ -3,41 +3,30 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
 import { useAuthContext } from '../../context/AuthContext';
+import { User } from '../../types/user';
 
 const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300';
 
 const ageOptions = ['10대 ~ 20대', '20대 ~ 30대', '30대 ~ 40대', '40대 ~ 50대', '50대 ~ 60대', '60대 ~ '];
 const inflowRouteOptions = ['Instagram', 'Facebook', '네이버', '카카오', '구글', '기타'];
 
-type UserInfo = {
-    id?: string;
-    email?: string;
-    password?: string;
-    name?: string;
-    gender?: string;
-    age?: string;
-    InflowRoute?: string;
-    isAdmin?: boolean;
-};
-
 export default function Register() {
-    const [userInfo, setUserInfo] = useState<UserInfo>({
+    const [userInfo, setUserInfo] = useState<User>({
         email: '',
         password: '',
         name: '',
         gender: '',
         age: ageOptions[0],
-        InflowRoute: inflowRouteOptions[0],
+        inflowRoute: inflowRouteOptions[0],
     });
     const navigate = useNavigate();
     const { register } = useAuthContext();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('handleSubmit!');
+
         register(userInfo);
-        // fs.writeFile('tempDB/users')
-        // navigate('/login');
+        navigate('/');
     };
     const handleEmail = (e: React.ChangeEvent) => {
         setUserInfo((prev) => ({ ...prev, email: (e.target as HTMLInputElement).value }));
@@ -135,7 +124,7 @@ export default function Register() {
                             name=""
                             id="options"
                             onChange={handleInflowRoute}
-                            value={userInfo.InflowRoute}
+                            value={userInfo.inflowRoute}
                             className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
                         >
                             {inflowRouteOptions.map((option: string) => (

@@ -20,17 +20,27 @@ export function AuthProvider({ authService, children }: Props) {
     const [user, setUser] = useState(undefined);
 
     useEffect(() => {
-        authService.me().then(setUser).catch(console.error);
+        authService
+            .me()
+            .then((res) => setUser(res.user))
+            .catch((err) => {
+                console.error(`errors in useEffect doing me()`);
+            });
     }, [authService]);
 
-    const register = async ({ email, password, name, gender, age, inflowRoute }: User) =>
-        authService.register({ email, password, name, gender, age, inflowRoute }).then((user) => setUser(user));
+    const register = async ({ email, password, name, gender, age, inflowRoute }: User) => {
+        authService.register({ email, password, name, gender, age, inflowRoute }).then((res) => {
+            setUser(res.user);
+        });
+    };
 
     const login = async ({ email, password }: User) =>
-        authService.login({ email, password }).then((user) => setUser(user));
+        authService.login({ email, password }).then((res) => {
+            setUser(res.user);
+        });
 
     const logout = async () => authService.logout().then(() => setUser(undefined));
-
+    console.log('AuthProvider rendered!');
     const context = {
         user,
         register,
@@ -38,6 +48,7 @@ export function AuthProvider({ authService, children }: Props) {
         logout,
     };
 
+    // console.log(`context = ${JSON.stringify(context)}`);
     return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>;
 }
 
