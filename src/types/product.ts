@@ -8,6 +8,16 @@ export type UpdatedProductType = {
     imgURL: string;
 };
 
+export type ProductType = {
+    id?: string;
+    name?: string;
+    category?: string;
+    imgURL?: string;
+    price?: number;
+    description?: string;
+    colors?: string[];
+};
+
 export type CartProductType = {
     title: string;
     price: number;

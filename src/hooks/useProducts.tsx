@@ -1,17 +1,16 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { addNewProduct, getProductsFromDB } from '../api/firebase';
-import { ProductType } from '../pages/product/NewProducts';
-import { UpdatedProductType } from '../types/product';
+import { getProductsFromDB } from '../api/firebase';
+import { ProductType, UpdatedProductType } from '../types/product';
 
 export default function useProducts(path?: string) {
     const queryClient = useQueryClient();
-    const addProduct = useMutation(
+    /* const addProduct = useMutation(
         ({ product, imgURL }: { product: ProductType; imgURL: string }) => addNewProduct(product, imgURL),
         {
             onSuccess: () => queryClient.invalidateQueries(['products']),
         }
-    );
+    ); */
     const getProducts: {
         isLoading: boolean;
         error: any;
@@ -20,5 +19,6 @@ export default function useProducts(path?: string) {
         staleTime: 1000 * 60 * 60 * 24,
     });
 
-    return { addProduct, getProducts };
+    // return { addProduct, getProducts };
+    return { getProducts };
 }

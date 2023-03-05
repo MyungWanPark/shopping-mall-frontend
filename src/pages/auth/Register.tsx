@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { BiShoppingBag } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
 import { useAuthContext } from '../../context/AuthContext';
 import { User } from '../../types/user';
@@ -25,7 +24,8 @@ export default function Register() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        register(userInfo).then((res) => navigate('/'));
+        await register(userInfo);
+        navigate('/');
     };
 
     const handleEmail = (e: React.ChangeEvent) => {

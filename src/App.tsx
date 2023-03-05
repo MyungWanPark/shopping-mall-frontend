@@ -8,26 +8,31 @@ import SideBar from './components/navbar/SideBar';
 import HttpClient from './network/http';
 import AuthService from './service/auth';
 import { AuthProvider } from './context/AuthContext';
+import ProductService from './service/product';
+import { ProductProvider } from './context/ProductContext';
 
 const queryClient = new QueryClient();
 const baseURL = process.env.REACT_APP_BASE_URL;
 const httpClient = new HttpClient(baseURL);
 const authService = new AuthService(httpClient);
+const productService = new ProductService(httpClient);
 
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={true} />
             <AuthProvider authService={authService}>
-                <Navbar />
-                <div className="flex">
-                    <div className="basis-1/5">
-                        <SideBar />
+                <ProductProvider productService={productService}>
+                    <Navbar />
+                    <div className="flex">
+                        <div className="basis-1/5">
+                            <SideBar />
+                        </div>
+                        <div className="basis-4/5">
+                            <Outlet />
+                        </div>
                     </div>
-                    <div className="basis-4/5">
-                        <Outlet />
-                    </div>
-                </div>
+                </ProductProvider>
             </AuthProvider>
         </QueryClientProvider>
     );

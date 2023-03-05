@@ -2,12 +2,16 @@ import React from 'react';
 
 import ProductCard from './ProductCard';
 import useProducts from '../../hooks/useProducts';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Products() {
     const currentPath = window.location.pathname.split('/')[2];
     const {
         getProducts: { isLoading, error, data: products },
     } = useProducts(currentPath);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const category = searchParams.get('category');
+
     return (
         <>
             <p>show {currentPath} products</p>

@@ -21,7 +21,7 @@ export default function SideBar() {
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
                             handleListItemClick(e, 'shopItem', 'arrowShop');
-                            navigate('/products/men');
+                            navigate('/products?category=men');
                         }}
                     >
                         Men
@@ -64,7 +64,8 @@ export default function SideBar() {
                     <MdKeyboardArrowRight className="arrowManagement rotate-90" />
                 </button>
                 <ul className="flex flex-col items-center text-center">
-                    {user && user.isAdmin && (
+                    {/* {user && user.isAdmin && ( */}
+                    {user && (
                         <li
                             className="managementItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand flex items-center"
                             onClick={(e) => {
@@ -76,7 +77,7 @@ export default function SideBar() {
                             Analytics
                         </li>
                     )}
-                    {user && user.isAdmin && (
+                    {user && (
                         <li
                             className="managementItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                             onClick={(e) => {
