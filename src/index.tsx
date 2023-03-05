@@ -13,7 +13,6 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import Analytics from './pages/analytics/Analytics';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
-import AuthContainer from './pages/auth/AuthContainer';
 
 /*
   /             =>  <Home />
@@ -60,13 +59,6 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
-        ],
-    },
-    {
-        path: '/',
-        element: <AuthContainer />,
-        errorElement: <NotFound />,
-        children: [
             { path: '/auth/register', element: <Register /> },
             { path: '/auth/login', element: <Login /> },
         ],

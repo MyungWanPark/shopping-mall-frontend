@@ -17,9 +17,10 @@ type Props = {
 };
 
 export function AuthProvider({ authService, children }: Props) {
-    const [user, setUser] = useState(undefined);
+    const [user, setUser] = useState<User | undefined>(undefined);
 
     useEffect(() => {
+        console.log('useEffect fired!');
         authService
             .me()
             .then((res) => setUser(res.user))
@@ -40,14 +41,14 @@ export function AuthProvider({ authService, children }: Props) {
         });
 
     const logout = async () => authService.logout().then(() => setUser(undefined));
-    console.log('AuthProvider rendered!');
+
     const context = {
         user,
         register,
         login,
         logout,
     };
-
+    console.log(`context.user = ${JSON.stringify(context.user)}`);
     // console.log(`context = ${JSON.stringify(context)}`);
     return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>;
 }
