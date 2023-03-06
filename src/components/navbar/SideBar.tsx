@@ -30,7 +30,7 @@ export default function SideBar() {
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
                             handleListItemClick(e, 'shopItem', 'arrowShop');
-                            navigate('/products/women');
+                            navigate('/products?category=women');
                         }}
                     >
                         Women

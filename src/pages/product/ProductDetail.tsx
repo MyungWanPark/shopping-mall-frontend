@@ -4,17 +4,24 @@ import Button from '../../components/ui/Button';
 import { v4 as uuid } from 'uuid';
 // import useCart from '../../hooks/useCart';
 import Review from '../../components/review/Review';
+import { ProductType } from '../../types/product';
+
+const SIZES = ['S', 'M', 'L', 'XL'];
 
 export default function ProductDetail() {
     const {
         state: {
-            product: { title, price, category, description, options, imgURL },
+            product: { name, price, category, description, imgURL },
             product,
         },
+    }: {
+        state: {
+            product: ProductType;
+        };
     } = useLocation();
     const [isUploaded, setIsUploaded] = useState(false);
     // const { addOrUpdateCart } = useCart();
-    const [selectedItem, setSelectedItem] = useState<string>(options && options[0]);
+    const [selectedItem, setSelectedItem] = useState<string>(SIZES[0]);
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedItem(e.target.value);
     };
@@ -45,11 +52,11 @@ export default function ProductDetail() {
             <p className="text-center fontbold text-2xl py-4">{category}</p>
             <div className="flex flex-col md:flex-row md:justify-center gap-5 p-4">
                 <div className="w-full basis-7/12">
-                    <img className="w-full" src={imgURL} alt={title} />
+                    <img className="w-full" src={imgURL} alt={name} />
                 </div>
                 <article className="w-full basis-5/12 text-center">
-                    <h1 className="text-3xl font-bold">{title}</h1>
-                    <p className="text-2xl font-semibold border-b border-gray-300 pb-3">₩{price.toLocaleString()}원</p>
+                    <h1 className="text-3xl font-bold">{name}</h1>
+                    <p className="text-2xl font-semibold border-b border-gray-300 pb-3">₩{price!.toLocaleString()}원</p>
                     <p className="text-lg py-3">{description}</p>
                     <label htmlFor="options" className="text-center">
                         옵션:
@@ -61,7 +68,7 @@ export default function ProductDetail() {
                         value={selectedItem}
                         className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
                     >
-                        {options.map((option: string) => (
+                        {SIZES.map((option: string) => (
                             <option className="text-center" key={uuid()}>
                                 {option}
                             </option>

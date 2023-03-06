@@ -18,6 +18,8 @@ export type ProductType = {
     colors?: string[];
 };
 
+export type Category = 'all' | 'men' | 'women' | 'accessaries' | 'shoes';
+
 export type CartProductType = {
     title: string;
     price: number;

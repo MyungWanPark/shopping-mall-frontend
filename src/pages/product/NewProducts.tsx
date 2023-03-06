@@ -4,10 +4,10 @@ import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';
 import { v4 as uuid } from 'uuid';
 import { ProductType } from '../../types/product';
-import { useProductContext } from '../../context/ProductContext';
 import { useNavigate } from 'react-router-dom';
+import useProducts from './../../hooks/useProducts';
 
-const options = ['men', 'womon', 'accessaries', 'shoes'];
+const options = ['men', 'women', 'accessaries', 'shoes'];
 
 export default function NewProducts() {
     const [product, setProduct] = useState<ProductType>();
@@ -15,7 +15,7 @@ export default function NewProducts() {
     const [isLoading, setIsLoading] = useState(false);
     const [successMsg, setSuccessMsg] = useState<string | null>();
     const [showingImgURL, setShowingImgURL] = useState<string>();
-    const { addNewProduct } = useProductContext();
+    const { addNewProduct } = useProducts();
 
     const [selectedCategory, setSelectedCategory] = useState<string>(options && options[0]);
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {

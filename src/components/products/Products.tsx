@@ -1,20 +1,19 @@
 import React from 'react';
-
 import ProductCard from './ProductCard';
 import useProducts from '../../hooks/useProducts';
 import { useSearchParams } from 'react-router-dom';
+import { Category } from '../../types/product';
 
 export default function Products() {
-    const currentPath = window.location.pathname.split('/')[2];
+    const [searchParams, setSearchParams] = useSearchParams();
+    const category = searchParams.get('category') as Category;
     const {
         getProducts: { isLoading, error, data: products },
-    } = useProducts(currentPath);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const category = searchParams.get('category');
+    } = useProducts(category);
 
     return (
         <>
-            <p>show {currentPath} products</p>
+            <p>show {category} products</p>
             {isLoading && <p>isLoading..</p>}
             {error && <p>{error}</p>}
             {products && (

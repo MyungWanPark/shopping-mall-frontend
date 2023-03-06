@@ -1,24 +1,28 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getProductsFromDB } from '../api/firebase';
-import { ProductType, UpdatedProductType } from '../types/product';
+import { Category, ProductType } from '../types/product';
+import { useProductContext } from '../context/ProductContext';
 
-export default function useProducts(path?: string) {
+export default function useProducts(category?: Category) {
+    const { productService } = useProductContext();
+
     const queryClient = useQueryClient();
-    /* const addProduct = useMutation(
-        ({ product, imgURL }: { product: ProductType; imgURL: string }) => addNewProduct(product, imgURL),
+
+    const addNewProduct = useMutation(
+        async ({ product, imgURL }: { product: ProductType; imgURL: string }) =>
+            productService.addProduct({ ...product, imgURL }),
         {
             onSuccess: () => queryClient.invalidateQueries(['products']),
         }
-    ); */
+    );
     const getProducts: {
         isLoading: boolean;
         error: any;
-        data?: UpdatedProductType[];
-    } = useQuery(['products', `${path}`], () => getProductsFromDB(path), {
+        data?: ProductType[];
+    } = useQuery(['products', category], () => productService.getProductsByCategory(category!), {
         staleTime: 1000 * 60 * 60 * 24,
     });
 
     // return { addProduct, getProducts };
-    return { getProducts };
+    return { addNewProduct, getProducts };
 }

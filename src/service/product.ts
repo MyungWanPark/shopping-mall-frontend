@@ -1,6 +1,5 @@
 import HttpClient from '../network/http';
-import { ProductType } from '../types/product';
-import { User } from '../types/user';
+import { Category, ProductType } from '../types/product';
 
 export default class ProductService {
     http: HttpClient;
@@ -16,25 +15,9 @@ export default class ProductService {
         });
     }
 
-    async login({ email, password }: User) {
-        return this.http.fetch('/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                email,
-                password,
-            }),
-        });
-    }
-
-    async me() {
-        return this.http.fetch('/auth/me', {
+    async getProductsByCategory(category: Category): Promise<ProductType[]> {
+        return this.http.fetch(`/products?category=${category}`, {
             method: 'GET',
-        });
-    }
-
-    async logout() {
-        return this.http.fetch('/auth/logout', {
-            method: 'POST',
         });
     }
 }
