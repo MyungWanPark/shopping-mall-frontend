@@ -10,12 +10,15 @@ import AuthService from './service/auth';
 import { AuthProvider } from './context/AuthContext';
 import ProductService from './service/product';
 import { ProductProvider } from './context/ProductContext';
+import CartService from './service/cart';
+import { CartProvider } from './context/CartContext';
 
 const queryClient = new QueryClient();
 const baseURL = process.env.REACT_APP_BASE_URL;
 const httpClient = new HttpClient(baseURL);
 const authService = new AuthService(httpClient);
 const productService = new ProductService(httpClient);
+const cartService = new CartService(httpClient);
 
 function App() {
     return (
@@ -23,15 +26,17 @@ function App() {
             <ReactQueryDevtools initialIsOpen={true} />
             <AuthProvider authService={authService}>
                 <ProductProvider productService={productService}>
-                    <Navbar />
-                    <div className="flex">
-                        <div className="basis-1/5">
-                            <SideBar />
+                    <CartProvider cartService={cartService}>
+                        <Navbar />
+                        <div className="flex">
+                            <div className="basis-1/5">
+                                <SideBar />
+                            </div>
+                            <div className="basis-4/5">
+                                <Outlet />
+                            </div>
                         </div>
-                        <div className="basis-4/5">
-                            <Outlet />
-                        </div>
-                    </div>
+                    </CartProvider>
                 </ProductProvider>
             </AuthProvider>
         </QueryClientProvider>

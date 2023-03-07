@@ -1,31 +1,34 @@
 import React from 'react';
-/* import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useAuthContext } from '../context/AuthContext-firebase';
-import { changeItemFromCart, getCartFromDB, removeItemFromCart } from '../api/firebase';
-import { CartProductType } from '../types/product';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { CartItemType } from '../types/cart';
+import { useCartContext } from '../context/CartContext';
+import { useAuthContext } from '../context/AuthContext';
+import { User } from '../types/user';
 
 export default function useCart() {
-    const {
-        user: { uid },
-    } = useAuthContext();
-
     const queryClient = useQueryClient();
-    const addOrUpdateCart = useMutation((product: CartProductType) => changeItemFromCart(uid, product), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', uid || '']),
-    });
-
-    const removeFromCart = useMutation((productId: string) => removeItemFromCart(uid, productId), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', uid || '']),
-    });
+    const { user }: { user: User } = useAuthContext();
+    const { cartService } = useCartContext();
 
     const getCart: {
         isLoading: boolean;
         error: any;
-        data?: CartProductType[];
-    } = useQuery(['cart', uid || ''], () => getCartFromDB(uid), {
+        data?: CartItemType[];
+    } = useQuery(['cart', user.id || ''], () => cartService.getCartItems(), {
         staleTime: 1000 * 60 * 60 * 24,
     });
 
-    return { getCart, addOrUpdateCart, removeFromCart };
+    const addToCart = useMutation((product: CartItemType) => cartService.addToCart(product), {
+        onSuccess: () => queryClient.invalidateQueries(['cart', user.id || '']),
+    });
+
+    const updateCartItem = useMutation((product: CartItemType) => cartService.updateCartItem(product), {
+        onSuccess: () => queryClient.invalidateQueries(['cart', user.id || '']),
+    });
+
+    const deleteCartItem = useMutation((productId: number) => cartService.deleteCartItem({ productId }), {
+        onSuccess: () => queryClient.invalidateQueries(['cart', user.id || '']),
+    });
+
+    return { getCart, addToCart, updateCartItem, deleteCartItem };
 }
- */
