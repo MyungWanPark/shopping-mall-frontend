@@ -9,7 +9,7 @@ export type UpdatedProductType = {
 };
 
 export type ProductType = {
-    id?: string;
+    id?: number;
     name?: string;
     category?: string;
     imgURL?: string;

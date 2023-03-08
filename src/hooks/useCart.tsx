@@ -14,20 +14,20 @@ export default function useCart() {
         isLoading: boolean;
         error: any;
         data?: CartItemType[];
-    } = useQuery(['cart', user.id || ''], () => cartService.getCartItems(), {
+    } = useQuery(['cart', user?.id || ''], () => cartService.getCartItems(), {
         staleTime: 1000 * 60 * 60 * 24,
     });
 
     const addToCart = useMutation((product: CartItemType) => cartService.addToCart(product), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', user.id || '']),
+        onSuccess: () => queryClient.invalidateQueries(['cart', user?.id || '']),
     });
 
     const updateCartItem = useMutation((product: CartItemType) => cartService.updateCartItem(product), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', user.id || '']),
+        onSuccess: () => queryClient.invalidateQueries(['cart', user?.id || '']),
     });
 
     const deleteCartItem = useMutation((productId: number) => cartService.deleteCartItem({ productId }), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', user.id || '']),
+        onSuccess: () => queryClient.invalidateQueries(['cart', user?.id || '']),
     });
 
     return { getCart, addToCart, updateCartItem, deleteCartItem };
