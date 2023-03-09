@@ -9,7 +9,7 @@ export default function Products() {
     const category = searchParams.get('category') as Category;
     const {
         getProducts: { isLoading, error, data: products },
-    } = useProducts(category);
+    } = useProducts({ category });
 
     return (
         <>

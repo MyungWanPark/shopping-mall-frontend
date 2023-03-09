@@ -20,4 +20,13 @@ export default class ProductService {
             method: 'GET',
         });
     }
+
+    async getProductByProductId(productId: number) {
+        if (!productId) {
+            return;
+        }
+        return this.http.fetch(`/products/${productId}`, {
+            method: 'GET',
+        });
+    }
 }

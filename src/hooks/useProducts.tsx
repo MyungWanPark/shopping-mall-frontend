@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Category, ProductType } from '../types/product';
 import { useProductContext } from '../context/ProductContext';
 
-export default function useProducts(category?: Category) {
+export default function useProducts({ category, productId }: { category?: Category; productId?: number }) {
     const { productService } = useProductContext();
 
     const queryClient = useQueryClient();
@@ -23,6 +23,14 @@ export default function useProducts(category?: Category) {
         staleTime: 1000 * 60 * 60 * 24,
     });
 
+    const getProductInfo: {
+        isLoading: boolean;
+        error: any;
+        data?: ProductType;
+    } = useQuery(['products', productId], () => productService.getProductByProductId(productId!), {
+        staleTime: 1000 * 60 * 60 * 24,
+    });
+
     // return { addProduct, getProducts };
-    return { addNewProduct, getProducts };
+    return { addNewProduct, getProducts, getProductInfo };
 }

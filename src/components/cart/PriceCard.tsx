@@ -1,7 +1,7 @@
 import React from 'react';
 type Props = {
     text: string;
-    price?: number;
+    price?: string | number;
 };
 
 export default function PriceCard({ text, price }: Props) {

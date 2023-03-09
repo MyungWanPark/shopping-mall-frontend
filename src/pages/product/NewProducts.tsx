@@ -15,7 +15,7 @@ export default function NewProducts() {
     const [isLoading, setIsLoading] = useState(false);
     const [successMsg, setSuccessMsg] = useState<string | null>();
     const [showingImgURL, setShowingImgURL] = useState<string>();
-    const { addNewProduct } = useProducts();
+    const { addNewProduct } = useProducts({});
 
     const [selectedCategory, setSelectedCategory] = useState<string>(options && options[0]);
     const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {

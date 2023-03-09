@@ -70,7 +70,11 @@ export default function ProductDetail() {
                     <p className="text-2xl font-semibold border-b border-gray-300 pb-3">₩{price!.toLocaleString()}원</p>
                     <p className="text-lg py-3">{description}</p>
                     <span>수량: </span>
-                    <InputWithPlusMinus type="productDetail" quantity={1} />
+                    <InputWithPlusMinus
+                        type="productDetail"
+                        setCartProduct={setCartProduct}
+                        cartProduct={cartProduct}
+                    />
                     <div>
                         <span
                             className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
