@@ -7,14 +7,15 @@ export default function CartIcon() {
         getCart: { data: products },
     } = useCart();
 
+    console.log(`products in CartIcon = ${JSON.stringify(products)}`);
     return (
         <div className="relative">
             <BsCartPlus className="text-3xl" />
-            {/* {products && ( */}
-            <span className="absolute -top-2 -right-2 block bg-brand w-6 h-6 text-center text-white rounded-full">
-                {products!.length}
-            </span>
-            {/* )} */}
+            {products && (
+                <span className="absolute -top-2 -right-2 block bg-brand w-6 h-6 text-center text-white rounded-full">
+                    {products!.length}
+                </span>
+            )}
         </div>
     );
 }

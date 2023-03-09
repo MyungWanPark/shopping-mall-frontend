@@ -39,7 +39,7 @@ export default function SideBar() {
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
                             handleListItemClick(e, 'shopItem', 'arrowShop');
-                            navigate('/products/accessaries');
+                            navigate('/products?category=accessaries');
                         }}
                     >
                         Accessaries
@@ -48,7 +48,7 @@ export default function SideBar() {
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
                             handleListItemClick(e, 'shopItem', 'arrowShop');
-                            navigate('/products/shoes');
+                            navigate('/products?category=shoes');
                         }}
                     >
                         Shoes
