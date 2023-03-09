@@ -7,7 +7,6 @@ export default function CartIcon() {
         getCart: { data: products },
     } = useCart();
 
-    console.log(`products in CartIcon = ${JSON.stringify(products)}`);
     return (
         <div className="relative">
             <BsCartPlus className="text-3xl" />

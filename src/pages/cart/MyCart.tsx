@@ -12,12 +12,15 @@ export default function MyCart() {
     const {
         getCart: { isLoading, error, data: cartItems },
     } = useCart();
-    console.log(`cartItems in mycart = ${JSON.stringify(cartItems)}`);
+
     if (isLoading) return <p>is Loading...</p>;
     if (error) return <p>network error...</p>;
     const hasProduct = cartItems && cartItems.length > 0;
-    const totalPrice = cartItems && cartItems.reduce((prev, curr) => prev + curr.totalPricePerProduct!, 0);
-
+    const totalPrice =
+        cartItems &&
+        cartItems
+            .filter((cartItem) => cartItem.isSelected)
+            .reduce((prev, curr) => prev + curr.totalPricePerProduct!, 0);
     return (
         <section className="p-8">
             <p className="text-center font-bold text-2xl py-3 border-b border-gray-300">내 장바구니</p>

@@ -17,13 +17,31 @@ export default function CartItem({ cartItem }: Props) {
     const {
         getProductInfo: { isLoading, error, data: productInfo },
     } = useProducts({ productId: cartItem.productId });
-    console.log(`productInfo in CartItem = ${JSON.stringify(productInfo)}`);
-    const { deleteCartItem } = useCart();
+    const { updateCartItem, deleteCartItem } = useCart();
+
+    const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const isSelected = e.target.checked;
+        updateCartItem.mutate({
+            ...cartItem,
+            isSelected,
+        });
+    };
+
     const handleDelete = (e: React.MouseEvent) => {
         deleteCartItem.mutate(cartItem.productId!);
     };
     return (
         <li className="flex justify-between px-4 py-2">
+            <div>
+                <label htmlFor={`product${cartItem.productId}CheckBox`}>주문</label>
+                <input
+                    type="checkbox"
+                    name="selectForOrder"
+                    id={`product${cartItem.productId}CheckBox`}
+                    onChange={handleSelect}
+                    checked={cartItem.isSelected}
+                />
+            </div>
             <img className="w-20 md:w-32 rounded-lg" src={productInfo?.imgURL} alt={productInfo?.name} />
             <section className="flex flex-1 ml-3 text-md md:text-lg">
                 <article className="flex flex-col justify-center basis-3/5">
