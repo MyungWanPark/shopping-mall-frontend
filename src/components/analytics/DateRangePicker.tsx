@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -23,6 +23,8 @@ export default function DateRangePicker() {
                     onChange={(newValue) => {
                         setStartDate(newValue);
                     }}
+                    minDate={dayjs(new Date('2023-03-07'))}
+                    maxDate={dayjs(new Date())}
                     renderInput={(params) => <TextField {...params} />}
                 />
                 <DatePicker
@@ -31,6 +33,8 @@ export default function DateRangePicker() {
                     onChange={(newValue) => {
                         setEndDate(newValue);
                     }}
+                    minDate={dayjs(new Date('2023-03-07'))}
+                    maxDate={dayjs(new Date())}
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>
