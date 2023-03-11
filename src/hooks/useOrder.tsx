@@ -1,0 +1,29 @@
+import React from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useOrderContext } from '../context/OrderContext';
+import { OrderType } from '../types/order';
+import { User } from '../types/user';
+import { useAuthContext } from '../context/AuthContext';
+
+export default function useOrder() {
+    const queryClient = useQueryClient();
+    const { orderService } = useOrderContext();
+    const { user }: { user: User } = useAuthContext();
+
+    const getOrders: {
+        isLoading: boolean;
+        error: any;
+        data?: OrderType[];
+    } = useQuery(['order'], () => orderService.getAllOrders(), {
+        staleTime: 1000 * 60 * 60 * 24,
+    });
+
+    const createOrder = useMutation((order: OrderType) => orderService.createOrder(order), {
+        onSuccess: () => {
+            queryClient.invalidateQueries(['cart', user?.id || '']);
+            queryClient.invalidateQueries(['order']);
+        },
+    });
+
+    return { getOrders, createOrder };
+}

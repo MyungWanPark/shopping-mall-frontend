@@ -5,6 +5,8 @@ import CartItem from '../../components/cart/CartItem';
 import PriceCard from '../../components/cart/PriceCard';
 import Button from '../../components/ui/Button';
 import useCart from './../../hooks/useCart';
+import { useNavigate } from 'react-router-dom';
+import useOrder from './../../hooks/useOrder';
 
 const SHIPPING_FEE = 3000;
 
@@ -12,6 +14,17 @@ export default function MyCart() {
     const {
         getCart: { isLoading, error, data: cartItems },
     } = useCart();
+    const { createOrder } = useOrder();
+    const cartItemIdsToOrder = cartItems?.filter((cartItem) => cartItem.isSelected).map((cartItem) => cartItem.id);
+    const navigate = useNavigate();
+
+    const handleOrder = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        createOrder.mutate({
+            cartItemIds: JSON.stringify(cartItemIdsToOrder),
+        });
+        alert('주문이 완료되었습니다.');
+        navigate('/');
+    };
 
     if (isLoading) return <p>is Loading...</p>;
     if (error) return <p>network error...</p>;
@@ -39,7 +52,7 @@ export default function MyCart() {
                         <FaEquals className="shrink-0" />
                         <PriceCard text={'총 합계'} price={`${(totalPrice! + SHIPPING_FEE).toLocaleString()} 원`} />
                     </div>
-                    <Button text={'주문하기'} />
+                    <Button onClick={handleOrder} text={'주문하기'} />
                 </>
             )}
         </section>

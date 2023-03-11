@@ -7,5 +7,6 @@ export type CartItemType = {
     totalPricePerProduct?: number;
     productId?: number;
     productPrice?: number;
+    isOrdered?: boolean;
     cartId?: number;
 };

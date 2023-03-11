@@ -9,9 +9,11 @@ export default class CartService {
     }
 
     async getCartItems() {
-        return this.http.fetch('/cart', {
+        const allCartItems: CartItemType[] = await this.http.fetch('/cart', {
             method: 'GET',
         });
+        console.log(`getCartItems = ${JSON.stringify(allCartItems.filter((cartItem) => !cartItem.isOrdered))}`);
+        return allCartItems.filter((cartItem) => !cartItem.isOrdered);
     }
 
     async addToCart(cartItem: CartItemType) {
