@@ -16,6 +16,8 @@ export default function DateRangePicker({ setPeriod }: Props) {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
+        startDate?.setHours(0, 0, 0, 0);
+        endDate?.setHours(23, 59, 59, 0);
         console.log(`${JSON.stringify(startDate)} ~ ${endDate} 기간의 데이터를 조회합니다.`);
         setPeriod([startDate!, endDate!]);
     }
