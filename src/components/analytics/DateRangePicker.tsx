@@ -5,21 +5,25 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Period } from '../../types/analytics';
+import { getPeriodTime } from './../../utils/analytics/time';
 
 type Props = {
-    setPeriod: React.Dispatch<React.SetStateAction<Date[] | undefined>>;
+    setPeriod: React.Dispatch<React.SetStateAction<Period>>;
+    dateRange: {
+        min: Date;
+        max: Date;
+    };
 };
 
-export default function DateRangePicker({ setPeriod }: Props) {
-    const [startDate, setStartDate] = React.useState<Date>();
-    const [endDate, setEndDate] = React.useState<Date>();
+export default function DateRangePicker({ setPeriod, dateRange }: Props) {
+    const [startDate, setStartDate] = React.useState<Date>(new Date());
+    const [endDate, setEndDate] = React.useState<Date>(new Date());
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        startDate?.setHours(0, 0, 0, 0);
-        endDate?.setHours(23, 59, 59, 0);
         console.log(`${JSON.stringify(startDate)} ~ ${endDate} 기간의 데이터를 조회합니다.`);
-        setPeriod([startDate!, endDate!]);
+        setPeriod(getPeriodTime(startDate!, endDate!));
     }
 
     return (
@@ -31,8 +35,8 @@ export default function DateRangePicker({ setPeriod }: Props) {
                     onChange={(newValue) => {
                         setStartDate(dayjs(newValue).toDate());
                     }}
-                    minDate={dayjs(new Date('2023-03-07'))}
-                    maxDate={dayjs(new Date())}
+                    minDate={dayjs(dateRange.min)}
+                    maxDate={dayjs(dateRange.max)}
                     renderInput={(params) => <TextField {...params} />}
                 />
                 <DatePicker
@@ -41,8 +45,8 @@ export default function DateRangePicker({ setPeriod }: Props) {
                     onChange={(newValue) => {
                         setEndDate(dayjs(newValue).toDate());
                     }}
-                    minDate={dayjs(new Date('2023-03-07'))}
-                    maxDate={dayjs(new Date())}
+                    minDate={dayjs(startDate)}
+                    maxDate={dayjs(dateRange.max)}
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>

@@ -7,17 +7,24 @@ import PieChart from '../../components/analytics/PieChart';
 import SalesTable from '../../components/analytics/SalesTable';
 import InflowRoute from '../../components/analytics/InflowRoute';
 import useOrder from './../../hooks/useOrder';
+import { getPeriodTime } from './../../utils/analytics/time';
+import { Period } from '../../types/analytics';
 
 export default function Analytics() {
-    const [period, setPeriod] = useState<Date[]>();
-    console.log(`period = ${period}`);
-    const { getAllOrders, getOrdersByDate } = useOrder(period && period[0], period && period[1]);
+    const [period, setPeriod] = useState<Period>(getPeriodTime(new Date(), new Date()));
+    const { getAllOrders, getOrdersByDate } = useOrder(period.start, period.end);
+    const dateRange = {
+        min: getAllOrders.data![0].createdAt!,
+        max: getAllOrders.data![getAllOrders.data!.length - 1].createdAt!,
+    };
+
     // console.log(`getAllOrders.data = ${JSON.stringify(getAllOrders.data)}`);
     console.log(`getOrdersByDate.data = ${JSON.stringify(getOrdersByDate.data)}`);
+    console.log(`dateRange = ${JSON.stringify(dateRange)}`);
     return (
         <section>
             <article>
-                <DateRangePicker setPeriod={setPeriod} />
+                <DateRangePicker setPeriod={setPeriod} dateRange={dateRange} />
             </article>
             <article className="grid grid-cols-4 gap-2">
                 <AnalyticsSmallBox
