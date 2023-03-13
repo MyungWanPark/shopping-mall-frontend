@@ -12,7 +12,6 @@ export default class CartService {
         const allCartItems: CartItemType[] = await this.http.fetch('/cart', {
             method: 'GET',
         });
-        console.log(`getCartItems = ${JSON.stringify(allCartItems.filter((cartItem) => !cartItem.isOrdered))}`);
         return allCartItems.filter((cartItem) => !cartItem.isOrdered);
     }
 
