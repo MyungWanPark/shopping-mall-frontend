@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/ko';
 import TextField from '@mui/material/TextField';
@@ -7,18 +7,27 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Period } from '../../types/analytics';
 import { getPeriodTime } from './../../utils/analytics/time';
+import { OrderType } from '../../types/order';
 
 type Props = {
     setPeriod: React.Dispatch<React.SetStateAction<Period>>;
-    dateRange: {
-        min: Date;
-        max: Date;
+    dataStatus: {
+        isLoading?: boolean;
+        data?: OrderType[];
     };
 };
 
-export default function DateRangePicker({ setPeriod, dateRange }: Props) {
-    const [startDate, setStartDate] = React.useState<Date>(new Date());
-    const [endDate, setEndDate] = React.useState<Date>(new Date());
+export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, data } }: Props) {
+    const [startDate, setStartDate] = useState<Date | null>(null);
+    const [endDate, setEndDate] = useState<Date | null>(null);
+    let dateRange;
+
+    if (!isLoading) {
+        dateRange = {
+            min: data![0].createdAt!,
+            max: data![data!.length - 1].createdAt!,
+        };
+    }
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -35,8 +44,8 @@ export default function DateRangePicker({ setPeriod, dateRange }: Props) {
                     onChange={(newValue) => {
                         setStartDate(dayjs(newValue).toDate());
                     }}
-                    minDate={dayjs(dateRange.min)}
-                    maxDate={dayjs(dateRange.max)}
+                    minDate={dateRange ? dayjs(dateRange.min) : null}
+                    maxDate={dateRange ? dayjs(dateRange.max) : null}
                     renderInput={(params) => <TextField {...params} />}
                 />
                 <DatePicker
@@ -46,7 +55,7 @@ export default function DateRangePicker({ setPeriod, dateRange }: Props) {
                         setEndDate(dayjs(newValue).toDate());
                     }}
                     minDate={dayjs(startDate)}
-                    maxDate={dayjs(dateRange.max)}
+                    maxDate={dateRange ? dayjs(dateRange.max) : null}
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>

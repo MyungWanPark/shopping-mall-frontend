@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnalyticsSmallBox from '../../components/ui/AnalyticsSmallBox';
 import { BiShoppingBag } from 'react-icons/bi';
 import DateRangePicker from '../../components/analytics/DateRangePicker';
@@ -12,19 +12,15 @@ import { Period } from '../../types/analytics';
 
 export default function Analytics() {
     const [period, setPeriod] = useState<Period>(getPeriodTime(new Date(), new Date()));
-    const { getAllOrders, getOrdersByDate } = useOrder(period.start, period.end);
-    const dateRange = {
-        min: getAllOrders.data![0].createdAt!,
-        max: getAllOrders.data![getAllOrders.data!.length - 1].createdAt!,
-    };
-
-    // console.log(`getAllOrders.data = ${JSON.stringify(getAllOrders.data)}`);
-    console.log(`getOrdersByDate.data = ${JSON.stringify(getOrdersByDate.data)}`);
-    console.log(`dateRange = ${JSON.stringify(dateRange)}`);
+    const {
+        getAllOrders: { isLoading, data },
+        getOrdersByDate,
+    } = useOrder(period.start, period.end);
+    console.log(`getOrdersByDate = ${JSON.stringify(getOrdersByDate)}`);
     return (
         <section>
             <article>
-                <DateRangePicker setPeriod={setPeriod} dateRange={dateRange} />
+                <DateRangePicker setPeriod={setPeriod} dataStatus={{ isLoading, data }} />
             </article>
             <article className="grid grid-cols-4 gap-2">
                 <AnalyticsSmallBox
