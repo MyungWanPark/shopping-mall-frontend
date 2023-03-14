@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
+import { OrderType } from '../../types/order';
+import { getBetweenTwoDates } from '../../utils/analytics/time';
+import { Period } from '../../types/analytics';
+import useOrder from './../../hooks/useOrder';
+import { getSalesData } from './../../utils/analytics/orderedData';
 
 const initialOption: ApexOptions = {
     chart: {
@@ -13,7 +18,7 @@ const initialOption: ApexOptions = {
         width: [0, 4],
     },
     title: {
-        text: 'Traffic Sources',
+        text: 'Sales by Day',
     },
     dataLabels: {
         enabled: true,
@@ -21,6 +26,7 @@ const initialOption: ApexOptions = {
     },
     labels: [
         '01 Jan 2001',
+        // `${new Date()}`,
         '02 Jan 2001',
         '03 Jan 2001',
         '04 Jan 2001',
@@ -35,17 +41,18 @@ const initialOption: ApexOptions = {
     ],
     xaxis: {
         type: 'datetime',
+        tickPlacement: 'between',
     },
     yaxis: [
         {
             title: {
-                text: 'Website Blog',
+                text: 'Selected Days',
             },
         },
         {
             opposite: true,
             title: {
-                text: 'Social Media',
+                text: 'Average',
             },
         },
     ],
@@ -66,21 +73,48 @@ const initialOption: ApexOptions = {
 
 const initialSeries = [
     {
-        name: 'Website Blog',
+        name: 'Selected Days',
         type: 'column',
-        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
+        data: [440, 505, 414, 671],
     },
     {
-        name: 'Social Media',
+        name: 'Average',
         type: 'line',
-        data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
+        data: [23, 42, 35, 27],
     },
 ];
 
-export default function MixedChart() {
+type Prop = {
+    period?: Period;
+};
+
+export default function MixedChart({ period }: Prop) {
+    console.log(`period = ${JSON.stringify(period)}`);
+    const [series, setSeries] = useState(initialSeries);
+    const [option, setOption] = useState(initialOption);
+    const dateRange = getBetweenTwoDates(period?.start!, period?.end!);
+    const salesData = getSalesData(dateRange);
+
+    useEffect(() => {
+        console.log('useEffect fired!');
+        console.log(`dateRange = ${dateRange}`);
+
+        setOption((prev) => ({
+            ...prev,
+            labels: dateRange.map((item) => {
+                item.setHours(9, 0, 0, 0);
+                return item.toString();
+            }),
+        }));
+    }, [period]);
+
+    /*     useEffect(() => {
+        setSeries((prev) => ({ ...prev, prev. }));
+    }, [data]); */
+
     return (
         <div id="chart">
-            <ReactApexChart options={initialOption} series={initialSeries} type="line" width={600} />
+            <ReactApexChart options={option} series={series} type="line" width={600} />
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AnalyticsSmallBox from '../../components/ui/AnalyticsSmallBox';
 import { BiShoppingBag } from 'react-icons/bi';
 import DateRangePicker from '../../components/analytics/DateRangePicker';
@@ -16,7 +16,7 @@ export default function Analytics() {
         getAllOrders: { isLoading, data },
         getOrdersByDate,
     } = useOrder(period.start, period.end);
-    console.log(`getOrdersByDate = ${JSON.stringify(getOrdersByDate)}`);
+    // console.log(`getOrdersByDate = ${JSON.stringify(getOrdersByDate)}`);
     return (
         <section>
             <article>
@@ -39,7 +39,7 @@ export default function Analytics() {
                 />
             </article>
             <article className="flex">
-                <MixedChart />
+                <MixedChart period={period} />
                 <PieChart />
             </article>
             <article>
