@@ -4,8 +4,11 @@ import { CartItemType } from '../types/cart';
 import { useCartContext } from '../context/CartContext';
 import { useAuthContext } from '../context/AuthContext';
 import { User } from '../types/user';
+import { getPeriodTime } from './../utils/analytics/time';
 
-export default function useCart() {
+const { start, end } = getPeriodTime(new Date(), new Date());
+
+export default function useCart(startDate: Date = start, endDate: Date = end) {
     const queryClient = useQueryClient();
     const { user }: { user: User } = useAuthContext();
     const { cartService } = useCartContext();
@@ -17,14 +20,19 @@ export default function useCart() {
     } = useQuery(['cart', user.id ? user.id : ''], () => cartService.getCartItems(), {
         staleTime: 1000 * 60 * 60 * 24,
     });
+    console.log(`cached key in useCart = ${startDate}&${endDate}`);
 
-    const getOrderedCart: {
+    const getOrderedCartByPeriod: {
         isLoading: boolean;
         error: any;
         data?: CartItemType[];
-    } = useQuery(['cartOrdered', user.id ? user.id : ''], () => cartService.getOrderedCartItems(), {
-        staleTime: 1000 * 60 * 60 * 24,
-    });
+    } = useQuery(
+        ['orderedCart', `${startDate}&${endDate}`],
+        () => cartService.getOrderedCartItems(startDate!, endDate!),
+        {
+            staleTime: 1000 * 60 * 60 * 24,
+        }
+    );
 
     const addToCart = useMutation((product: CartItemType) => cartService.addToCart(product), {
         onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
@@ -38,5 +46,5 @@ export default function useCart() {
         onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
     });
 
-    return { getCart, getOrderedCart, addToCart, updateCartItem, deleteCartItem };
+    return { getCart, getOrderedCartByPeriod, addToCart, updateCartItem, deleteCartItem };
 }

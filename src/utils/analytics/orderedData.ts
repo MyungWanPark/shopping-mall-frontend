@@ -1,9 +1,13 @@
 import { CartItemType } from '../../types/cart';
 import { OrderType } from '../../types/order';
+import { ProductType } from '../../types/product';
 
 type OrderData = { date: string; cartItemIds: number[] }[];
-
-export function getSalesData(dateRange: Date[], periodOrder: OrderType[], cartItem: CartItemType[]) {
+type SalesData = {
+    productName: string;
+    salesAmount: number;
+}[];
+export function getLineChartData(dateRange: Date[], periodOrder: OrderType[], cartItem: CartItemType[]) {
     const existDates = periodOrder.map((data) => new Date(data.createdAt!));
     const orderedData: OrderData = dateRange.map((date) => ({
         date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
@@ -26,6 +30,41 @@ export function getSalesData(dateRange: Date[], periodOrder: OrderType[], cartIt
     const temp = sum / dateRange.length;
     const average = Array(salesData.length).fill(temp);
     return { salesData, average };
+}
+
+export function getPieChartData(periodOrder: OrderType[], orderedCartItem: CartItemType[], products: ProductType[]) {
+    console.log(`orderedCartItem in getPieChartData= ${JSON.stringify(orderedCartItem)}`);
+    /* const orderedCartItemIds = [];
+    for (let i = 0; i < periodOrder.length; i++) {
+        const cartItemIds = JSON.parse(periodOrder[i].cartItemIds!) as number[];
+        for (let k = 0; k < cartItemIds.length; k++) {
+            orderedCartItemIds.push(cartItemIds[k]);
+        }
+    } */
+    // console.log(`orderedCartItem in getPieChartData = ${JSON.stringify(orderedCartItem)}`);
+    // console.log(`products in getPieChartData = ${JSON.stringify(products)}`);
+    /*     const salesData: SalesData =[];
+
+    for (let k = 0; k < orderedCartItem.length; k++) {
+        for (let r = 0; r < products.length; r++) {
+            if (orderedCartItem[k].productId === products[r].id) {
+                console.log(`products[r].name! = ${products[r].name!}`);
+                console.log(`products[r].id = ${products[r].id}`);
+                salesData.push({
+                    productName: products[r].name!
+    salesAmount: number;
+                })
+                salesData[k].productName = products[r].name!;
+            }
+        }
+
+        for (let r = 0; r < cartItem.length; r++) {
+            if (orderedCartItemIds[k] === cartItem[r].id) {
+                salesData[k].salesAmount = cartItem[r].totalPricePerProduct!;
+            }
+        }
+    }
+    console.log(`salesData = ${JSON.stringify(salesData)}`); */
 }
 
 function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemType[]) {

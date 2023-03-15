@@ -9,14 +9,15 @@ export default class CartService {
     }
 
     async getCartItems() {
-        const allCartItems: CartItemType[] = await this.http.fetch('/cart', {
+        const allCartItems: CartItemType[] = await this.http.fetch('/cart/all', {
             method: 'GET',
         });
         return allCartItems.filter((cartItem) => !cartItem.isOrdered);
     }
 
-    async getOrderedCartItems() {
-        const allCartItems: CartItemType[] = await this.http.fetch('/cart', {
+    async getOrderedCartItems(startDate: Date, endDate: Date) {
+        // console.log(`startDate in front api = ${startDate}`);
+        const allCartItems: CartItemType[] = await this.http.fetch(`/cart?startDate=${startDate}&endDate=${endDate}`, {
             method: 'GET',
         });
         return allCartItems.filter((cartItem) => cartItem.isOrdered);

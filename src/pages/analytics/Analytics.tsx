@@ -4,25 +4,36 @@ import { BiShoppingBag } from 'react-icons/bi';
 import DateRangePicker from '../../components/analytics/DateRangePicker';
 import MixedChart from '../../components/analytics/MixedChart';
 import PieChart from '../../components/analytics/PieChart';
-import SalesTable from '../../components/analytics/SalesTable';
 import InflowRoute from '../../components/analytics/InflowRoute';
 import useOrder from './../../hooks/useOrder';
 import { getPeriodTime } from './../../utils/analytics/time';
 import { Period } from '../../types/analytics';
 import useCart from './../../hooks/useCart';
+import useProducts from './../../hooks/useProducts';
+
+let renderCount = 0;
+const { start, end } = getPeriodTime(new Date(), new Date());
 
 export default function Analytics() {
-    const [period, setPeriod] = useState<Period>(getPeriodTime(new Date(), new Date()));
+    console.log(`start&end = ${start}&${end}`);
+    const [period, setPeriod] = useState<Period>({ start, end });
     const {
         getAllOrders: { isLoading, data },
-        getOrdersByDate: { data: periodOrder },
+        getOrdersByDate: { data: periodOrders },
     } = useOrder(period.start, period.end);
+    console.log(`useOrder rendered Analytics = ${renderCount++}`);
+
     const {
-        getOrderedCart: { data: cartItem },
-    } = useCart();
+        getOrderedCartByPeriod: { data: orderedCartItems },
+    } = useCart(period.start, period.end);
 
-    console.log(`cartItem in Analytics = ${JSON.stringify(cartItem)}`);
+    // console.log(`useOrder, useCart rendered Analytics = ${renderCount++}`);
 
+    console.log(`orderedCartItems = ${JSON.stringify(orderedCartItems)}`);
+    const {
+        getProducts: { data: products },
+    } = useProducts({ category: 'all' });
+    console.log(`useProducts, useOrder, useCart rendered Analytics = ${renderCount++}`);
     return (
         <section>
             <article>
@@ -45,11 +56,8 @@ export default function Analytics() {
                 />
             </article>
             <article className="flex">
-                <MixedChart period={period} periodOrder={periodOrder} cartItem={cartItem} />
-                <PieChart />
-            </article>
-            <article>
-                <SalesTable />
+                <MixedChart data={{ period, periodOrders, orderedCartItems }} />
+                <PieChart data={{ periodOrders, orderedCartItems, products }} />
             </article>
             <article>
                 <InflowRoute />
