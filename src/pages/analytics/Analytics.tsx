@@ -9,14 +9,20 @@ import InflowRoute from '../../components/analytics/InflowRoute';
 import useOrder from './../../hooks/useOrder';
 import { getPeriodTime } from './../../utils/analytics/time';
 import { Period } from '../../types/analytics';
+import useCart from './../../hooks/useCart';
 
 export default function Analytics() {
     const [period, setPeriod] = useState<Period>(getPeriodTime(new Date(), new Date()));
     const {
         getAllOrders: { isLoading, data },
-        getOrdersByDate,
+        getOrdersByDate: { data: periodOrder },
     } = useOrder(period.start, period.end);
-    // console.log(`getOrdersByDate = ${JSON.stringify(getOrdersByDate)}`);
+    const {
+        getOrderedCart: { data: cartItem },
+    } = useCart();
+
+    console.log(`cartItem in Analytics = ${JSON.stringify(cartItem)}`);
+
     return (
         <section>
             <article>
@@ -39,7 +45,7 @@ export default function Analytics() {
                 />
             </article>
             <article className="flex">
-                <MixedChart period={period} />
+                <MixedChart period={period} periodOrder={periodOrder} cartItem={cartItem} />
                 <PieChart />
             </article>
             <article>

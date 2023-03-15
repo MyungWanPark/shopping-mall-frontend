@@ -15,6 +15,13 @@ export default class CartService {
         return allCartItems.filter((cartItem) => !cartItem.isOrdered);
     }
 
+    async getOrderedCartItems() {
+        const allCartItems: CartItemType[] = await this.http.fetch('/cart', {
+            method: 'GET',
+        });
+        return allCartItems.filter((cartItem) => cartItem.isOrdered);
+    }
+
     async addToCart(cartItem: CartItemType) {
         return this.http.fetch('/cart/add', {
             method: 'POST',

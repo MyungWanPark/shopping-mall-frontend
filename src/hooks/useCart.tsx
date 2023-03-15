@@ -18,6 +18,14 @@ export default function useCart() {
         staleTime: 1000 * 60 * 60 * 24,
     });
 
+    const getOrderedCart: {
+        isLoading: boolean;
+        error: any;
+        data?: CartItemType[];
+    } = useQuery(['cartOrdered', user.id ? user.id : ''], () => cartService.getOrderedCartItems(), {
+        staleTime: 1000 * 60 * 60 * 24,
+    });
+
     const addToCart = useMutation((product: CartItemType) => cartService.addToCart(product), {
         onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
     });
@@ -30,5 +38,5 @@ export default function useCart() {
         onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
     });
 
-    return { getCart, addToCart, updateCartItem, deleteCartItem };
+    return { getCart, getOrderedCart, addToCart, updateCartItem, deleteCartItem };
 }

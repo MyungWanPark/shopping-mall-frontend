@@ -6,6 +6,7 @@ import { getBetweenTwoDates } from '../../utils/analytics/time';
 import { Period } from '../../types/analytics';
 import useOrder from './../../hooks/useOrder';
 import { getSalesData } from './../../utils/analytics/orderedData';
+import { CartItemType } from '../../types/cart';
 
 const initialOption: ApexOptions = {
     chart: {
@@ -86,18 +87,28 @@ const initialSeries = [
 
 type Prop = {
     period?: Period;
+    periodOrder?: OrderType[];
+    cartItem?: CartItemType[];
 };
 
-export default function MixedChart({ period }: Prop) {
+export default function MixedChart({ period, periodOrder, cartItem }: Prop) {
     console.log(`period = ${JSON.stringify(period)}`);
     const [series, setSeries] = useState(initialSeries);
     const [option, setOption] = useState(initialOption);
-    const dateRange = getBetweenTwoDates(period?.start!, period?.end!);
-    const salesData = getSalesData(dateRange);
 
     useEffect(() => {
         console.log('useEffect fired!');
-        console.log(`dateRange = ${dateRange}`);
+        const dateRange = getBetweenTwoDates(period?.start!, period?.end!);
+        // let salesData = dateRange.map((item) => 0);
+
+        if (periodOrder && periodOrder!.length > 0) {
+            const { salesData, average } = getSalesData(dateRange, periodOrder!, cartItem!);
+            const newSeries = [
+                { ...initialSeries[0], data: salesData },
+                { ...initialSeries[1], data: average },
+            ];
+            setSeries(newSeries);
+        }
 
         setOption((prev) => ({
             ...prev,
@@ -106,7 +117,7 @@ export default function MixedChart({ period }: Prop) {
                 return item.toString();
             }),
         }));
-    }, [period]);
+    }, [periodOrder]);
 
     /*     useEffect(() => {
         setSeries((prev) => ({ ...prev, prev. }));
