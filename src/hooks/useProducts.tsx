@@ -3,7 +3,15 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Category, ProductType } from '../types/product';
 import { useProductContext } from '../context/ProductContext';
 
-export default function useProducts({ category, productId }: { category?: Category; productId?: number }) {
+export default function useProducts({
+    category = 'all',
+    productId,
+    keyword,
+}: {
+    category?: Category;
+    productId?: number;
+    keyword?: string;
+}) {
     const { productService } = useProductContext();
 
     const queryClient = useQueryClient();
@@ -23,6 +31,18 @@ export default function useProducts({ category, productId }: { category?: Catego
         staleTime: 1000 * 60 * 60 * 24,
     });
 
+    const getProductsByKeyword: {
+        isLoading: boolean;
+        error: any;
+        data?: ProductType[];
+    } = useQuery(
+        ['products', keyword],
+        keyword ? () => productService.getProductsByKeyword(keyword) : () => 'keyword not set',
+        {
+            staleTime: 1000 * 60 * 60 * 24,
+        }
+    );
+
     const getProductInfo: {
         isLoading: boolean;
         error: any;
@@ -32,5 +52,5 @@ export default function useProducts({ category, productId }: { category?: Catego
     });
 
     // return { addProduct, getProducts };
-    return { addNewProduct, getProducts, getProductInfo };
+    return { addNewProduct, getProducts, getProductsByKeyword, getProductInfo };
 }

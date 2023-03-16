@@ -17,6 +17,11 @@ type Prop = {
 4. 기타
 
 */
+
+function getInflowRatio(routeNum: number, total: number) {
+    return Math.round((routeNum / total) * 100);
+}
+
 export default function InflowRoutes({ data: { userInfos } }: Prop) {
     let inflowRoutes;
     let totalSum;
@@ -30,19 +35,19 @@ export default function InflowRoutes({ data: { userInfos } }: Prop) {
     return (
         <div className="grid grid-cols-4 gap-2">
             <InflowRoute
-                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.instagram / totalSum) * 100) : 0}
+                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.instagram, totalSum) : 0}
                 inflowType={'instagram'}
             />
             <InflowRoute
-                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.facebook / totalSum) * 100) : 0}
+                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.facebook, totalSum) : 0}
                 inflowType={'facebook'}
             />
             <InflowRoute
-                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.directSearch / totalSum) * 100) : 0}
+                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.directSearch, totalSum) : 0}
                 inflowType={'directSearch'}
             />
             <InflowRoute
-                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.etc / totalSum) * 100) : 0}
+                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.etc, totalSum) : 0}
                 inflowType={'etc'}
             />
         </div>

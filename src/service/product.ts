@@ -21,6 +21,12 @@ export default class ProductService {
         });
     }
 
+    async getProductsByKeyword(keyword: string): Promise<ProductType[] | any> {
+        return this.http.fetch(`/products?keyword=${keyword}`, {
+            method: 'GET',
+        });
+    }
+
     async getProductByProductId(productId: number) {
         if (!productId) {
             return;
