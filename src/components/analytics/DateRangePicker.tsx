@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import 'dayjs/locale/ko';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -7,7 +7,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Period } from '../../types/analytics';
 import { getPeriodTime } from './../../utils/analytics/time';
-import { OrderType } from '../../types/order';
 import { User } from '../../types/user';
 
 type Props = {
@@ -22,7 +21,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     let dateRange;
-    console.log(`allUserInfos in DateRangePicker = ${JSON.stringify(allUserInfos)}`);
+    // console.log(`allUserInfos in DateRangePicker = ${JSON.stringify(allUserInfos)}`);
 
     if (allUserInfos && allUserInfos.length > 0) {
         dateRange = {
@@ -33,7 +32,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        console.log(`${JSON.stringify(startDate)} ~ ${endDate} 기간의 데이터를 조회합니다.`);
+        // console.log(`${JSON.stringify(startDate)} ~ ${endDate} 기간의 데이터를 조회합니다.`);
         setPeriod(getPeriodTime(startDate!, endDate!));
     }
 

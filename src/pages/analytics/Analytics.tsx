@@ -40,7 +40,7 @@ export default function Analytics() {
                 <DateRangePicker setPeriod={setPeriod} dataStatus={{ isLoading, allUserInfos }} />
             </article>
             <article>
-                <SmallBoxes />
+                <SmallBoxes data={{ orderedCartItems, products, userInfos }} />
             </article>
             <article className="flex">
                 <MixedChart data={{ period, periodOrders, orderedCartItems }} />

@@ -7,6 +7,10 @@ type SalesData = {
     productName: string;
     salesAmount: number;
 }[];
+type SalesVolumnData = {
+    productName: string;
+    volumn: number;
+}[];
 
 export function getLineChartData(dateRange: Date[], periodOrder: OrderType[], cartItem: CartItemType[]) {
     const existDates = periodOrder.map((data) => new Date(data.createdAt!));
@@ -57,6 +61,37 @@ export function getPieChartData(orderedCartItem: CartItemType[], products: Produ
                 result.push({
                     productName: products[i].name!,
                     salesAmount: salesProducts[j].price!,
+                });
+            }
+        }
+    }
+    return result;
+}
+
+export function getHotItem(orderedCartItem: CartItemType[], products: ProductType[]) {
+    const quantityProducts = orderedCartItem.map((item) => ({
+        quantity: item.quantity,
+        productId: item.productId,
+    }));
+
+    const result: SalesVolumnData = [];
+    for (let i = 0; i < products.length; i++) {
+        for (let j = 0; j < quantityProducts.length; j++) {
+            if (products[i].id === quantityProducts[j].productId) {
+                // check array if it already exist
+                let isExist = false;
+                for (let r = 0; r < result.length; r++) {
+                    if (result[r].productName === products[i].name) {
+                        isExist = true;
+                        result[r].volumn += quantityProducts[j].quantity!;
+                        break;
+                    }
+                }
+                if (isExist) continue;
+                // insert to result
+                result.push({
+                    productName: products[i].name!,
+                    volumn: quantityProducts[j].quantity!,
                 });
             }
         }
