@@ -8,24 +8,26 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Period } from '../../types/analytics';
 import { getPeriodTime } from './../../utils/analytics/time';
 import { OrderType } from '../../types/order';
+import { User } from '../../types/user';
 
 type Props = {
     setPeriod: React.Dispatch<React.SetStateAction<Period>>;
     dataStatus: {
         isLoading?: boolean;
-        data?: OrderType[];
+        allUserInfos?: User[];
     };
 };
 
-export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, data } }: Props) {
+export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, allUserInfos } }: Props) {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     let dateRange;
+    console.log(`allUserInfos in DateRangePicker = ${JSON.stringify(allUserInfos)}`);
 
-    if (!isLoading) {
+    if (allUserInfos && allUserInfos.length > 0) {
         dateRange = {
-            min: data![0].createdAt!,
-            max: data![data!.length - 1].createdAt!,
+            min: allUserInfos![0].createdAt!,
+            max: new Date(),
         };
     }
 

@@ -4,7 +4,6 @@ import { CartItemType } from '../types/cart';
 import { useCartContext } from '../context/CartContext';
 import { useAuthContext } from '../context/AuthContext';
 import { User } from '../types/user';
-import { getPeriodTime } from './../utils/analytics/time';
 
 export default function useCart(startDate?: Date, endDate?: Date) {
     const queryClient = useQueryClient();

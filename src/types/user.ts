@@ -7,4 +7,5 @@ export type User = {
     age?: string;
     inflowRoute?: string;
     isAdmin?: boolean;
+    createdAt?: Date;
 };

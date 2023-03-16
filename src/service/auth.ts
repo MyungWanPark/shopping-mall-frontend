@@ -50,4 +50,16 @@ export default class AuthService {
             method: 'POST',
         });
     }
+
+    async getUsersByDate(startDate: Date, endDate: Date): Promise<User[] | any> {
+        return await this.http.fetch(`/user?startDate=${startDate}&endDate=${endDate}`, {
+            method: 'GET',
+        });
+    }
+
+    async getAllUsers(): Promise<User[] | any> {
+        return await this.http.fetch(`/user/all`, {
+            method: 'GET',
+        });
+    }
 }

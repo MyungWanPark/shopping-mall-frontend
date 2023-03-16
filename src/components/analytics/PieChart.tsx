@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { OrderType } from '../../types/order';
 import { CartItemType } from '../../types/cart';
 import { getPieChartData } from '../../utils/analytics/orderedData';
 import { ProductType } from '../../types/product';

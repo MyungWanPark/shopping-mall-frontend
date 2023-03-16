@@ -7,6 +7,7 @@ type Context = {
     register: ({ email, password, name, gender, age, inflowRoute }: User) => Promise<void>;
     login: ({ email, password }: User) => Promise<void>;
     logout: () => Promise<void>;
+    authService: AuthService;
 };
 
 const AuthContext = createContext<Context>({} as Context);
@@ -47,8 +48,9 @@ export function AuthProvider({ authService, children }: Props) {
         register,
         login,
         logout,
+        authService,
     };
-    console.log(`context.user = ${JSON.stringify(context.user)}`);
+    // console.log(`context.user = ${JSON.stringify(context.user)}`);
     // console.log(`context = ${JSON.stringify(context)}`);
     return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>;
 }
