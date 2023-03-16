@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function SearchInput() {
-    const [keyword, setKeyword] = useState<string>('');
+    const [text, setText] = useState<string>('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const keyword = searchParams.get('keyword') as string;
+    useEffect(() => setText(keyword || ''), [keyword]);
+
     const navigate = useNavigate();
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setKeyword(e.target.value);
+        setText(e.target.value);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        navigate(`/products?keyword=${keyword}`);
+        navigate(`/products?keyword=${text}`);
     };
 
     return (
@@ -21,7 +25,7 @@ export default function SearchInput() {
                 type="text"
                 placeholder="Search product..."
                 onChange={handleInput}
-                value={keyword}
+                value={text}
                 className="outline-none py-2 px-4 basis-5/6"
             />
             <button className="border-l-2 px-2 basis-1/6">
