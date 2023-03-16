@@ -38,9 +38,8 @@ export function getPieChartData(orderedCartItem: CartItemType[], products: Produ
         price: item.totalPricePerProduct,
         productId: item.productId,
     }));
-    console.log(`salesProducts in getPieChartData= ${JSON.stringify(salesProducts)}`);
-    const result: SalesData = [];
 
+    const result: SalesData = [];
     for (let i = 0; i < products.length; i++) {
         for (let j = 0; j < salesProducts.length; j++) {
             if (products[i].id === salesProducts[j].productId) {
@@ -62,7 +61,6 @@ export function getPieChartData(orderedCartItem: CartItemType[], products: Produ
             }
         }
     }
-    // console.log(`result in getPieChartData= ${JSON.stringify(result)}`);
     return result;
 }
 

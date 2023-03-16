@@ -101,12 +101,12 @@ export default function MixedChart({ data: { period, periodOrders, orderedCartIt
         setOption((prev) => ({
             ...prev,
             labels: dateRange.map((item) => {
-                const date = new Date(item);
-                date.setHours(9, 0, 0, 0);
-                return date.toString();
+                // const date = new Date(item);
+                item.setHours(9, 0, 0, 0);
+                return item.toString();
             }),
         }));
-    }, [periodOrders]);
+    }, [periodOrders, orderedCartItems]);
 
     return (
         <div id="chart">

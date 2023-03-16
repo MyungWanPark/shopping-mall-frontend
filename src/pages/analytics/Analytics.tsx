@@ -54,7 +54,7 @@ export default function Analytics() {
             </article>
             <article className="flex">
                 <MixedChart data={{ period, periodOrders, orderedCartItems }} />
-                <PieChart data={{ periodOrders, orderedCartItems, products }} />
+                <PieChart data={{ orderedCartItems, products }} />
             </article>
             <article>
                 <InflowRoute />

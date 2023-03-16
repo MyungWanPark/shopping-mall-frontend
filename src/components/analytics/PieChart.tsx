@@ -30,13 +30,12 @@ const initialOptions: ApexOptions = {
 
 type Prop = {
     data: {
-        periodOrders?: OrderType[];
         orderedCartItems?: CartItemType[];
         products?: ProductType[];
     };
 };
 
-export default function PieChart({ data: { periodOrders, orderedCartItems, products } }: Prop) {
+export default function PieChart({ data: { orderedCartItems, products } }: Prop) {
     const [series, setSeries] = useState(initialSeries);
     const [option, setOption] = useState(initialOptions);
     console.log(`orderedCartItems in PieChart = ${JSON.stringify(orderedCartItems)}`);
