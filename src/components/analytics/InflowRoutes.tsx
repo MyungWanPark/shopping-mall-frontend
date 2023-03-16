@@ -19,17 +19,32 @@ type Prop = {
 */
 export default function InflowRoutes({ data: { userInfos } }: Prop) {
     let inflowRoutes;
+    let totalSum;
 
     if (userInfos && userInfos.length > 0) {
-        getInflowRouteData(userInfos);
+        const { inflowInfo, totalNum } = getInflowRouteData(userInfos);
+        inflowRoutes = inflowInfo;
+        totalSum = totalNum;
     }
 
     return (
         <div className="grid grid-cols-4 gap-2">
-            <InflowRoute />
-            <InflowRoute />
-            <InflowRoute />
-            <InflowRoute />
+            <InflowRoute
+                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.instagram / totalSum) * 100) : 0}
+                inflowType={'instagram'}
+            />
+            <InflowRoute
+                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.facebook / totalSum) * 100) : 0}
+                inflowType={'facebook'}
+            />
+            <InflowRoute
+                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.directSearch / totalSum) * 100) : 0}
+                inflowType={'directSearch'}
+            />
+            <InflowRoute
+                value={inflowRoutes && totalSum ? Math.round((inflowRoutes.etc / totalSum) * 100) : 0}
+                inflowType={'etc'}
+            />
         </div>
     );
 }

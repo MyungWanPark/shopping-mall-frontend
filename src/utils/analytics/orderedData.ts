@@ -105,17 +105,18 @@ export function getInflowRouteData(userInfos: User[]) {
     const byFacebook = userInfos.filter((user) => user.inflowRoute === 'facebook');
     const byDirectSearch = userInfos.filter((user) => user.inflowRoute === 'directSearch');
     const byEtc = userInfos.filter((user) => user.inflowRoute === 'etc');
+    const totalNum = userInfos.length;
 
-    const inflowNum = {
+    const inflowInfo = {
         instagram: byInstagram.length,
         facebook: byFacebook.length,
         directSearch: byDirectSearch.length,
         etc: byEtc.length,
     };
 
-    console.log(`inflowNum = ${JSON.stringify(inflowNum)}`);
+    console.log(`inflowInfo = ${JSON.stringify(inflowInfo)}`);
 
-    return inflowNum;
+    return { inflowInfo, totalNum };
 }
 
 function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemType[]) {
