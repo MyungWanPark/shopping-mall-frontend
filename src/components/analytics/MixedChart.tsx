@@ -82,15 +82,13 @@ type Prop = {
 export default function MixedChart({ data: { period, periodOrders, orderedCartItems } }: Prop) {
     const [series, setSeries] = useState(initialSeries);
     const [option, setOption] = useState(initialOption);
-    // console.log(`orderedCartItems first in mixed = ${JSON.stringify(orderedCartItems)}`);
+    console.log(`orderedCartItems in mixed first = ${JSON.stringify(orderedCartItems)}`);
+
     useEffect(() => {
         const dateRange = getBetweenTwoDates(period?.start!, period?.end!);
 
-        if (periodOrders && periodOrders!.length > 0) {
-            console.log(`getLineChartData in useEffect fired`);
-            console.log(`dateRange = ${JSON.stringify(dateRange)}`);
-            console.log(`periodOrders = ${JSON.stringify(periodOrders)}`);
-            console.log(`orderedCartItems = ${JSON.stringify(orderedCartItems)}`);
+        if (orderedCartItems && periodOrders && periodOrders!.length > 0) {
+            console.log(`orderedCartItems in mixed = ${JSON.stringify(orderedCartItems)}`);
 
             const { salesData, average } = getLineChartData(dateRange, periodOrders!, orderedCartItems!);
             const newSeries = [

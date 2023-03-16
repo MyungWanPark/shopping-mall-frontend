@@ -6,12 +6,10 @@ import { useAuthContext } from '../context/AuthContext';
 import { User } from '../types/user';
 import { getPeriodTime } from './../utils/analytics/time';
 
-const { start, end } = getPeriodTime(new Date(), new Date());
-
-export default function useCart(startDate: Date = start, endDate: Date = end) {
+export default function useCart(startDate?: Date, endDate?: Date) {
     const queryClient = useQueryClient();
-    const { user }: { user: User } = useAuthContext();
     const { cartService } = useCartContext();
+    const { user }: { user: User } = useAuthContext();
 
     const getCart: {
         isLoading: boolean;
@@ -20,7 +18,6 @@ export default function useCart(startDate: Date = start, endDate: Date = end) {
     } = useQuery(['cart', user.id ? user.id : ''], () => cartService.getCartItems(), {
         staleTime: 1000 * 60 * 60 * 24,
     });
-    console.log(`cached key in useCart = ${startDate}&${endDate}`);
 
     const getOrderedCartByPeriod: {
         isLoading: boolean;
@@ -28,7 +25,7 @@ export default function useCart(startDate: Date = start, endDate: Date = end) {
         data?: CartItemType[];
     } = useQuery(
         ['orderedCart', `${startDate}&${endDate}`],
-        () => cartService.getOrderedCartItems(startDate!, endDate!),
+        startDate ? () => cartService.getOrderedCartItems(startDate!, endDate!) : () => 'Date not set',
         {
             staleTime: 1000 * 60 * 60 * 24,
         }

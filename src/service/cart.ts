@@ -15,7 +15,7 @@ export default class CartService {
         return allCartItems.filter((cartItem) => !cartItem.isOrdered);
     }
 
-    async getOrderedCartItems(startDate: Date, endDate: Date) {
+    async getOrderedCartItems(startDate: Date, endDate: Date): Promise<CartItemType[] | any> {
         // console.log(`startDate in front api = ${startDate}`);
         const allCartItems: CartItemType[] = await this.http.fetch(`/cart?startDate=${startDate}&endDate=${endDate}`, {
             method: 'GET',

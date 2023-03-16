@@ -11,29 +11,26 @@ import { Period } from '../../types/analytics';
 import useCart from './../../hooks/useCart';
 import useProducts from './../../hooks/useProducts';
 
-let renderCount = 0;
-const { start, end } = getPeriodTime(new Date(), new Date());
-
 export default function Analytics() {
-    console.log(`start&end = ${start}&${end}`);
+    const { start, end } = getPeriodTime(new Date(), new Date());
+
     const [period, setPeriod] = useState<Period>({ start, end });
+    console.log(`start = ${period.start} end = ${period.end}`);
     const {
         getAllOrders: { isLoading, data },
         getOrdersByDate: { data: periodOrders },
     } = useOrder(period.start, period.end);
-    console.log(`useOrder rendered Analytics = ${renderCount++}`);
 
     const {
         getOrderedCartByPeriod: { data: orderedCartItems },
     } = useCart(period.start, period.end);
 
-    // console.log(`useOrder, useCart rendered Analytics = ${renderCount++}`);
-
-    console.log(`orderedCartItems = ${JSON.stringify(orderedCartItems)}`);
     const {
         getProducts: { data: products },
     } = useProducts({ category: 'all' });
-    console.log(`useProducts, useOrder, useCart rendered Analytics = ${renderCount++}`);
+
+    console.log(`orderedCartItems in analytics = ${JSON.stringify(orderedCartItems)}`);
+
     return (
         <section>
             <article>

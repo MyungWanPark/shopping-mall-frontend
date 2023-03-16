@@ -68,6 +68,9 @@ export function getPieChartData(periodOrder: OrderType[], orderedCartItem: CartI
 }
 
 function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemType[]) {
+    console.log(`orderedData in func = ${JSON.stringify(orderedData)}`);
+    console.log(`cartItem in func = ${JSON.stringify(cartItem)}`);
+
     const processedData = Array(orderedData.length).fill(0);
 
     for (let i = 0; i < orderedData.length; i++) {
