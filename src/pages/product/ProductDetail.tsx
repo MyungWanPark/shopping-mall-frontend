@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Button from '../../components/ui/Button';
-import Review from '../../components/review/Review';
 import { ProductType } from '../../types/product';
 import { CartItemType } from '../../types/cart';
 import useCart from './../../hooks/useCart';
@@ -127,7 +126,6 @@ export default function ProductDetail() {
                     {isUploaded && <p>✅ 장바구니에 추가되었습니다.</p>}
                 </article>
             </div>
-            <Review />
         </section>
     );
 }

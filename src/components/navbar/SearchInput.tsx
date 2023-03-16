@@ -23,7 +23,7 @@ export default function SearchInput() {
         <form className="flex ml-10 border border-brand rounded-full overflow-hidden w-1/3" onSubmit={handleSubmit}>
             <input
                 type="text"
-                placeholder="Search product..."
+                placeholder="Search name of product..."
                 onChange={handleInput}
                 value={text}
                 className="outline-none py-2 px-4 basis-5/6"
