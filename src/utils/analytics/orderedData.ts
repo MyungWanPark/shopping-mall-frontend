@@ -7,6 +7,7 @@ type SalesData = {
     productName: string;
     salesAmount: number;
 }[];
+
 export function getLineChartData(dateRange: Date[], periodOrder: OrderType[], cartItem: CartItemType[]) {
     const existDates = periodOrder.map((data) => new Date(data.createdAt!));
     const orderedData: OrderData = dateRange.map((date) => ({
@@ -32,45 +33,40 @@ export function getLineChartData(dateRange: Date[], periodOrder: OrderType[], ca
     return { salesData, average };
 }
 
-export function getPieChartData(periodOrder: OrderType[], orderedCartItem: CartItemType[], products: ProductType[]) {
-    console.log(`orderedCartItem in getPieChartData= ${JSON.stringify(orderedCartItem)}`);
-    /* const orderedCartItemIds = [];
-    for (let i = 0; i < periodOrder.length; i++) {
-        const cartItemIds = JSON.parse(periodOrder[i].cartItemIds!) as number[];
-        for (let k = 0; k < cartItemIds.length; k++) {
-            orderedCartItemIds.push(cartItemIds[k]);
-        }
-    } */
-    // console.log(`orderedCartItem in getPieChartData = ${JSON.stringify(orderedCartItem)}`);
-    // console.log(`products in getPieChartData = ${JSON.stringify(products)}`);
-    /*     const salesData: SalesData =[];
+export function getPieChartData(orderedCartItem: CartItemType[], products: ProductType[]) {
+    const salesProducts = orderedCartItem.map((item) => ({
+        price: item.totalPricePerProduct,
+        productId: item.productId,
+    }));
+    console.log(`salesProducts in getPieChartData= ${JSON.stringify(salesProducts)}`);
+    const result: SalesData = [];
 
-    for (let k = 0; k < orderedCartItem.length; k++) {
-        for (let r = 0; r < products.length; r++) {
-            if (orderedCartItem[k].productId === products[r].id) {
-                console.log(`products[r].name! = ${products[r].name!}`);
-                console.log(`products[r].id = ${products[r].id}`);
-                salesData.push({
-                    productName: products[r].name!
-    salesAmount: number;
-                })
-                salesData[k].productName = products[r].name!;
-            }
-        }
-
-        for (let r = 0; r < cartItem.length; r++) {
-            if (orderedCartItemIds[k] === cartItem[r].id) {
-                salesData[k].salesAmount = cartItem[r].totalPricePerProduct!;
+    for (let i = 0; i < products.length; i++) {
+        for (let j = 0; j < salesProducts.length; j++) {
+            if (products[i].id === salesProducts[j].productId) {
+                // check array if it already exist
+                let isExist = false;
+                for (let r = 0; r < result.length; r++) {
+                    if (result[r].productName === products[i].name) {
+                        isExist = true;
+                        result[r].salesAmount += salesProducts[j].price!;
+                        break;
+                    }
+                }
+                if (isExist) continue;
+                // insert to result
+                result.push({
+                    productName: products[i].name!,
+                    salesAmount: salesProducts[j].price!,
+                });
             }
         }
     }
-    console.log(`salesData = ${JSON.stringify(salesData)}`); */
+    // console.log(`result in getPieChartData= ${JSON.stringify(result)}`);
+    return result;
 }
 
 function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemType[]) {
-    console.log(`orderedData in func = ${JSON.stringify(orderedData)}`);
-    console.log(`cartItem in func = ${JSON.stringify(cartItem)}`);
-
     const processedData = Array(orderedData.length).fill(0);
 
     for (let i = 0; i < orderedData.length; i++) {

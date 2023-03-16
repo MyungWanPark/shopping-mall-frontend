@@ -6,13 +6,13 @@ import { CartItemType } from '../../types/cart';
 import { getPieChartData } from '../../utils/analytics/orderedData';
 import { ProductType } from '../../types/product';
 
-const initialSeries = [44, 55, 13, 43, 22];
+const initialSeries = [44, 55, 13];
 const initialOptions: ApexOptions = {
     chart: {
         width: 380,
         type: 'pie',
     },
-    labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+    labels: ['Team A', 'Team B', 'Team C'],
     responsive: [
         {
             breakpoint: 480,
@@ -42,17 +42,18 @@ export default function PieChart({ data: { periodOrders, orderedCartItems, produ
     console.log(`orderedCartItems in PieChart = ${JSON.stringify(orderedCartItems)}`);
 
     useEffect(() => {
-        if (periodOrders && periodOrders!.length > 0) {
-            const salesData = getPieChartData(periodOrders!, orderedCartItems!, products!);
-            // const newSeries = salesData.values;
-            // setSeries(newSeries);
+        console.log('useEffect fired in Piechart');
+        if (orderedCartItems && orderedCartItems!.length > 0) {
+            const salesData = getPieChartData(orderedCartItems!, products!);
+            const newSeries = salesData.map((data) => data.salesAmount);
+            const newLabels = salesData.map((data) => data.productName);
+            setSeries(newSeries);
+            setOption((prev) => ({
+                ...prev,
+                labels: newLabels,
+            }));
         }
-
-        setOption((prev) => ({
-            ...prev,
-            // labels: salesData.labels
-        }));
-    }, [periodOrders]);
+    }, [orderedCartItems]);
 
     return (
         <div id="chart">
