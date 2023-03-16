@@ -1,6 +1,7 @@
 import { CartItemType } from '../../types/cart';
 import { OrderType } from '../../types/order';
 import { ProductType } from '../../types/product';
+import { User } from '../../types/user';
 
 type OrderData = { date: string; cartItemIds: number[] }[];
 type SalesData = {
@@ -97,6 +98,24 @@ export function getHotItem(orderedCartItem: CartItemType[], products: ProductTyp
         }
     }
     return result;
+}
+
+export function getInflowRouteData(userInfos: User[]) {
+    const byInstagram = userInfos.filter((user) => user.inflowRoute === 'instagram');
+    const byFacebook = userInfos.filter((user) => user.inflowRoute === 'facebook');
+    const byDirectSearch = userInfos.filter((user) => user.inflowRoute === 'directSearch');
+    const byEtc = userInfos.filter((user) => user.inflowRoute === 'etc');
+
+    const inflowNum = {
+        instagram: byInstagram.length,
+        facebook: byFacebook.length,
+        directSearch: byDirectSearch.length,
+        etc: byEtc.length,
+    };
+
+    console.log(`inflowNum = ${JSON.stringify(inflowNum)}`);
+
+    return inflowNum;
 }
 
 function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemType[]) {

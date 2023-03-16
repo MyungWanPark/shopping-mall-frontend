@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { useAuthContext } from '../../context/AuthContext';
-import { User } from '../../types/user';
+import { InflowRouteType, User } from '../../types/user';
 
 const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300';
 
 const ageOptions = ['10대 ~ 20대', '20대 ~ 30대', '30대 ~ 40대', '40대 ~ 50대', '50대 ~ 60대', '60대 ~ '];
-const inflowRouteOptions = ['Instagram', 'Facebook', '네이버', '카카오', '구글', '기타'];
+const inflowRouteOptions: InflowRouteOption[] = [
+    { label: 'Instagram', value: 'instagram' },
+    { label: 'Facebook', value: 'facebook' },
+    { label: '직접검색', value: 'directSearch' },
+    { label: '기타', value: 'etc' },
+];
+
+type InflowRouteOption = { label: string; value: InflowRouteType };
 
 export default function Register() {
     const [userInfo, setUserInfo] = useState<User>({
@@ -16,8 +23,9 @@ export default function Register() {
         name: '',
         gender: '',
         age: ageOptions[0],
-        inflowRoute: inflowRouteOptions[0],
+        inflowRoute: inflowRouteOptions[0].value,
     });
+
     const navigate = useNavigate();
     const { register } = useAuthContext();
 
@@ -53,7 +61,8 @@ export default function Register() {
     };
 
     const handleInflowRoute = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setUserInfo((prev) => ({ ...prev, InflowRoute: (e.target as HTMLSelectElement).value }));
+        const selected = e.target.value as InflowRouteType;
+        setUserInfo((prev) => ({ ...prev, inflowRoute: selected }));
     };
 
     return (
@@ -122,9 +131,9 @@ export default function Register() {
                         value={userInfo.inflowRoute}
                         className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
                     >
-                        {inflowRouteOptions.map((option: string) => (
-                            <option className="text-center" key={uuid()}>
-                                {option}
+                        {inflowRouteOptions.map((option: InflowRouteOption, id) => (
+                            <option className="text-center" key={uuid()} value={option.value}>
+                                {option.label}
                             </option>
                         ))}
                     </select>

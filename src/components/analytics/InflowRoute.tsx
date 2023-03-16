@@ -43,9 +43,14 @@ const initialOptions: ApexOptions = {
     labels: ['Volatility'],
 };
 
-const initialSeries = [67];
+const initialSeries = [70];
 
-export default function InflowRoute() {
+type Props = {
+    imageURL?: string;
+    value?: number;
+};
+
+export default function InflowRoute({ imageURL, value }: Props) {
     return (
         <div id="chart">
             <ReactApexChart options={initialOptions} series={initialSeries} type="radialBar" height={350} />

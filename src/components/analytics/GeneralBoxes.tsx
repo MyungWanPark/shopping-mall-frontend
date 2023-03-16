@@ -1,10 +1,10 @@
 import React from 'react';
-import AnalyticsSmallBox from './../ui/AnalyticsSmallBox';
+import AnalyticsSmallBox from '../ui/AnalyticsSmallBox';
 import { BiShoppingBag } from 'react-icons/bi';
 import { User } from '../../types/user';
 import { ProductType } from '../../types/product';
 import { CartItemType } from '../../types/cart';
-import { getHotItem } from './../../utils/analytics/orderedData';
+import { getHotItem } from '../../utils/analytics/orderedData';
 
 type Prop = {
     data: {
@@ -14,8 +14,7 @@ type Prop = {
     };
 };
 
-export default function SmallBoxes({ data: { orderedCartItems, products, userInfos } }: Prop) {
-    console.log(`userInfos in smallBoxes = ${JSON.stringify(userInfos)}`);
+export default function GeneralBoxes({ data: { orderedCartItems, products, userInfos } }: Prop) {
     let salesAmount;
     let usersNum;
     let salesVolumn;

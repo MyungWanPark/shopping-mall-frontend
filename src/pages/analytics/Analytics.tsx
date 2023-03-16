@@ -8,8 +8,9 @@ import { getPeriodTime } from './../../utils/analytics/time';
 import { Period } from '../../types/analytics';
 import useCart from './../../hooks/useCart';
 import useProducts from './../../hooks/useProducts';
-import SmallBoxes from '../../components/analytics/SmallBoxes';
+import GeneralBoxes from '../../components/analytics/GeneralBoxes';
 import useUser from './../../hooks/useUser';
+import InflowRoutes from '../../components/analytics/InflowRoutes';
 
 export default function Analytics() {
     const { start, end } = getPeriodTime(new Date(), new Date());
@@ -40,14 +41,14 @@ export default function Analytics() {
                 <DateRangePicker setPeriod={setPeriod} dataStatus={{ isLoading, allUserInfos }} />
             </article>
             <article>
-                <SmallBoxes data={{ orderedCartItems, products, userInfos }} />
+                <GeneralBoxes data={{ orderedCartItems, products, userInfos }} />
             </article>
             <article className="flex">
                 <MixedChart data={{ period, periodOrders, orderedCartItems }} />
                 <PieChart data={{ orderedCartItems, products }} />
             </article>
             <article>
-                <InflowRoute />
+                <InflowRoutes data={{ userInfos }} />
             </article>
         </section>
     );
