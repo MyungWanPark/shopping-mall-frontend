@@ -13,7 +13,7 @@ export default function Products() {
         getProducts: { isLoading: categoryIsLoading, error: categoryError, data: categoryProducts },
         getProductsByKeyword: { isLoading: keywordIsLoading, error: keywordError, data: keywordProducts },
     } = useProducts({ category, keyword });
-
+    console.log(`keyword product = ${JSON.stringify(keywordProducts)}`);
     return (
         <>
             <p>show {category || keyword} products</p>
@@ -26,7 +26,7 @@ export default function Products() {
                     ))}
                 </ul>
             )}
-            {keywordProducts && (
+            {Array.isArray(keywordProducts) && (
                 <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
                     {keywordProducts.map((product) => (
                         <ProductCard key={product.id} product={product} />

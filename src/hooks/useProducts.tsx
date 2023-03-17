@@ -23,6 +23,7 @@ export default function useProducts({
             onSuccess: () => queryClient.invalidateQueries(['products']),
         }
     );
+    console.log(`category = ${category}`);
     const getProducts: {
         isLoading: boolean;
         error: any;
@@ -36,7 +37,7 @@ export default function useProducts({
         error: any;
         data?: ProductType[];
     } = useQuery(
-        ['products', keyword],
+        ['products', keyword || 'keyword not set'],
         keyword ? () => productService.getProductsByKeyword(keyword) : () => 'keyword not set',
         {
             staleTime: 1000 * 60 * 60 * 24,
@@ -51,6 +52,5 @@ export default function useProducts({
         staleTime: 1000 * 60 * 60 * 24,
     });
 
-    // return { addProduct, getProducts };
     return { addNewProduct, getProducts, getProductsByKeyword, getProductInfo };
 }
