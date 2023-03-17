@@ -2,7 +2,7 @@ import React from 'react';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import { GoGraph } from 'react-icons/go';
 import { useNavigate } from 'react-router-dom';
-import { handleListItemClick, handleTitleClick } from '../../utils/sideBarUtils';
+import { handleTitleClick } from '../../utils/sideBarUtils';
 import { useAuthContext } from '../../context/AuthContext';
 
 export default function SideBar() {
@@ -20,7 +20,7 @@ export default function SideBar() {
                     <li
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
-                            handleListItemClick(e, 'shopItem', 'arrowShop');
+                            // handleListItemClick(e, 'shopItem', 'arrowShop');
                             navigate('/products?category=men');
                         }}
                     >
@@ -29,7 +29,7 @@ export default function SideBar() {
                     <li
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
-                            handleListItemClick(e, 'shopItem', 'arrowShop');
+                            // handleListItemClick(e, 'shopItem', 'arrowShop');
                             navigate('/products?category=women');
                         }}
                     >
@@ -38,16 +38,16 @@ export default function SideBar() {
                     <li
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
-                            handleListItemClick(e, 'shopItem', 'arrowShop');
-                            navigate('/products?category=accessaries');
+                            // handleListItemClick(e, 'shopItem', 'arrowShop');
+                            navigate('/products?category=bag');
                         }}
                     >
-                        Accessaries
+                        Bag
                     </li>
                     <li
                         className="shopItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                         onClick={(e) => {
-                            handleListItemClick(e, 'shopItem', 'arrowShop');
+                            // handleListItemClick(e, 'shopItem', 'arrowShop');
                             navigate('/products?category=shoes');
                         }}
                     >
@@ -69,7 +69,7 @@ export default function SideBar() {
                         <li
                             className="managementItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand flex items-center"
                             onClick={(e) => {
-                                handleListItemClick(e, 'managementItem', 'arrowManagement');
+                                // handleListItemClick(e, 'managementItem', 'arrowManagement');
                                 navigate('/analytics');
                             }}
                         >
@@ -81,7 +81,7 @@ export default function SideBar() {
                         <li
                             className="managementItem h-6 overflow-hidden cursor-pointer border-b border-transparent hover:border-brand"
                             onClick={(e) => {
-                                handleListItemClick(e, 'managementItem', 'arrowManagement');
+                                // handleListItemClick(e, 'managementItem', 'arrowManagement');
                                 navigate('/products/new');
                             }}
                         >

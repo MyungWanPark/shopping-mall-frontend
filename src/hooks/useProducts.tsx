@@ -28,9 +28,13 @@ export default function useProducts({
         isLoading: boolean;
         error: any;
         data?: ProductType[];
-    } = useQuery(['products', category], () => productService.getProductsByCategory(category!), {
-        staleTime: 1000 * 60 * 60 * 24,
-    });
+    } = useQuery(
+        ['products', category || 'category not set'],
+        category ? () => productService.getProductsByCategory(category!) : () => 'category not set',
+        {
+            staleTime: 1000 * 60 * 60 * 24,
+        }
+    );
 
     const getProductsByKeyword: {
         isLoading: boolean;
@@ -48,9 +52,13 @@ export default function useProducts({
         isLoading: boolean;
         error: any;
         data?: ProductType;
-    } = useQuery(['products', productId], () => productService.getProductByProductId(productId!), {
-        staleTime: 1000 * 60 * 60 * 24,
-    });
+    } = useQuery(
+        ['productsInfo', productId || 'productId not set'],
+        productId ? () => productService.getProductByProductId(productId!) : () => 'productId not set',
+        {
+            staleTime: 1000 * 60 * 60 * 24,
+        }
+    );
 
     return { addNewProduct, getProducts, getProductsByKeyword, getProductInfo };
 }

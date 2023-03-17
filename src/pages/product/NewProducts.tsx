@@ -7,7 +7,7 @@ import { ProductType } from '../../types/product';
 import { useNavigate } from 'react-router-dom';
 import useProducts from './../../hooks/useProducts';
 
-const options = ['men', 'women', 'accessaries', 'shoes'];
+const options = ['men', 'women', 'bag', 'shoes'];
 
 export default function NewProducts() {
     const [product, setProduct] = useState<ProductType>();

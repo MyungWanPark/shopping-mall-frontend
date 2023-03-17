@@ -17,7 +17,7 @@ export default function ProductCard({ product: { name, price, category, imgURL, 
             className="cursor-pointer shadow-md rounded-lg overflow-hidden transition-all hover:scale-105"
             onClick={handleClick}
         >
-            <img src={imgURL} alt={name} />
+            <img src={imgURL} alt={name} className="h-4/5 w-full" />
             <div className="flex justify-between items-center text-xl p-2">
                 <h3 className="truncate">{name}</h3>
                 <p>₩{price!.toLocaleString()} 원</p>

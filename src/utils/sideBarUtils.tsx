@@ -23,7 +23,7 @@ export function handleTitleClick(liSelector: ListItemSelector, arrowSelector: Ar
     closeUl(liSelector, arrowSelector);
 }
 
-export const handleListItemClick = (
+/* export const handleListItemClick = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
     liSelector: ListItemSelector,
     arrowSelector: ArrowSelector
@@ -35,7 +35,7 @@ export const handleListItemClick = (
     item.classList.replace('border-transparent', 'border-brand');
 
     closeUl(liSelector, arrowSelector);
-};
+}; */
 
 function closeUl(liSelector: ListItemSelector, arrowSelector: ArrowSelector) {
     let arrowBtn;

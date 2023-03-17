@@ -15,7 +15,7 @@ export default class ProductService {
         });
     }
 
-    async getProductsByCategory(category: Category): Promise<ProductType[]> {
+    async getProductsByCategory(category: Category): Promise<ProductType[] | any> {
         return this.http.fetch(`/products?category=${category}`, {
             method: 'GET',
         });

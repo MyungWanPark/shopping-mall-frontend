@@ -18,7 +18,7 @@ export type ProductType = {
     colors?: string[];
 };
 
-export type Category = 'all' | 'men' | 'women' | 'accessaries' | 'shoes';
+export type Category = 'all' | 'men' | 'women' | 'bag' | 'shoes';
 
 export type CartProductType = {
     title: string;

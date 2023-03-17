@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <section className="flex flex-col">
             <Banner />
-            <Products />
+            <Products showAllProduct={true} />
         </section>
     );
 }
