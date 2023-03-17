@@ -14,7 +14,7 @@ export default function useCart(startDate?: Date, endDate?: Date) {
         isLoading: boolean;
         error: any;
         data?: CartItemType[];
-    } = useQuery(['cart', user.id ? user.id : ''], () => cartService.getCartItems(), {
+    } = useQuery(['cart', user?.id ? user.id : ''], () => cartService.getCartItems(), {
         staleTime: 1000 * 60 * 60 * 24,
     });
 

@@ -23,7 +23,7 @@ export default function useProducts({
             onSuccess: () => queryClient.invalidateQueries(['products']),
         }
     );
-    console.log(`category = ${category}`);
+
     const getProducts: {
         isLoading: boolean;
         error: any;
@@ -48,6 +48,7 @@ export default function useProducts({
         }
     );
 
+    // console.log(`productId in useProduct = ${productId}`);
     const getProductInfo: {
         isLoading: boolean;
         error: any;

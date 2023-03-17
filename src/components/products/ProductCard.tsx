@@ -8,9 +8,7 @@ type Props = {
 export default function ProductCard({ product: { name, price, category, imgURL, id }, product }: Props) {
     const navigate = useNavigate();
     const handleClick = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-        navigate(`/products/${id}`, {
-            state: { product },
-        });
+        navigate(`/products/${id}`);
     };
     return (
         <li

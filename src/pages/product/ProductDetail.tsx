@@ -1,30 +1,36 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import Button from '../../components/ui/Button';
-import { ProductType } from '../../types/product';
 import { CartItemType } from '../../types/cart';
 import useCart from './../../hooks/useCart';
 import InputWithPlusMinus from '../../components/ui/InputWithPlusMinus';
+import ProductSize from '../../components/ui/ProductSize';
+import ProductColor from '../../components/ui/ProductColor';
+import useProducts from './../../hooks/useProducts';
 
 const PRODUCT_COLORS = ['white', 'black', 'pink', 'blue'];
 
 export default function ProductDetail() {
+    const paths = window.location.pathname.split('/');
+    const productId = parseInt(paths[paths.length - 1]);
     const {
-        state: {
-            product: { name, price, category, description, imgURL },
-            product,
-        },
-    }: {
-        state: {
-            product: ProductType;
-        };
-    } = useLocation();
+        getProductInfo: { isLoading, data: product },
+    } = useProducts({ productId });
+
+    let name: string, price: number, category: string, description: string, imgURL: string;
+    if (product) {
+        name = product.name!;
+        price = product.price!;
+        category = product.category!;
+        description = product.description!;
+        imgURL = product.imgURL!;
+    }
+
     const [isUploaded, setIsUploaded] = useState(false);
     const [cartProduct, setCartProduct] = useState<CartItemType>({
         quantity: 1,
         color: 'black',
         size: 'S',
-        productId: product.id,
+        productId,
     });
     const { addToCart } = useCart();
 
@@ -35,97 +41,63 @@ export default function ProductDetail() {
         });
     };
 
-    const handleSize = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        const sizeBtns = document.querySelectorAll('.sizeBtn');
-        sizeBtns.forEach((btn) => btn.classList.remove('bg-gray-700'));
-        const target = e.target as HTMLSpanElement;
-        target.classList.add('bg-gray-700');
-        setCartProduct((prev) => ({
-            ...prev,
-            size: target.textContent!,
-        }));
-    };
-
-    const handleColor = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        const colorBtns = document.querySelectorAll('.colorBtn');
-        colorBtns.forEach((btn) => btn.classList.replace('opacity-100', 'opacity-50'));
-        const target = e.target as HTMLSpanElement;
-        target.classList.replace('opacity-50', 'opacity-100');
-        setCartProduct((prev) => ({
-            ...prev,
-            color: target.id,
-        }));
-    };
-
     return (
-        <section>
-            <p className="text-center fontbold text-2xl py-4">{category}</p>
-            <div className="flex flex-col md:flex-row md:justify-center gap-5 p-4">
-                <div className="w-full basis-7/12">
-                    <img className="w-full" src={imgURL} alt={name} />
-                </div>
-                <article className="w-full basis-5/12 text-center">
-                    <h1 className="text-3xl font-bold">{name}</h1>
-                    <p className="text-2xl font-semibold border-b border-gray-300 pb-3">₩{price!.toLocaleString()}원</p>
-                    <p className="text-lg py-3">{description}</p>
-                    <span>수량: </span>
-                    <InputWithPlusMinus
-                        type="productDetail"
-                        setCartProduct={setCartProduct}
-                        cartProduct={cartProduct}
-                    />
-                    <div>
-                        <span
-                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
-                            onClick={handleSize}
-                        >
-                            S
-                        </span>
-                        <span
-                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
-                            onClick={handleSize}
-                        >
-                            M
-                        </span>
-                        <span
-                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
-                            onClick={handleSize}
-                        >
-                            L
-                        </span>
-                        <span
-                            className="sizeBtn inline-block w-5 h-5 border border-black cursor-pointer"
-                            onClick={handleSize}
-                        >
-                            XL
-                        </span>
+        <>
+            {product && (
+                <section className="flex flex-col md:flex-row md:justify-center gap-12 p-4">
+                    <div className="w-full basis-6/12">
+                        <img className="w-full" src={imgURL!} alt={name!} />
                     </div>
-                    <div>
-                        <span
-                            className="colorBtn inline-block w-5 h-5 bg-pink-300 opacity-50 cursor-pointer"
-                            onClick={handleColor}
-                            id={PRODUCT_COLORS[2]}
-                        ></span>
-                        <span
-                            className="colorBtn inline-block w-5 h-5 bg-blue-300 opacity-50 cursor-pointer"
-                            onClick={handleColor}
-                            id={PRODUCT_COLORS[3]}
-                        ></span>
-                        <span
-                            className="colorBtn inline-block w-5 h-5 bg-white opacity-50 cursor-pointer"
-                            onClick={handleColor}
-                            id={PRODUCT_COLORS[0]}
-                        ></span>
-                        <span
-                            className="colorBtn inline-block w-5 h-5 bg-black opacity-50 cursor-pointer"
-                            onClick={handleColor}
-                            id={PRODUCT_COLORS[1]}
-                        ></span>
-                    </div>
-                    <Button text="장바구니에 추가" onClick={handleClick} />
-                    {isUploaded && <p>✅ 장바구니에 추가되었습니다.</p>}
-                </article>
-            </div>
-        </section>
+                    <article className="w-full basis-6/12">
+                        <p className="text-md text-gray-400">{category!}</p>
+                        <h1 className="border-b border-gray-300 pb-3">
+                            <span className="text-3xl font-bold">{name!}</span>
+                            <span className="ml-10 text-xl font-semibold">₩{price!.toLocaleString()} 원</span>
+                        </h1>
+                        <p className="text-lg py-3">{description!}</p>
+                        <div className="flex items-center mb-3">
+                            <span className="mr-5 w-12 inline-block">SIZE</span>
+                            <ProductSize size="S" setCartProduct={setCartProduct} />
+                            <ProductSize size="M" setCartProduct={setCartProduct} />
+                            <ProductSize size="L" setCartProduct={setCartProduct} />
+                            <ProductSize size="XL" setCartProduct={setCartProduct} />
+                        </div>
+                        <div className="flex items-center h-10 mb-2">
+                            <span className="mr-5 w-12 inline-block">COLOR</span>
+                            <ProductColor
+                                id={PRODUCT_COLORS[2]}
+                                setCartProduct={setCartProduct}
+                                colorClass="bg-pink-300"
+                            />
+                            <ProductColor
+                                id={PRODUCT_COLORS[3]}
+                                setCartProduct={setCartProduct}
+                                colorClass="bg-blue-300"
+                            />
+                            <ProductColor
+                                id={PRODUCT_COLORS[0]}
+                                setCartProduct={setCartProduct}
+                                colorClass="bg-white"
+                            />
+                            <ProductColor
+                                id={PRODUCT_COLORS[1]}
+                                setCartProduct={setCartProduct}
+                                colorClass="bg-black"
+                            />
+                        </div>
+                        <div className="flex">
+                            <span>수량: </span>
+                            <InputWithPlusMinus
+                                type="productDetail"
+                                setCartProduct={setCartProduct}
+                                cartProduct={cartProduct}
+                            />
+                        </div>
+                        <Button text="장바구니에 추가" onClick={handleClick} />
+                        {isUploaded && <p>✅ 장바구니에 추가되었습니다.</p>}
+                    </article>
+                </section>
+            )}
+        </>
     );
 }
