@@ -7,7 +7,7 @@ import ProductSize from '../../components/ui/ProductSize';
 import ProductColor from '../../components/ui/ProductColor';
 import useProducts from './../../hooks/useProducts';
 
-const PRODUCT_COLORS = ['white', 'black', 'pink', 'blue'];
+const PRODUCT_COLORS = ['pink', 'blue', 'white', 'black'];
 
 export default function ProductDetail() {
     const paths = window.location.pathname.split('/');
@@ -65,22 +65,22 @@ export default function ProductDetail() {
                         <div className="flex items-center h-10 mb-2">
                             <span className="mr-5 w-12">COLOR</span>
                             <ProductColor
-                                id={PRODUCT_COLORS[2]}
+                                id={PRODUCT_COLORS[0]}
                                 setCartProduct={setCartProduct}
                                 colorClass="bg-pink-300"
                             />
                             <ProductColor
-                                id={PRODUCT_COLORS[3]}
+                                id={PRODUCT_COLORS[1]}
                                 setCartProduct={setCartProduct}
                                 colorClass="bg-blue-300"
                             />
                             <ProductColor
-                                id={PRODUCT_COLORS[0]}
+                                id={PRODUCT_COLORS[2]}
                                 setCartProduct={setCartProduct}
                                 colorClass="bg-white"
                             />
                             <ProductColor
-                                id={PRODUCT_COLORS[1]}
+                                id={PRODUCT_COLORS[3]}
                                 setCartProduct={setCartProduct}
                                 colorClass="bg-black"
                             />

@@ -43,11 +43,7 @@ export default function CartItem({ cartItem }: Props) {
                 />
             </div>
             <div className="flex basis-6/12">
-                <img
-                    className="w-full h-20 md:w-48 rounded-lg mr-3"
-                    src={productInfo?.imgURL}
-                    alt={productInfo?.name}
-                />
+                <img className="w-20 md:w-48 rounded-lg mr-3" src={productInfo?.imgURL} alt={productInfo?.name} />
                 <article className="flex flex-col justify-center basis-2/5">
                     <p className="font-semibold">
                         <span className="text-center">
@@ -55,7 +51,7 @@ export default function CartItem({ cartItem }: Props) {
                         </span>
                     </p>
                     <p className="text-sm">
-                        <span className="">사이즈:</span>
+                        <span className="mr-3">사이즈:</span>
                         <span className="text-center text-brand">{cartItem.size}</span>
                     </p>
                 </article>
