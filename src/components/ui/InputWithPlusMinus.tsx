@@ -3,7 +3,7 @@ import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 import { CartItemType } from '../../types/cart';
 import useCart from './../../hooks/useCart';
 
-const ICON_CLASS = 'cursor-pointer transition-all hover:text-brand hover:scale-105';
+const ICON_CLASS = 'cursor-pointer opacity-70 transition-all hover:text-brand hover:scale-105';
 
 type Props = {
     type: 'productDetail' | 'cart';

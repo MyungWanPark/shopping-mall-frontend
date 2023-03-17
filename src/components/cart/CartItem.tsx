@@ -31,9 +31,9 @@ export default function CartItem({ cartItem }: Props) {
         deleteCartItem.mutate(cartItem.productId!);
     };
     return (
-        <li className="flex justify-between px-4 py-2">
-            <div>
-                <label htmlFor={`product${cartItem.productId}CheckBox`}>주문</label>
+        <li className="flex justify-between py-2">
+            <div className="flex basis-1/12 justify-center items-center">
+                {/* <label htmlFor={`product${cartItem.productId}CheckBox`}>주문</label> */}
                 <input
                     type="checkbox"
                     name="selectForOrder"
@@ -42,27 +42,36 @@ export default function CartItem({ cartItem }: Props) {
                     checked={cartItem.isSelected}
                 />
             </div>
-            <img className="w-20 md:w-32 rounded-lg" src={productInfo?.imgURL} alt={productInfo?.name} />
-            <section className="flex flex-1 ml-3 text-md md:text-lg">
-                <article className="flex flex-col justify-center basis-3/5">
-                    <p className="flex w-48 justify-between font-semibold">
-                        <span>제품명:</span>
-                        <span className="text-center basis-2/3">{productInfo?.name}</span>
+            <div className="flex basis-6/12">
+                <img
+                    className="w-full h-20 md:w-48 rounded-lg mr-3"
+                    src={productInfo?.imgURL}
+                    alt={productInfo?.name}
+                />
+                <article className="flex flex-col justify-center basis-2/5">
+                    <p className="font-semibold">
+                        <span className="text-center">
+                            {productInfo?.name} ({cartItem.color})
+                        </span>
                     </p>
-                    <p className="flex w-48 justify-between">
-                        <span className="basis-1/7">사이즈:</span>
-                        <span className="text-center basis-2/3 text-brand">{cartItem.size}</span>
-                    </p>
-                    <p className="flex w-48 justify-between">
-                        <span>가격:</span>
-                        <span className="text-center basis-2/3">₩ {productInfo?.price!.toLocaleString()}</span>
+                    <p className="text-sm">
+                        <span className="">사이즈:</span>
+                        <span className="text-center text-brand">{cartItem.size}</span>
                     </p>
                 </article>
-                <article className="flex justify-center items-center">
-                    <InputWithPlusMinus type="cart" cartProduct={cartItem} />
-                    <BsTrash className={`${ICON_CLASS} ml-2`} onClick={handleDelete} />
-                </article>
-            </section>
+            </div>
+            <div className="basis-1/12 flex justify-center items-center">
+                <span className="inline-block">₩ {productInfo?.price!.toLocaleString()}</span>
+            </div>
+            <div className="basis-2/12 flex justify-center items-center">
+                <InputWithPlusMinus type="cart" cartProduct={cartItem} />
+            </div>
+            <div className="basis-1/12 flex justify-center items-center">
+                <span className="">₩ {cartItem.totalPricePerProduct!.toLocaleString()}</span>
+            </div>
+            <div className="basis-1/12 flex justify-center items-center">
+                <BsTrash className={`${ICON_CLASS}`} onClick={handleDelete} />
+            </div>
         </li>
     );
 }

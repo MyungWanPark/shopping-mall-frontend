@@ -36,10 +36,18 @@ export default function MyCart() {
             .reduce((prev, curr) => prev + curr.totalPricePerProduct!, 0);
     return (
         <section className="p-8">
-            <p className="text-center font-bold text-2xl py-3 border-b border-gray-300">내 장바구니</p>
-            {!hasProduct && <p>장바구니에 상품이 없습니다.</p>}
+            <p className="text-center text-2xl pb-5 border-b border-gray-300">Shopping Cart</p>
+            <p className="flex text-center mt-2">
+                <span className="inline-block basis-1/12">CHECK</span>
+                <span className="inline-block basis-6/12">PRODUCT</span>
+                <span className="inline-block basis-1/12">PRICE</span>
+                <span className="inline-block basis-2/12">QUANTITY</span>
+                <span className="inline-block basis-1/12">SUBTOTAL</span>
+                <span className="inline-block basis-1/12">DELETE</span>
+            </p>
+            {!hasProduct && <p className="text-center mt-10">장바구니에 상품이 없습니다.</p>}
             {hasProduct && (
-                <>
+                <div className="flex flex-col">
                     <ul className="border-b border-gray-300 py-4">
                         {cartItems.map((cartItem) => (
                             <CartItem key={cartItem.id} cartItem={cartItem} />
@@ -53,7 +61,7 @@ export default function MyCart() {
                         <PriceCard text={'총 합계'} price={`${(totalPrice! + SHIPPING_FEE).toLocaleString()} 원`} />
                     </div>
                     <Button onClick={handleOrder} text={'주문하기'} />
-                </>
+                </div>
             )}
         </section>
     );
