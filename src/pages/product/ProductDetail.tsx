@@ -54,16 +54,16 @@ export default function ProductDetail() {
                             <span className="text-3xl font-bold">{name!}</span>
                             <span className="ml-10 text-xl font-semibold">₩{price!.toLocaleString()} 원</span>
                         </h1>
-                        <p className="text-lg py-3">{description!}</p>
+                        <p className="text-lg py-7">{description!}</p>
                         <div className="flex items-center mb-3">
-                            <span className="mr-5 w-12 inline-block">SIZE</span>
+                            <span className="mr-5 w-12">SIZE</span>
                             <ProductSize size="S" setCartProduct={setCartProduct} />
                             <ProductSize size="M" setCartProduct={setCartProduct} />
                             <ProductSize size="L" setCartProduct={setCartProduct} />
                             <ProductSize size="XL" setCartProduct={setCartProduct} />
                         </div>
                         <div className="flex items-center h-10 mb-2">
-                            <span className="mr-5 w-12 inline-block">COLOR</span>
+                            <span className="mr-5 w-12">COLOR</span>
                             <ProductColor
                                 id={PRODUCT_COLORS[2]}
                                 setCartProduct={setCartProduct}
@@ -85,12 +85,13 @@ export default function ProductDetail() {
                                 colorClass="bg-black"
                             />
                         </div>
-                        <div className="flex">
-                            <span>수량: </span>
+                        <div className="flex mb-3 items-center">
+                            <span className="text-md w-12 mr-5">수량: </span>
                             <InputWithPlusMinus
                                 type="productDetail"
                                 setCartProduct={setCartProduct}
                                 cartProduct={cartProduct}
+                                fontSize="text-lg"
                             />
                         </div>
                         <Button text="장바구니에 추가" onClick={handleClick} />

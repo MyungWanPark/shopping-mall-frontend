@@ -9,9 +9,10 @@ type Props = {
     type: 'productDetail' | 'cart';
     setCartProduct?: React.Dispatch<React.SetStateAction<CartItemType>>;
     cartProduct?: CartItemType;
+    fontSize?: string;
 };
 
-export default function InputWithPlusMinus({ type, setCartProduct, cartProduct }: Props) {
+export default function InputWithPlusMinus({ type, setCartProduct, cartProduct, fontSize }: Props) {
     const { updateCartItem } = useCart();
     const handleMinus = (e: React.MouseEvent) => {
         if (cartProduct?.quantity! < 2) return;
@@ -36,7 +37,7 @@ export default function InputWithPlusMinus({ type, setCartProduct, cartProduct }
     };
 
     return (
-        <article className="flex justify-center items-center">
+        <article className={`flex justify-center items-center ${fontSize}`}>
             <AiOutlineMinusSquare className={ICON_CLASS} onClick={handleMinus} />
             <span className="mx-1">{cartProduct?.quantity}</span>
             <AiOutlinePlusSquare className={ICON_CLASS} onClick={handlePlus} />
