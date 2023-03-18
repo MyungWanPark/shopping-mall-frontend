@@ -8,12 +8,12 @@ export default function CartIcon() {
     } = useCart();
 
     return (
-        <div className="relative">
+        <div className="relative overflow-visible">
             <BsCartPlus className="text-3xl" />
             {products && (
-                <span className="absolute -top-2 -right-2 block bg-brand w-6 h-6 text-center text-white rounded-full">
+                <div className="absolute -right-2 border border-white -top-2 lg:border-none bg-brand w-6 h-6 overflow-visible text-white rounded-full">
                     {products!.length}
-                </span>
+                </div>
             )}
         </div>
     );

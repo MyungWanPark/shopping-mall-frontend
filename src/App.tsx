@@ -32,8 +32,10 @@ function App() {
                 <ProductProvider productService={productService}>
                     <CartProvider cartService={cartService}>
                         <OrderProvider orderService={orderService}>
-                            <NavbarTest />
-                            {/*                             <Navbar />
+                            {/* <NavbarTest /> */}
+                            <Navbar />
+                            <Outlet />
+                            {/* 
                             <div className="flex">
                                 <div className="basis-1/5">
                                     <SideBar />

@@ -1,8 +1,8 @@
 import React from 'react';
-
+import { GiHamburgerMenu } from 'react-icons/gi';
 export default function NavbarTest() {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        const navContent = document.querySelector('#example-navbar-warning') as HTMLDivElement;
+        const navContent = document.querySelector('#navbarId') as HTMLDivElement;
         navContent.classList.toggle('h-32');
         navContent.style.transition = 'height 0.5s ease';
     };
@@ -22,15 +22,10 @@ export default function NavbarTest() {
                         type="button"
                         onClick={handleClick}
                     >
-                        <span className="block relative w-6 h-px rounded-sm bg-white"></span>
-                        <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
-                        <span className="block relative w-6 h-px rounded-sm bg-white mt-1"></span>
+                        <GiHamburgerMenu className="text-white" />
                     </button>
                 </div>
-                <div
-                    className="h-0 overflow-hidden lg:h-auto lg:flex flex-grow items-center"
-                    id="example-navbar-warning"
-                >
+                <div className="h-0 overflow-hidden lg:h-auto lg:flex flex-grow items-center" id="navbarId">
                     <ul className="flex flex-col overflow-hidden lg:flex-row list-none mr-auto">
                         <li className="nav-item">
                             <a
