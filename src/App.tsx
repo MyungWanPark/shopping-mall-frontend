@@ -14,6 +14,7 @@ import CartService from './service/cart';
 import OrderService from './service/order';
 import { CartProvider } from './context/CartContext';
 import { OrderProvider } from './context/OrderContext';
+import NavbarTest from './components/navbar/NavbarTest';
 
 const queryClient = new QueryClient();
 const baseURL = process.env.REACT_APP_BASE_URL;
@@ -31,7 +32,8 @@ function App() {
                 <ProductProvider productService={productService}>
                     <CartProvider cartService={cartService}>
                         <OrderProvider orderService={orderService}>
-                            <Navbar />
+                            <NavbarTest />
+                            {/*                             <Navbar />
                             <div className="flex">
                                 <div className="basis-1/5">
                                     <SideBar />
@@ -39,7 +41,7 @@ function App() {
                                 <div className="basis-4/5">
                                     <Outlet />
                                 </div>
-                            </div>
+                            </div> */}
                         </OrderProvider>
                     </CartProvider>
                 </ProductProvider>
