@@ -9,7 +9,8 @@ import { useAuthContext } from '../../context/AuthContext';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoGraph } from 'react-icons/go';
 
-const NAV_ITEM_CLASS = 'w-full hover:bg-red-500 rounded-lg p-1 transition-all nav-item';
+const NAV_ITEM_CLASS =
+    'w-full hover:bg-red-500 lg:hover:bg-transparent lg:hover:text-brand rounded-lg p-1 transition-all nav-item';
 const LINK_CLASS = 'inline-block w-full';
 
 export default function Navbar() {
@@ -17,7 +18,7 @@ export default function Navbar() {
 
     const handleClick = (e: React.MouseEvent) => {
         const navContent = document.querySelector('#navbarId') as HTMLDivElement;
-        navContent.classList.toggle('h-96');
+        navContent.classList.toggle('h-80');
         navContent.style.transition = 'height 0.5s ease';
     };
     /* 
@@ -43,7 +44,7 @@ export default function Navbar() {
 */
 
     return (
-        <nav className="bg-brand lg:bg-white w-full relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
+        <nav className="bg-brand sticky top-0 z-10 lg:bg-white w-full flex flex-wrap items-center justify-between px-2 py-3 mb-3">
             <div className="flex-1 lg:basis-4/20 w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
                 <Link to={'/'} className="text-white flex justify-center items-center text-3xl lg:text-brand">
                     <BiShoppingBag />
@@ -110,9 +111,7 @@ export default function Navbar() {
                         </li>
                     )}
                     {user && (
-                        <li
-                            className={`${NAV_ITEM_CLASS} flex flex-col lg:hover:bg-transparent lg:flex-row lg:basis-1/20`}
-                        >
+                        <li className={`${NAV_ITEM_CLASS} flex flex-col lg:flex-row lg:basis-1/20`}>
                             <Button text={'Logout'} onClick={logout} bgColor="bg-transparent" />
                         </li>
                     )}
