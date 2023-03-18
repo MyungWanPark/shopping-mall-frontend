@@ -112,7 +112,7 @@ export default function Navbar() {
                     )}
                     {user && (
                         <li className={`${NAV_ITEM_CLASS} flex flex-col lg:flex-row lg:basis-1/20`}>
-                            <Button text={'Logout'} onClick={logout} bgColor="bg-transparent" />
+                            <Button text={'Logout'} onClick={logout} customCss="bg-transparent" />
                         </li>
                     )}
                 </ul>

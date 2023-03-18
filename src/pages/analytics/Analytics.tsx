@@ -11,6 +11,8 @@ import useProducts from './../../hooks/useProducts';
 import GeneralBoxes from '../../components/analytics/GeneralBoxes';
 import useUser from './../../hooks/useUser';
 import InflowRoutes from '../../components/analytics/InflowRoutes';
+import 'dayjs/locale/ko';
+import dayjs from 'dayjs';
 
 export default function Analytics() {
     const { start, end } = getPeriodTime(new Date(), new Date());
@@ -36,11 +38,14 @@ export default function Analytics() {
     console.log(`userInfos in analytics = ${JSON.stringify(userInfos)}`);
 
     return (
-        <section>
-            <article>
+        <section className="bg-zinc-200 p-4 py-8">
+            <article className="flex items-center justify-center mb-5">
+                <p className="mr-5 bg-white p-4 rounded-xl">{`${dayjs(period.start).format('YYYY-MM-DD')} ~ ${dayjs(
+                    period.end
+                ).format('YYYY-MM-DD')} 기간을 분석합니다.`}</p>
                 <DateRangePicker setPeriod={setPeriod} dataStatus={{ isLoading, allUserInfos }} />
             </article>
-            <article>
+            <article className="">
                 <GeneralBoxes data={{ orderedCartItems, products, userInfos }} />
             </article>
             <article className="flex">

@@ -8,6 +8,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Period } from '../../types/analytics';
 import { getPeriodTime } from './../../utils/analytics/time';
 import { User } from '../../types/user';
+import Button from '../ui/Button';
 
 type Props = {
     setPeriod: React.Dispatch<React.SetStateAction<Period>>;
@@ -37,30 +38,34 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex datePickers">
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
-                <DatePicker
-                    label="Start Date"
-                    value={startDate}
-                    onChange={(newValue) => {
-                        setStartDate(dayjs(newValue).toDate());
-                    }}
-                    minDate={dateRange ? dayjs(dateRange.min) : null}
-                    maxDate={dateRange ? dayjs(dateRange.max) : null}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                <DatePicker
-                    label="End Date"
-                    value={endDate}
-                    onChange={(newValue) => {
-                        setEndDate(dayjs(newValue).toDate());
-                    }}
-                    minDate={dayjs(startDate)}
-                    maxDate={dateRange ? dayjs(dateRange.max) : null}
-                    renderInput={(params) => <TextField {...params} />}
-                />
+                <div className="bg-white rounded-xl">
+                    <DatePicker
+                        label="Start Date"
+                        value={startDate}
+                        onChange={(newValue) => {
+                            setStartDate(dayjs(newValue).toDate());
+                        }}
+                        minDate={dateRange ? dayjs(dateRange.min) : null}
+                        maxDate={dateRange ? dayjs(dateRange.max) : null}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </div>
+                <div className="mx-2 bg-white rounded-xl">
+                    <DatePicker
+                        label="End Date"
+                        value={endDate}
+                        onChange={(newValue) => {
+                            setEndDate(dayjs(newValue).toDate());
+                        }}
+                        minDate={dayjs(startDate)}
+                        maxDate={dateRange ? dayjs(dateRange.max) : null}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </div>
             </LocalizationProvider>
-            <button>조회하기</button>
+            <Button text="조회하기" customCss="rounded-xl" />
         </form>
     );
 }
