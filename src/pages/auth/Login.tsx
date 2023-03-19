@@ -27,15 +27,15 @@ export default function Login() {
     };
 
     return (
-        <section className="flex items-center justify-center gap-10">
-            <article className="">
-                <p className="mb-5">Welcome!</p>
+        <section className="flex justify-center gap-10">
+            <article className="basis-1/3 flex flex-col">
                 <form action="" className="mb-4 flex flex-col">
+                    <p className="mb-5">Welcome!</p>
                     <p>Email</p>
                     <input
                         type="email"
                         placeholder="enter your email.."
-                        className="border rounded-md p-2 border-gray-300"
+                        className="border rounded-md p-2 border-gray-300 outline-none"
                         value={loginInfo.email}
                         onChange={handleEmail}
                     />
@@ -43,15 +43,18 @@ export default function Login() {
                     <input
                         type="password"
                         placeholder="enter your password.."
-                        className="border rounded-md p-2 border-gray-300"
+                        className="border rounded-md p-2 border-gray-300 outline-none"
                         value={loginInfo.password}
                         onChange={handlePassword}
                     />
-                    <button className="block text-center bg-brand text-white mt-2 rounded-md" onClick={handleSubmit}>
+                    <button
+                        className="block text-center bg-brand text-white mt-2 py-1 rounded-md"
+                        onClick={handleSubmit}
+                    >
                         Login
                     </button>
                 </form>
-                <button className="bg-yellow-300 block w-full rounded-md">Kakao Login</button>
+                <button className="bg-yellow-300 block w-full py-1 rounded-md">Kakao Login</button>
                 <p className="mt-5">
                     Don't have an account?{' '}
                     <Link to={'/auth/register'} className="underline">
@@ -59,8 +62,8 @@ export default function Login() {
                     </Link>
                 </p>
             </article>
-            <div className="w-96">
-                <img src={process.env.PUBLIC_URL + '/images/auth/login.jpg'} alt="login_img" />
+            <div className="basis-1/3">
+                <img className="h-5/6" src={process.env.PUBLIC_URL + '/images/auth/login.jpg'} alt="login_img" />
             </div>
         </section>
     );
