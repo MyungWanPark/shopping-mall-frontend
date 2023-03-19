@@ -30,7 +30,7 @@ export default function Login() {
         <section className="flex justify-center gap-10">
             <article className="basis-1/3 flex flex-col">
                 <form action="" className="mb-4 flex flex-col">
-                    <p className="mb-5">Welcome!</p>
+                    <p className="mb-5 font-semibold text-lg">Login</p>
                     <p>Email</p>
                     <input
                         type="email"

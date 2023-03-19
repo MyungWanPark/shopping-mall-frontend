@@ -3,7 +3,7 @@ import Button from '../../components/ui/Button';
 import { CartItemType } from '../../types/cart';
 import useCart from './../../hooks/useCart';
 import InputWithPlusMinus from '../../components/ui/InputWithPlusMinus';
-import ProductSize from '../../components/ui/ProductSize';
+import TextBox from '../../components/ui/TextBox';
 import ProductColor from '../../components/ui/ProductColor';
 import useProducts from './../../hooks/useProducts';
 
@@ -57,33 +57,22 @@ export default function ProductDetail() {
                         <p className="text-lg py-7">{description!}</p>
                         <div className="flex items-center mb-3">
                             <span className="mr-5 w-12">SIZE</span>
-                            <ProductSize size="S" setCartProduct={setCartProduct} />
-                            <ProductSize size="M" setCartProduct={setCartProduct} />
-                            <ProductSize size="L" setCartProduct={setCartProduct} />
-                            <ProductSize size="XL" setCartProduct={setCartProduct} />
+                            <TextBox text="S" setState={setCartProduct} setField="size" customStyle="w-10 rounded-md" />
+                            <TextBox text="M" setState={setCartProduct} setField="size" customStyle="w-10 rounded-md" />
+                            <TextBox text="L" setState={setCartProduct} setField="size" customStyle="w-10 rounded-md" />
+                            <TextBox
+                                text="XL"
+                                setState={setCartProduct}
+                                setField="size"
+                                customStyle="w-10 rounded-md"
+                            />
                         </div>
                         <div className="flex items-center h-10 mb-2">
                             <span className="mr-5 w-12">COLOR</span>
-                            <ProductColor
-                                id={PRODUCT_COLORS[0]}
-                                setCartProduct={setCartProduct}
-                                colorClass="bg-pink-300"
-                            />
-                            <ProductColor
-                                id={PRODUCT_COLORS[1]}
-                                setCartProduct={setCartProduct}
-                                colorClass="bg-blue-300"
-                            />
-                            <ProductColor
-                                id={PRODUCT_COLORS[2]}
-                                setCartProduct={setCartProduct}
-                                colorClass="bg-white"
-                            />
-                            <ProductColor
-                                id={PRODUCT_COLORS[3]}
-                                setCartProduct={setCartProduct}
-                                colorClass="bg-black"
-                            />
+                            <ProductColor id={PRODUCT_COLORS[0]} setState={setCartProduct} colorClass="bg-pink-300" />
+                            <ProductColor id={PRODUCT_COLORS[1]} setState={setCartProduct} colorClass="bg-blue-300" />
+                            <ProductColor id={PRODUCT_COLORS[2]} setState={setCartProduct} colorClass="bg-white" />
+                            <ProductColor id={PRODUCT_COLORS[3]} setState={setCartProduct} colorClass="bg-black" />
                         </div>
                         <div className="flex mb-3 items-center">
                             <span className="text-md w-12 mr-5">수량: </span>

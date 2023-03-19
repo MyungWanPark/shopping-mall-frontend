@@ -3,14 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { useAuthContext } from '../../context/AuthContext';
 import { InflowRouteType, User } from '../../types/user';
+import TextBox from '../../components/ui/TextBox';
 
-const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300';
+const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300 outline-none mb-2 mt-1';
 
-const ageOptions = ['10대 ~ 20대', '20대 ~ 30대', '30대 ~ 40대', '40대 ~ 50대', '50대 ~ 60대', '60대 ~ '];
+const ageOptions = ['10대 ~ 20대', '20대 ~ 30대', '30대 ~ 40대', '40대 ~ 50대', '50대 ~ 60대', '60대 이상 ', '기타'];
 const inflowRouteOptions: InflowRouteOption[] = [
     { label: 'Instagram', value: 'instagram' },
     { label: 'Facebook', value: 'facebook' },
-    { label: '직접검색', value: 'directSearch' },
+    { label: '직접 검색', value: 'directSearch' },
     { label: '기타', value: 'etc' },
 ];
 
@@ -48,14 +49,6 @@ export default function Register() {
         setUserInfo((prev) => ({ ...prev, name: (e.target as HTMLInputElement).value }));
     };
 
-    const handleGender = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        const sizeBtns = document.querySelectorAll('.genderBtn');
-        sizeBtns.forEach((btn) => btn.classList.remove('bg-gray-700'));
-        const target = e.target as HTMLSpanElement;
-        target.classList.add('bg-gray-700');
-        setUserInfo((prev) => ({ ...prev, gender: target.textContent! }));
-    };
-
     const handleAge = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setUserInfo((prev) => ({ ...prev, age: (e.target as HTMLSelectElement).value }));
     };
@@ -68,7 +61,7 @@ export default function Register() {
     return (
         <section className="flex justify-center gap-8">
             <article className="">
-                <p className="mb-5">Welcome!</p>
+                <p className="mb-5 font-semibold text-lg">Register</p>
                 <form action="" className="mb-4 flex flex-col">
                     <p>Email</p>
                     <input
@@ -95,19 +88,9 @@ export default function Register() {
                         className={INPUT_CLASSNAME}
                     />
                     <p>Gender</p>
-                    <div>
-                        <span
-                            className="genderBtn inline-block w-10 h-8 border border-black cursor-pointer"
-                            onClick={handleGender}
-                        >
-                            남성
-                        </span>
-                        <span
-                            className="genderBtn inline-block w-10 h-8 border border-black cursor-pointer"
-                            onClick={handleGender}
-                        >
-                            여성
-                        </span>
+                    <div className="flex mt-1 mb-2">
+                        <TextBox text="남성" setState={setUserInfo} setField="gender" customStyle="w-10 rounded-lg" />
+                        <TextBox text="여성" setState={setUserInfo} setField="gender" customStyle="w-10 rounded-lg" />
                     </div>
                     <p>Age</p>
                     <select
@@ -115,7 +98,7 @@ export default function Register() {
                         id="options"
                         onChange={handleAge}
                         value={userInfo.age}
-                        className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
+                        className="w-96 border border-dashed border-brand outline-none mb-5 mt-1"
                     >
                         {ageOptions.map((option: string) => (
                             <option className="text-center" key={uuid()}>
@@ -129,7 +112,7 @@ export default function Register() {
                         id="options"
                         onChange={handleInflowRoute}
                         value={userInfo.inflowRoute}
-                        className="ml-2 w-96 border border-dashed border-brand outline-none mb-5"
+                        className="w-96 border border-dashed border-brand outline-none mb-5 mt-1"
                     >
                         {inflowRouteOptions.map((option: InflowRouteOption, id) => (
                             <option className="text-center" key={uuid()} value={option.value}>
@@ -137,13 +120,16 @@ export default function Register() {
                             </option>
                         ))}
                     </select>
-                    <button className="block text-center bg-brand text-white mt-2 rounded-md" onClick={handleSubmit}>
+                    <button
+                        className="block text-center bg-brand text-white mt-2 rounded-md py-1"
+                        onClick={handleSubmit}
+                    >
                         Register
                     </button>
                 </form>
                 <p className="mt-5">
                     Already have an account?
-                    <Link to={'/auth/login'} className="underline">
+                    <Link to={'/auth/login'} className="underline ml-1">
                         Login
                     </Link>
                 </p>
