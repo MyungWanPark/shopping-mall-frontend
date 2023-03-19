@@ -44,7 +44,7 @@ export default function Navbar() {
 */
 
     return (
-        <nav className="bg-brand sticky top-0 z-10 lg:bg-white w-full flex flex-wrap items-center justify-between px-2 py-3 mb-3">
+        <nav className="bg-brand sticky top-0 z-20 lg:bg-white w-full flex flex-wrap items-center justify-between px-2 py-3 mb-3">
             <div className="flex-1 lg:basis-4/20 w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
                 <Link to={'/'} className="text-white flex justify-center items-center text-3xl lg:text-brand">
                     <BiShoppingBag />

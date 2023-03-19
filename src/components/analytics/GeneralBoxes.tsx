@@ -1,10 +1,13 @@
 import React from 'react';
 import AnalyticsSmallBox from '../ui/AnalyticsSmallBox';
-import { BiShoppingBag } from 'react-icons/bi';
+import { BiShoppingBag, BiDollar } from 'react-icons/bi';
+import { AiOutlineUsergroupAdd } from 'react-icons/ai';
+import { FaHotjar } from 'react-icons/fa';
 import { User } from '../../types/user';
 import { ProductType } from '../../types/product';
 import { CartItemType } from '../../types/cart';
 import { getHotItem } from '../../utils/analytics/orderedData';
+import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
 
 type Prop = {
     data: {
@@ -13,6 +16,8 @@ type Prop = {
         userInfos?: User[];
     };
 };
+
+const SMALL_BOX_CLASS = 'py-4 px-2 flex flex-col items-center';
 
 export default function GeneralBoxes({ data: { orderedCartItems, products, userInfos } }: Prop) {
     let salesAmount;
@@ -38,30 +43,34 @@ export default function GeneralBoxes({ data: { orderedCartItems, products, userI
     }
 
     return (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-4 gap-8">
             <AnalyticsSmallBox
-                logoIcon={<BiShoppingBag />}
+                logoIcon={<BiDollar />}
+                iconStyle="text-sky-400 text-2xl"
                 title="Sales 현황"
-                value={`${salesAmount ? salesAmount : 0} 원`}
-                color="bg-green-400"
+                value={`${salesAmount ? salesAmount.toLocaleString() : 0} 원`}
+                customStyle={`${ANALYTICS_BOX_CLASS_NAME} ${SMALL_BOX_CLASS}`}
             />
             <AnalyticsSmallBox
-                logoIcon={<BiShoppingBag />}
+                logoIcon={<AiOutlineUsergroupAdd />}
+                iconStyle="text-green-500 text-2xl"
                 title="New Users"
-                value={`${usersNum ? usersNum : 0} 명`}
-                color="bg-green-400"
+                value={`${usersNum ? usersNum.toLocaleString() : 0} 명`}
+                customStyle={`${ANALYTICS_BOX_CLASS_NAME} ${SMALL_BOX_CLASS}`}
             />
             <AnalyticsSmallBox
                 logoIcon={<BiShoppingBag />}
+                iconStyle="text-orange-400 text-2xl"
                 title="판매량"
-                value={`${salesVolumn ? salesVolumn : 0} 개`}
-                color="bg-green-400"
+                value={`${salesVolumn ? salesVolumn.toLocaleString() : 0} 개`}
+                customStyle={`${ANALYTICS_BOX_CLASS_NAME} ${SMALL_BOX_CLASS}`}
             />
             <AnalyticsSmallBox
-                logoIcon={<BiShoppingBag />}
+                logoIcon={<FaHotjar />}
+                iconStyle="text-red-400 text-2xl"
                 title="Hot Sales Item"
-                value={hotItemVol ? `${hotItemName} (${hotItemVol}개)` : '없습니다.'}
-                color="bg-green-400"
+                value={hotItemVol ? `${hotItemName} (${hotItemVol.toLocaleString()}개)` : '없습니다.'}
+                customStyle={`${ANALYTICS_BOX_CLASS_NAME} ${SMALL_BOX_CLASS}`}
             />
         </div>
     );

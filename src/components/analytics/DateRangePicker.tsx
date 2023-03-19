@@ -9,6 +9,7 @@ import { Period } from '../../types/analytics';
 import { getPeriodTime } from './../../utils/analytics/time';
 import { User } from '../../types/user';
 import Button from '../ui/Button';
+import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
 
 type Props = {
     setPeriod: React.Dispatch<React.SetStateAction<Period>>;
@@ -40,7 +41,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
     return (
         <form onSubmit={handleSubmit} className="flex datePickers">
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
-                <div className="bg-white rounded-xl">
+                <div className={`${ANALYTICS_BOX_CLASS_NAME}`}>
                     <DatePicker
                         label="Start Date"
                         value={startDate}
@@ -52,7 +53,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </div>
-                <div className="mx-2 bg-white rounded-xl">
+                <div className={`mx-2 ${ANALYTICS_BOX_CLASS_NAME}`}>
                     <DatePicker
                         label="End Date"
                         value={endDate}
@@ -65,7 +66,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
                     />
                 </div>
             </LocalizationProvider>
-            <Button text="조회하기" customCss="rounded-xl" />
+            <Button text="조회하기" customCss="rounded-xl shadow-sm" />
         </form>
     );
 }
