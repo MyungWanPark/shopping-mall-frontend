@@ -32,6 +32,12 @@
     border: none;
 }
 
+.apx-legend-position-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

@@ -120,7 +120,7 @@ export default function MixedChart({ data: { period, periodOrders, orderedCartIt
     }, [periodOrders, orderedCartItems]);
 
     return (
-        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} p-6`}>
+        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} p-6 basis-4/7`}>
             <ReactApexChart options={option} series={series} type="line" width={600} />
         </div>
     );

@@ -4,12 +4,26 @@ import { ApexOptions } from 'apexcharts';
 import { CartItemType } from '../../types/cart';
 import { getPieChartData } from '../../utils/analytics/orderedData';
 import { ProductType } from '../../types/product';
+import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
 
 const initialSeries = [44, 55, 13];
 const initialOptions: ApexOptions = {
     chart: {
-        width: 380,
+        width: '90%',
         type: 'pie',
+    },
+    dataLabels: {
+        enabled: true,
+    },
+    title: {
+        text: 'Item Sales Ratio',
+    },
+    tooltip: {
+        y: {
+            formatter: function (value) {
+                return value.toLocaleString() + ' 원';
+            },
+        },
     },
     labels: ['Team A', 'Team B', 'Team C'],
     responsive: [
@@ -54,8 +68,11 @@ export default function PieChart({ data: { orderedCartItems, products } }: Prop)
     }, [orderedCartItems]);
 
     return (
-        <div id="chart">
-            <ReactApexChart options={option} series={series} type="pie" width={380} />
+        <div
+            id="chart"
+            className={`${ANALYTICS_BOX_CLASS_NAME} ml-4 basis-3/7 w-full flex justify-center items-center`}
+        >
+            <ReactApexChart options={option} series={series} type="pie" width={'170%'} />
         </div>
     );
 }
