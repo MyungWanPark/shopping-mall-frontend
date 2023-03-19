@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
@@ -5,7 +6,9 @@ import { User } from '../../types/user';
 
 export default function Login() {
     const navigate = useNavigate();
-    const { login, logout } = useAuthContext();
+    const { user, login, logout } = useAuthContext();
+    const queryClient = useQueryClient();
+
     const [loginInfo, setLoginInfo] = useState<User>({
         email: '',
         password: '',
@@ -21,7 +24,7 @@ export default function Login() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+        queryClient.invalidateQueries(['cart', user?.id ? user.id : '']);
         await login(loginInfo);
         navigate('/');
     };
