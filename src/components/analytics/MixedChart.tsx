@@ -7,6 +7,7 @@ import { Period } from '../../types/analytics';
 import useOrder from './../../hooks/useOrder';
 import { getLineChartData } from './../../utils/analytics/orderedData';
 import { CartItemType } from '../../types/cart';
+import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
 
 const initialOption: ApexOptions = {
     chart: {
@@ -35,11 +36,21 @@ const initialOption: ApexOptions = {
             title: {
                 text: 'Selected Days',
             },
+            labels: {
+                formatter: function (value) {
+                    return Math.round(value).toLocaleString() + ' 원';
+                },
+            },
         },
         {
             opposite: true,
             title: {
                 text: 'Average',
+            },
+            labels: {
+                formatter: function (value) {
+                    return Math.round(value).toLocaleString() + ' 원';
+                },
             },
         },
     ],
@@ -109,7 +120,7 @@ export default function MixedChart({ data: { period, periodOrders, orderedCartIt
     }, [periodOrders, orderedCartItems]);
 
     return (
-        <div id="chart">
+        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} p-6`}>
             <ReactApexChart options={option} series={series} type="line" width={600} />
         </div>
     );

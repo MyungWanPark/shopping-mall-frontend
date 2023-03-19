@@ -50,7 +50,7 @@ export default function Analytics() {
             <article className="">
                 <GeneralBoxes data={{ orderedCartItems, products, userInfos }} />
             </article>
-            <article className="flex">
+            <article className="flex mt-8">
                 <MixedChart data={{ period, periodOrders, orderedCartItems }} />
                 <PieChart data={{ orderedCartItems, products }} />
             </article>

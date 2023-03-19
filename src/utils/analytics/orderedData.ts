@@ -33,7 +33,7 @@ export function getLineChartData(dateRange: Date[], periodOrder: OrderType[], ca
     }
     const salesData = findTotalPriceFromCartItem(orderedData, cartItem);
     const sum = salesData.reduce((prev, curr) => prev + curr, 0);
-    const temp = sum / dateRange.length;
+    const temp = Math.round(sum / dateRange.length);
     const average = Array(salesData.length).fill(temp);
     return { salesData, average };
 }
@@ -131,5 +131,5 @@ function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemTy
             }
         }
     }
-    return processedData;
+    return processedData.map((data) => Math.round(data));
 }
