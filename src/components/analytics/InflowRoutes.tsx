@@ -18,6 +18,21 @@ type Prop = {
 
 */
 
+const defaultGradientOption = {
+    colors: ['#f602b2ff'],
+    type: 'gradient',
+    gradient: {
+        shade: 'dark',
+        type: 'horizontal',
+        gradientToColors: ['#f5bd02ff'],
+        shadeIntensity: 0.5,
+        inverseColors: true,
+        opacityFrom: 0.5,
+        opacityTo: 1,
+        stops: [0, 100],
+    },
+};
+
 function getInflowRatio(routeNum: number, total: number) {
     return Math.round((routeNum / total) * 100);
 }
@@ -33,22 +48,67 @@ export default function InflowRoutes({ data: { userInfos } }: Prop) {
     }
 
     return (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="flex justify-between">
             <InflowRoute
-                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.instagram, totalSum) : 0}
-                inflowType={'instagram'}
+                value={{
+                    percent: inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.instagram, totalSum) : 0,
+                    number: inflowRoutes && totalSum ? inflowRoutes.instagram : 0,
+                }}
+                chartStyle={{
+                    title: 'Instagram',
+                    color: {
+                        ...defaultGradientOption,
+                    },
+                    iconColor: 'text-rose-400',
+                }}
             />
             <InflowRoute
-                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.facebook, totalSum) : 0}
-                inflowType={'facebook'}
+                value={{
+                    percent: inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.facebook, totalSum) : 0,
+                    number: inflowRoutes && totalSum ? inflowRoutes.facebook : 0,
+                }}
+                chartStyle={{
+                    title: 'Facebook',
+                    color: {
+                        ...defaultGradientOption,
+                        colors: ['#0470e5ff'],
+                        gradient: { ...defaultGradientOption.gradient, gradientToColors: ['#ffffff'] },
+                    },
+                    iconColor: 'text-blue-500',
+                }}
             />
             <InflowRoute
-                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.directSearch, totalSum) : 0}
-                inflowType={'directSearch'}
+                value={{
+                    percent: inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.directSearch, totalSum) : 0,
+                    number: inflowRoutes && totalSum ? inflowRoutes.directSearch : 0,
+                }}
+                chartStyle={{
+                    title: '직접 검색',
+                    color: {
+                        ...defaultGradientOption,
+                        colors: ['#16A34A'],
+                        gradient: {
+                            ...defaultGradientOption.gradient,
+                            gradientToColors: ['#ffffff'],
+                        },
+                    },
+                    iconColor: 'text-emerald-500',
+                }}
             />
             <InflowRoute
-                value={inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.etc, totalSum) : 0}
-                inflowType={'etc'}
+                value={{
+                    percent: inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.etc, totalSum) : 0,
+                    number: inflowRoutes && totalSum ? inflowRoutes.etc : 0,
+                }}
+                chartStyle={{
+                    title: '기타',
+                    color: {
+                        ...defaultGradientOption,
+                        colors: ['#64748B'],
+                        gradient: { ...defaultGradientOption.gradient, gradientToColors: ['#ffffff'] },
+                    },
+                    iconColor: 'text-gray-500',
+                }}
             />
         </div>
     );

@@ -66,7 +66,8 @@ export function getPieChartData(orderedCartItem: CartItemType[], products: Produ
             }
         }
     }
-    return result;
+    return sortAndCut(result);
+    // return result;
 }
 
 export function getHotItem(orderedCartItem: CartItemType[], products: ProductType[]) {
@@ -132,4 +133,12 @@ function findTotalPriceFromCartItem(orderedData: OrderData, cartItem: CartItemTy
         }
     }
     return processedData.map((data) => Math.round(data));
+}
+
+function sortAndCut(data: SalesData) {
+    const sortedArr = data.sort((a, b) => b.salesAmount - a.salesAmount);
+    if (sortedArr.length > 5) {
+        return sortedArr.splice(0, 5);
+    }
+    return sortedArr;
 }

@@ -32,6 +32,10 @@
     border: none;
 }
 
+.datePickers label.Mui-focused {
+    top: -10px;
+}
+
 .apx-legend-position-right {
     display: flex;
     flex-direction: column;

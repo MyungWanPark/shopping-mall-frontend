@@ -1,68 +1,87 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { InflowRouteType } from '../../types/user';
+import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
+import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 
-type Props = {
-    inflowType?: InflowRouteType;
-    value?: number;
+type GradientColor = {
+    colors: string[];
+    type: 'gradient';
+    gradient: {
+        shade: string;
+        type?: string;
+        shadeIntensity: number;
+        gradientToColors: string[];
+        inverseColors?: boolean;
+        opacityFrom: number;
+        opacityTo: number;
+        stops?: number[];
+    };
 };
 
-export default function InflowRoute({ inflowType, value }: Props) {
-    console.log(`value = ${value}`);
+type SimpleColor = {
+    colors: string[];
+};
+
+type Props = {
+    chartStyle: {
+        title: string;
+        color: GradientColor | SimpleColor;
+        iconColor: string;
+    };
+    value?: {
+        percent: number;
+        number: number;
+    };
+};
+
+export default function InflowRoute({ chartStyle, value }: Props) {
     const initialOptions: ApexOptions = {
         chart: {
             height: 350,
             type: 'radialBar',
         },
+        /* title: {
+            text: `${chartStyle.title}`,
+        }, */
         plotOptions: {
             radialBar: {
                 hollow: {
-                    margin: 15,
                     size: '70%',
-                    image: inflowType
-                        ? `${process.env.PUBLIC_URL}/images/inflowRoutes/logo/${inflowType}_logo.png`
-                        : `${process.env.PUBLIC_URL}/images/banner.jpg`,
-                    imageWidth: 64,
-                    imageHeight: 64,
-                    imageClipped: false,
                 },
                 dataLabels: {
+                    // show: true,
                     name: {
-                        show: false,
-                        color: '#fff',
+                        // offsetY: -10,
+                        // show: true,
+                        color: chartStyle.color.colors[0],
+                        fontSize: '17px',
                     },
                     value: {
-                        show: true,
-                        color: '#333',
-                        offsetY: 70,
-                        fontSize: '22px',
+                        color: chartStyle.color.colors[0],
+                        fontSize: '20px',
+                        // show: true,
                     },
                 },
-            },
-        },
-        fill: {
-            type: 'image',
-            image: {
-                src: [
-                    inflowType
-                        ? `${process.env.PUBLIC_URL}/images/inflowRoutes/bg/${inflowType}_bg.jpg`
-                        : `${process.env.PUBLIC_URL}/images/banner2.jpg`,
-                ],
             },
         },
         stroke: {
             lineCap: 'round',
         },
-        labels: ['Volatility'],
+        labels: [chartStyle.title],
+        fill: chartStyle.color,
     };
 
     /*     const initialSeries = [70];
     let newOption; */
 
     return (
-        <div id="chart">
-            <ReactApexChart options={initialOptions} series={value ? [value] : [0]} type="radialBar" height={350} />
+        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} basis-1/5 pt-3`}>
+            <div className={`flex justify-center items-center text-md ${chartStyle.iconColor}`}>
+                <AiOutlineUsergroupAdd className="text-xl" />
+                <span> {value?.number} 명</span>
+            </div>
+            <ReactApexChart options={initialOptions} series={value?.percent ? [value.percent] : [0]} type="radialBar" />
         </div>
     );
 }

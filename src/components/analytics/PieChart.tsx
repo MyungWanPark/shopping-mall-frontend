@@ -16,7 +16,7 @@ const initialOptions: ApexOptions = {
         enabled: true,
     },
     title: {
-        text: 'Item Sales Ratio',
+        text: 'Top 5 Item Sales Ratio',
     },
     tooltip: {
         y: {
@@ -25,7 +25,7 @@ const initialOptions: ApexOptions = {
             },
         },
     },
-    labels: ['Team A', 'Team B', 'Team C'],
+    labels: ['Sample A', 'Sample B', 'Sample C'],
     responsive: [
         {
             breakpoint: 480,

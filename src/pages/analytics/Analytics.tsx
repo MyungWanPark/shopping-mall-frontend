@@ -54,7 +54,7 @@ export default function Analytics() {
                 <MixedChart data={{ period, periodOrders, orderedCartItems }} />
                 <PieChart data={{ orderedCartItems, products }} />
             </article>
-            <article>
+            <article className="mt-8">
                 <InflowRoutes data={{ userInfos }} />
             </article>
         </section>
