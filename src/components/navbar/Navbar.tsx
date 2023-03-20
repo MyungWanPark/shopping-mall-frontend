@@ -67,7 +67,7 @@ export default function Navbar() {
                         onClick={handleClick}
                     >
                         <Link to={'/analytics'} className={`${LINK_CLASS} flex justify-center`}>
-                            <GoGraph />
+                            <GoGraph className="text-2xl text-emerald-600" />
                         </Link>
                     </li>
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>

@@ -17,6 +17,9 @@ const initialOptions: ApexOptions = {
     },
     title: {
         text: 'Top 5 Item Sales Ratio',
+        align: 'center',
+        // offsetX: 30,
+        offsetY: -5,
     },
     tooltip: {
         y: {
