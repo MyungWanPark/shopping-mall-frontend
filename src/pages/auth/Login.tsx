@@ -30,8 +30,8 @@ export default function Login() {
     };
 
     return (
-        <section className="flex justify-center gap-10">
-            <article className="basis-1/3 flex flex-col">
+        <section className="flex justify-center gap-10 mt-5">
+            <article className="basis-full p-4 flex flex-col md:basis-1/3">
                 <form action="" className="mb-4 flex flex-col">
                     <p className="mb-5 font-semibold text-lg">Login</p>
                     <p>Email</p>
@@ -65,7 +65,7 @@ export default function Login() {
                     </Link>
                 </p>
             </article>
-            <div className="basis-1/3">
+            <div className="hidden basis-1/3 md:block">
                 <img className="h-5/6" src={process.env.PUBLIC_URL + '/images/auth/login.jpg'} alt="login_img" />
             </div>
         </section>

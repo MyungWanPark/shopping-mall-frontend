@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
 import UserInfo from '../UserInfo';
 import Button from '../ui/Button';
@@ -15,7 +15,8 @@ const LINK_CLASS = 'inline-block w-full';
 
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
-
+    const navigate = useNavigate();
+    console.log(`user = ${JSON.stringify(user)}`);
     const handleClick = (e: React.MouseEvent) => {
         const navContent = document.querySelector('#navbarId') as HTMLDivElement;
         navContent.classList.toggle('h-80');
@@ -76,11 +77,9 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
-                        {user && (
-                            <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}>
-                                <Cart />
-                            </Link>
-                        )}
+                        <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}>
+                            <Cart />
+                        </Link>
                     </li>
                     {user && (
                         <li className={`${NAV_ITEM_CLASS} hidden lg:block lg:basis-1/20`} onClick={handleClick}>
@@ -90,7 +89,8 @@ export default function Navbar() {
                     )}
                     {!user && (
                         <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
-                            <Link to={'/auth/login'}>Login</Link>
+                            <Button text={'Login'} onClick={() => navigate('/auth/login')} customCss="bg-transparent" />
+                            {/* <Link to={'/auth/login'}>Login</Link> */}
                         </li>
                     )}
                     {user && (
