@@ -10,7 +10,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { GoGraph } from 'react-icons/go';
 
 const NAV_ITEM_CLASS =
-    'w-full hover:bg-red-500 lg:hover:bg-transparent lg:hover:text-brand rounded-lg p-1 transition-all nav-item';
+    'w-full hover:bg-red-500 rounded-lg p-2 transition-all nav-item lg:hover:bg-transparent lg:hover:text-brand';
 const LINK_CLASS = 'inline-block w-full';
 
 export default function Navbar() {
@@ -21,30 +21,9 @@ export default function Navbar() {
         navContent.classList.toggle('h-80');
         navContent.style.transition = 'height 0.5s ease';
     };
-    /* 
-        <header className="flex justify-between border-b border-gray-300 py-2">
-            <Link to={'/'} className="flex basis-1/4 justify-center items-center text-3xl text-brand">
-                <BiShoppingBag />
-                <h1>Fashion Mall</h1>
-            </Link>
-            <SearchInput />
-            <nav className="flex basis-3/4 justify-end items-center gap-6 font-semibold mr-4">
-                {user && (
-                    <Link to={'/carts'}>
-                        <Cart />
-                    </Link>
-                )}
-                {user && <UserInfo user={user} />}
-                {!user && <Button text={'Login'} onClick={login} />}
-                {user && <Button text={'Logout'} onClick={logout} />}
-                {!user && <Link to={'/auth/login'}>Login</Link>}
-                {user && <Button text={'Logout'} onClick={logout} />}
-            </nav>
-        </header>
-*/
 
     return (
-        <nav className="bg-brand sticky top-0 z-20 w-full flex flex-wrap lg:flex-nowrap items-center justify-between px-2 py-3 border-b border-red-200 lg:bg-zinc-400">
+        <nav className="bg-brand sticky top-0 z-20 w-full flex flex-col items-center justify-between px-2 py-3 border-b border-red-200 lg:bg-white lg:flex-row">
             <div className="flex-1 px-2 w-full relative flex justify-between items-center lg:w-auto lg:basis-10/20 lg:static lg:justify-start lg:px-4">
                 <Link
                     to={'/'}
@@ -59,7 +38,7 @@ export default function Navbar() {
                 </button>
             </div>
             <div
-                className="h-0 basis-10/20 overflow-hidden lg:overflow-visible lg:h-auto lg:flex flex-grow items-center"
+                className="h-0 w-full overflow-hidden lg:basis-10/20 lg:overflow-visible lg:h-auto lg:flex flex-grow items-center"
                 id="navbarId"
             >
                 <ul className="flex lg:justify-end text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
@@ -69,31 +48,34 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
-                        <Link to={'/products?category=women'} className={LINK_CLASS}>
+                        <Link to={'/products?category=women'} className={LINK_CLASS} onClick={handleClick}>
                             Women
                         </Link>
                     </li>
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
-                        <Link to={'/products?category=bag'} className={LINK_CLASS}>
+                        <Link to={'/products?category=bag'} className={LINK_CLASS} onClick={handleClick}>
                             Bag
                         </Link>
                     </li>
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
-                        <Link to={'/products?category=shoes'} className={LINK_CLASS}>
+                        <Link to={'/products?category=shoes'} className={LINK_CLASS} onClick={handleClick}>
                             Shoes
                         </Link>
                     </li>
-                    <li className={`${NAV_ITEM_CLASS} flex justify-center items-center lg:basis-1/20`}>
+                    <li
+                        className={`${NAV_ITEM_CLASS} flex justify-center items-center lg:basis-1/20`}
+                        onClick={handleClick}
+                    >
                         <Link to={'/analytics'} className={`${LINK_CLASS} flex justify-center`}>
                             <GoGraph />
                         </Link>
                     </li>
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
-                        <Link to={'/products/new'} className={LINK_CLASS}>
+                        <Link to={'/products/new'} className={LINK_CLASS} onClick={handleClick}>
                             New
                         </Link>
                     </li>
-                    <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
+                    <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
                         {user && (
                             <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}>
                                 <Cart />
@@ -101,18 +83,21 @@ export default function Navbar() {
                         )}
                     </li>
                     {user && (
-                        <li className={`${NAV_ITEM_CLASS} hidden lg:block lg:basis-1/20`}>
+                        <li className={`${NAV_ITEM_CLASS} hidden lg:block lg:basis-1/20`} onClick={handleClick}>
                             {' '}
                             <UserInfo user={user} />
                         </li>
                     )}
                     {!user && (
-                        <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
+                        <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
                             <Link to={'/auth/login'}>Login</Link>
                         </li>
                     )}
                     {user && (
-                        <li className={`${NAV_ITEM_CLASS} flex flex-col lg:flex-row lg:basis-1/20`}>
+                        <li
+                            className={`${NAV_ITEM_CLASS} flex flex-col lg:flex-row lg:basis-1/20`}
+                            onClick={handleClick}
+                        >
                             <Button text={'Logout'} onClick={logout} customCss="bg-transparent" />
                         </li>
                     )}

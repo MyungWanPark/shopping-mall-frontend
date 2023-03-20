@@ -17,7 +17,7 @@ type Props = {
 export default function Input({ type, name, value, accept, placeholder, onChange, required, inputMeta }: Props) {
     return (
         <div className="flex items-center">
-            <label htmlFor={inputMeta && inputMeta.id} className="text-center basis-1/6">
+            <label htmlFor={inputMeta && inputMeta.id} className="basis-1/6 text-center">
                 {inputMeta && inputMeta.labelName}
             </label>
             <input
