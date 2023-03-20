@@ -5,6 +5,7 @@ import { useAuthContext } from '../../context/AuthContext';
 import { InflowRouteType, User } from '../../types/user';
 import TextBox from '../../components/ui/TextBox';
 import { useQueryClient } from '@tanstack/react-query';
+import { AUTH_GRID_CLASS } from './Login';
 
 const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300 outline-none mb-2 mt-1';
 
@@ -62,9 +63,9 @@ export default function Register() {
 
     return (
         <section className="flex justify-center gap-8">
-            <article className="">
-                <p className="mb-5 font-semibold text-lg">Register</p>
+            <article className={AUTH_GRID_CLASS}>
                 <form action="" className="mb-4 flex flex-col">
+                    <p className="mb-5 font-semibold text-lg">Register</p>
                     <p>Email</p>
                     <input
                         type="email"
@@ -100,7 +101,7 @@ export default function Register() {
                         id="AgeOptions"
                         onChange={handleAge}
                         value={userInfo.age}
-                        className="w-96 border border-dashed border-brand outline-none mb-5 mt-1"
+                        className="w-full border border-dashed border-brand outline-none mb-5 mt-1"
                     >
                         {ageOptions.map((option: string) => (
                             <option className="text-center" key={uuid()}>
@@ -114,7 +115,7 @@ export default function Register() {
                         id="inflowOptions"
                         onChange={handleInflowRoute}
                         value={userInfo.inflowRoute}
-                        className="w-96 border border-dashed border-brand outline-none mb-5 mt-1"
+                        className="w-full border border-dashed border-brand outline-none mb-5 mt-1"
                     >
                         {inflowRouteOptions.map((option: InflowRouteOption, id) => (
                             <option className="text-center" key={uuid()} value={option.value}>
@@ -136,7 +137,7 @@ export default function Register() {
                     </Link>
                 </p>
             </article>
-            <div className="w-96">
+            <div className="hidden basis-1/3 md:block">
                 <img src={process.env.PUBLIC_URL + '/images/auth/register.jpg'} alt="register_img" />
             </div>
         </section>

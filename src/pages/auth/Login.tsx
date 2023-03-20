@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
 import { User } from '../../types/user';
 
+export const AUTH_GRID_CLASS = 'basis-full p-4 flex flex-col md:basis-1/3';
+
 export default function Login() {
     const navigate = useNavigate();
     const { user, login, logout } = useAuthContext();
@@ -31,7 +33,7 @@ export default function Login() {
 
     return (
         <section className="flex justify-center gap-10 mt-5">
-            <article className="basis-full p-4 flex flex-col md:basis-1/3">
+            <article className={AUTH_GRID_CLASS}>
                 <form action="" className="mb-4 flex flex-col">
                     <p className="mb-5 font-semibold text-lg">Login</p>
                     <p>Email</p>
