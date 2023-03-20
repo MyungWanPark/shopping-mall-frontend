@@ -19,7 +19,7 @@ export default function Navbar() {
     console.log(`user = ${JSON.stringify(user)}`);
     const handleClick = (e: React.MouseEvent) => {
         const navContent = document.querySelector('#navbarId') as HTMLDivElement;
-        navContent.classList.toggle('h-80');
+        navContent.classList.toggle('h-84');
         navContent.style.transition = 'height 0.5s ease';
     };
 
@@ -42,7 +42,7 @@ export default function Navbar() {
                 className="h-0 w-full overflow-hidden lg:basis-10/20 lg:overflow-visible lg:h-auto lg:flex flex-grow items-center"
                 id="navbarId"
             >
-                <ul className="flex lg:justify-end text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
+                <ul className="flex lg:justify-start text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
                         <Link to={'/products?category=men'} className={LINK_CLASS} onClick={handleClick}>
                             Men
@@ -63,6 +63,13 @@ export default function Navbar() {
                             Shoes
                         </Link>
                     </li>
+                    <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
+                        <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}>
+                            <Cart />
+                        </Link>
+                    </li>
+                </ul>
+                <ul className="flex lg:justify-end text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
                     <li
                         className={`${NAV_ITEM_CLASS} flex justify-center items-center lg:basis-1/20`}
                         onClick={handleClick}
@@ -76,13 +83,9 @@ export default function Navbar() {
                             New
                         </Link>
                     </li>
-                    <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
-                        <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}>
-                            <Cart />
-                        </Link>
-                    </li>
+
                     {user && (
-                        <li className={`${NAV_ITEM_CLASS} hidden lg:block lg:basis-1/20`} onClick={handleClick}>
+                        <li className={`${NAV_ITEM_CLASS} hidden lg:block lg:basis-5/20`} onClick={handleClick}>
                             {' '}
                             <UserInfo user={user} />
                         </li>
@@ -94,11 +97,8 @@ export default function Navbar() {
                         </li>
                     )}
                     {user && (
-                        <li
-                            className={`${NAV_ITEM_CLASS} flex flex-col lg:flex-row lg:basis-1/20`}
-                            onClick={handleClick}
-                        >
-                            <Button text={'Logout'} onClick={logout} customCss="bg-transparent" />
+                        <li className={`${NAV_ITEM_CLASS} w-full lg:basis-1/20`} onClick={handleClick}>
+                            <Button text={'Logout'} onClick={logout} customCss="bg-transparent w-full" />
                         </li>
                     )}
                 </ul>

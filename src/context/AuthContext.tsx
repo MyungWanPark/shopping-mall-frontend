@@ -50,8 +50,6 @@ export function AuthProvider({ authService, children }: Props) {
         logout,
         authService,
     };
-    // console.log(`context.user = ${JSON.stringify(context.user)}`);
-    // console.log(`context = ${JSON.stringify(context)}`);
     return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>;
 }
 

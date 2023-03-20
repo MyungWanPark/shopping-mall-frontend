@@ -3,6 +3,9 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            height: {
+                84: '21rem',
+            },
             fontFamily: {
                 Gothic: ['Nanum Gothic', 'sans-serif'],
                 Abel: ['Abel', 'sans-serif'],

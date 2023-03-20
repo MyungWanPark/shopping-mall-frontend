@@ -26,6 +26,7 @@ export default function Login() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
         queryClient.invalidateQueries(['cart', user?.id ? user.id : '']);
         await login(loginInfo);
         navigate('/');

@@ -9,7 +9,7 @@ type Props = {
 export default function UserInfo({ user }: Props) {
     return (
         <div className="flex items-center shrink-0">
-            <span className="md:block">{user.name}</span>
+            <span className="md:block text-center">{user.name}</span>
         </div>
     );
 }

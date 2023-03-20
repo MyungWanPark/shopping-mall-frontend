@@ -13,7 +13,7 @@ type FetchOptions = {
 };
 
 const defaultRetryConfig: Config = {
-    retries: 5,
+    retries: 2,
     initialDelayMS: 100,
 };
 
