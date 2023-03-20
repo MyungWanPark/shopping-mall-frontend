@@ -37,13 +37,13 @@ export default function MyCart() {
     return (
         <section className="p-8">
             <p className="text-center text-2xl pb-5 border-b border-gray-300">Shopping Cart</p>
-            <p className="flex text-center mt-2">
+            <p className="flex text-center mt-2 text-xs lg:text-lg">
                 <span className="inline-block basis-1/12">CHECK</span>
                 <span className="inline-block basis-6/12">PRODUCT</span>
-                <span className="inline-block basis-1/12">PRICE</span>
-                <span className="inline-block basis-2/12">QUANTITY</span>
-                <span className="inline-block basis-1/12">SUBTOTAL</span>
-                <span className="inline-block basis-1/12">DELETE</span>
+                <span className="hidden md:inline-block basis-1/12">PRICE</span>
+                <span className="inline-block basis-3/12 md:basis-2/12">QUANTITY</span>
+                <span className="hidden md:inline-block basis-1/12">SUBTOTAL</span>
+                <span className="inline-block basis-2/12 md:basis-1/12">DELETE</span>
             </p>
             {!hasProduct && <p className="text-center mt-10">장바구니에 상품이 없습니다.</p>}
             {hasProduct && (
@@ -53,11 +53,11 @@ export default function MyCart() {
                             <CartItem key={cartItem.id} cartItem={cartItem} />
                         ))}
                     </ul>
-                    <div className="flex justify-between items-center p-4">
+                    <div className="flex flex-col w-full justify-between items-center p-4 md:flex-row">
                         <PriceCard text={'상품 총액'} price={`${totalPrice?.toLocaleString()} 원`} />
-                        <AiFillPlusCircle className="shrink-0" />
+                        <AiFillPlusCircle className="shrink-0 my-3" />
                         <PriceCard text={'배송료'} price={`${SHIPPING_FEE.toLocaleString()} 원`} />
-                        <FaEquals className="shrink-0" />
+                        <FaEquals className="shrink-0 my-3" />
                         <PriceCard text={'총 합계'} price={`${(totalPrice! + SHIPPING_FEE).toLocaleString()} 원`} />
                     </div>
                     <Button onClick={handleOrder} text={'주문하기'} />

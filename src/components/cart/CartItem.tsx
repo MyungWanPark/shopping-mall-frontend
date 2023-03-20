@@ -31,7 +31,7 @@ export default function CartItem({ cartItem }: Props) {
         deleteCartItem.mutate(cartItem.productId!);
     };
     return (
-        <li className="flex justify-between py-2">
+        <li className="flex justify-between py-2 text-xs md:text-md lg:text-lg">
             <div className="flex basis-1/12 justify-center items-center">
                 {/* <label htmlFor={`product${cartItem.productId}CheckBox`}>주문</label> */}
                 <input
@@ -42,8 +42,12 @@ export default function CartItem({ cartItem }: Props) {
                     checked={cartItem.isSelected}
                 />
             </div>
-            <div className="flex basis-6/12">
-                <img className="w-20 md:w-48 rounded-lg mr-3" src={productInfo?.imgURL} alt={productInfo?.name} />
+            <div className="flex justify-center basis-6/12">
+                <img
+                    className="hidden md:block md:w-48 rounded-lg mr-3"
+                    src={productInfo?.imgURL}
+                    alt={productInfo?.name}
+                />
                 <article className="flex flex-col justify-center basis-2/5">
                     <p className="font-semibold">
                         <span className="text-center">
@@ -56,16 +60,16 @@ export default function CartItem({ cartItem }: Props) {
                     </p>
                 </article>
             </div>
-            <div className="basis-1/12 flex justify-center items-center">
+            <div className="hidden basis-1/12 justify-center items-center md:flex">
                 <span className="inline-block">₩ {productInfo?.price!.toLocaleString()}</span>
             </div>
-            <div className="basis-2/12 flex justify-center items-center">
+            <div className="basis-3/12 flex justify-center items-center md:basis-2/12">
                 <InputWithPlusMinus type="cart" cartProduct={cartItem} />
             </div>
-            <div className="basis-1/12 flex justify-center items-center">
+            <div className="hidden basis-1/12 justify-center items-center md:flex">
                 <span className="">₩ {cartItem.totalPricePerProduct!.toLocaleString()}</span>
             </div>
-            <div className="basis-1/12 flex justify-center items-center">
+            <div className="basis-2/12 flex justify-center items-center md:basis-1/12">
                 <BsTrash className={`${ICON_CLASS}`} onClick={handleDelete} />
             </div>
         </li>
