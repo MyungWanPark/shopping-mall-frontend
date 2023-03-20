@@ -7,7 +7,7 @@ import { User } from '../../types/user';
 import { ProductType } from '../../types/product';
 import { CartItemType } from '../../types/cart';
 import { getHotItem } from '../../utils/analytics/orderedData';
-import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
+import { ANALYTICS_BOX_CLASS_NAME, ANALYTICS_GRID_CLASS_NAME } from './../../pages/analytics/Analytics';
 
 type Prop = {
     data: {
@@ -43,7 +43,7 @@ export default function GeneralBoxes({ data: { orderedCartItems, products, userI
     }
 
     return (
-        <div className="grid grid-cols-4 gap-8">
+        <div className={`${ANALYTICS_GRID_CLASS_NAME} md:grid-cols-4`}>
             <AnalyticsSmallBox
                 logoIcon={<BiDollar />}
                 iconStyle="text-sky-400 text-2xl"

@@ -41,7 +41,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
     return (
         <form onSubmit={handleSubmit} className="flex datePickers">
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
-                <div className={`${ANALYTICS_BOX_CLASS_NAME}`}>
+                <div className={`${ANALYTICS_BOX_CLASS_NAME} basis-2/6 md:basis-2/5`}>
                     <DatePicker
                         label="Start Date"
                         value={startDate}
@@ -53,7 +53,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
                         renderInput={(params) => <TextField {...params} />}
                     />
                 </div>
-                <div className={`mx-2 ${ANALYTICS_BOX_CLASS_NAME}`}>
+                <div className={`mx-2 ${ANALYTICS_BOX_CLASS_NAME} basis-2/6 md:basis-2/5`}>
                     <DatePicker
                         label="End Date"
                         value={endDate}
@@ -66,7 +66,7 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
                     />
                 </div>
             </LocalizationProvider>
-            <Button text="조회하기" customCss="rounded-xl shadow-sm" />
+            <Button text="조회하기" customCss="rounded-xl shadow-sm bg-brand basis-2/6 md:basis-2/5" />
         </form>
     );
 }

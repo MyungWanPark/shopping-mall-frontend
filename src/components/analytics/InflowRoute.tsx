@@ -44,6 +44,19 @@ export default function InflowRoute({ chartStyle, value }: Props) {
         /* title: {
             text: `${chartStyle.title}`,
         }, */
+        responsive: [
+            {
+                breakpoint: 768,
+                options: {
+                    chart: {
+                        width: 300,
+                    },
+                    legend: {
+                        position: 'bottom',
+                    },
+                },
+            },
+        ],
         plotOptions: {
             radialBar: {
                 hollow: {
@@ -76,7 +89,7 @@ export default function InflowRoute({ chartStyle, value }: Props) {
     let newOption; */
 
     return (
-        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} basis-1/5 pt-3`}>
+        <div id="inflowChart" className={`${ANALYTICS_BOX_CLASS_NAME} pt-3`}>
             <div className={`flex justify-center items-center text-md ${chartStyle.iconColor}`}>
                 <AiOutlineUsergroupAdd className="text-xl" />
                 <span> {value?.number} 명</span>

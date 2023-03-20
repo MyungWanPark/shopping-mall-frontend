@@ -15,6 +15,10 @@ const initialOption: ApexOptions = {
         // width: 800,
         // height: 400,
         type: 'line',
+        toolbar: {
+            offsetX: -30,
+            offsetY: 0,
+        },
     },
     stroke: {
         width: [0, 4],
@@ -58,9 +62,9 @@ const initialOption: ApexOptions = {
         {
             breakpoint: 1000,
             options: {
-                chart: {
+                /* chart: {
                     width: 300,
-                },
+                }, */
                 legend: {
                     position: 'bottom',
                 },
@@ -120,8 +124,8 @@ export default function MixedChart({ data: { period, periodOrders, orderedCartIt
     }, [periodOrders, orderedCartItems]);
 
     return (
-        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} p-6 basis-4/7`}>
-            <ReactApexChart options={option} series={series} type="line" width={600} />
+        <div id="mixedChart" className={`${ANALYTICS_BOX_CLASS_NAME} justify-center items-center p-6`}>
+            <ReactApexChart options={option} series={series} type="line" width={'100%'} />
         </div>
     );
 }

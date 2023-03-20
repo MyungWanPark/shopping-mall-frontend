@@ -1,4 +1,5 @@
 import React from 'react';
+import { ANALYTICS_GRID_CLASS_NAME } from '../../pages/analytics/Analytics';
 import { User } from '../../types/user';
 import { getInflowRouteData } from '../../utils/analytics/orderedData';
 import InflowRoute from './InflowRoute';
@@ -48,7 +49,7 @@ export default function InflowRoutes({ data: { userInfos } }: Prop) {
     }
 
     return (
-        <div className="flex justify-between">
+        <div className={`${ANALYTICS_GRID_CLASS_NAME} md:grid-cols-4`}>
             <InflowRoute
                 value={{
                     percent: inflowRoutes && totalSum ? getInflowRatio(inflowRoutes.instagram, totalSum) : 0,

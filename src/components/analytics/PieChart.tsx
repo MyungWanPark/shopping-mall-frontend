@@ -9,7 +9,7 @@ import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
 const initialSeries = [44, 55, 13];
 const initialOptions: ApexOptions = {
     chart: {
-        width: '90%',
+        // width: '90%',
         type: 'pie',
     },
     dataLabels: {
@@ -30,9 +30,9 @@ const initialOptions: ApexOptions = {
         {
             breakpoint: 480,
             options: {
-                chart: {
+                /* chart: {
                     width: 200,
-                },
+                }, */
                 legend: {
                     position: 'bottom',
                 },
@@ -68,11 +68,8 @@ export default function PieChart({ data: { orderedCartItems, products } }: Prop)
     }, [orderedCartItems]);
 
     return (
-        <div
-            id="chart"
-            className={`${ANALYTICS_BOX_CLASS_NAME} ml-4 basis-3/7 w-full flex justify-center items-center`}
-        >
-            <ReactApexChart options={option} series={series} type="pie" width={'170%'} />
+        <div id="chart" className={`${ANALYTICS_BOX_CLASS_NAME} p-6 flex justify-center items-center`}>
+            <ReactApexChart options={option} series={series} type="pie" width={'150%'} />
         </div>
     );
 }

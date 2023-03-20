@@ -15,6 +15,7 @@ import 'dayjs/locale/ko';
 import dayjs from 'dayjs';
 
 export const ANALYTICS_BOX_CLASS_NAME = 'bg-white rounded-xl shadow-sm';
+export const ANALYTICS_GRID_CLASS_NAME = 'grid grid-cols-1 gap-4 mb-5';
 
 export default function Analytics() {
     const { start, end } = getPeriodTime(new Date(), new Date());
@@ -41,8 +42,8 @@ export default function Analytics() {
 
     return (
         <section className="bg-zinc-200 p-4 py-8">
-            <article className="flex items-center justify-center mb-5">
-                <p className={`mr-5  p-4 ${ANALYTICS_BOX_CLASS_NAME}`}>{`${dayjs(period.start).format(
+            <article className={`${ANALYTICS_GRID_CLASS_NAME} md:grid-cols-2`}>
+                <p className={`text-center p-4 ${ANALYTICS_BOX_CLASS_NAME}`}>{`${dayjs(period.start).format(
                     'YYYY-MM-DD'
                 )} ~ ${dayjs(period.end).format('YYYY-MM-DD')} 기간을 분석합니다.`}</p>
                 <DateRangePicker setPeriod={setPeriod} dataStatus={{ isLoading, allUserInfos }} />
@@ -50,11 +51,11 @@ export default function Analytics() {
             <article className="">
                 <GeneralBoxes data={{ orderedCartItems, products, userInfos }} />
             </article>
-            <article className="flex mt-8">
+            <article className={`${ANALYTICS_GRID_CLASS_NAME} md:grid-cols-2`}>
                 <MixedChart data={{ period, periodOrders, orderedCartItems }} />
                 <PieChart data={{ orderedCartItems, products }} />
             </article>
-            <article className="mt-8">
+            <article>
                 <InflowRoutes data={{ userInfos }} />
             </article>
         </section>

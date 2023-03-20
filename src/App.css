@@ -36,6 +36,13 @@
     top: -10px;
 }
 
+#mixedChart > div,
+#inflowChart > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .apx-legend-position-right {
     display: flex;
     flex-direction: column;
