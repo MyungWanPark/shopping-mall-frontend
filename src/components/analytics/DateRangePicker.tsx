@@ -23,7 +23,6 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
     let dateRange;
-    // console.log(`allUserInfos in DateRangePicker = ${JSON.stringify(allUserInfos)}`);
 
     if (allUserInfos && allUserInfos.length > 0) {
         dateRange = {
@@ -34,7 +33,6 @@ export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, al
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // console.log(`${JSON.stringify(startDate)} ~ ${endDate} 기간의 데이터를 조회합니다.`);
         setPeriod(getPeriodTime(startDate!, endDate!));
     }
 
