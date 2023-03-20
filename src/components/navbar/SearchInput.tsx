@@ -20,7 +20,7 @@ export default function SearchInput() {
     };
 
     return (
-        <form className="flex border border-brand rounded-full overflow-hidden w-full" onSubmit={handleSubmit}>
+        <form className="flex mx-2 border border-brand rounded-full overflow-hidden w-full" onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Search name of product..."

@@ -97,7 +97,7 @@ export default function Register() {
                     <p>Age</p>
                     <select
                         name=""
-                        id="options"
+                        id="AgeOptions"
                         onChange={handleAge}
                         value={userInfo.age}
                         className="w-96 border border-dashed border-brand outline-none mb-5 mt-1"
@@ -111,7 +111,7 @@ export default function Register() {
                     <p>어떻게 오셨나요?</p>
                     <select
                         name=""
-                        id="options"
+                        id="inflowOptions"
                         onChange={handleInflowRoute}
                         value={userInfo.inflowRoute}
                         className="w-96 border border-dashed border-brand outline-none mb-5 mt-1"

@@ -44,24 +44,25 @@ export default function Navbar() {
 */
 
     return (
-        <nav className="bg-brand sticky top-0 z-20 lg:bg-white w-full flex flex-wrap items-center justify-between px-2 py-3 mb-3">
-            <div className="flex-1 lg:basis-4/20 w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
-                <Link to={'/'} className="text-white flex justify-center items-center text-3xl lg:text-brand">
+        <nav className="bg-brand sticky top-0 z-20 w-full flex flex-wrap lg:flex-nowrap items-center justify-between px-2 py-3 border-b border-red-200 lg:bg-zinc-400">
+            <div className="flex-1 px-2 w-full relative flex justify-between items-center lg:w-auto lg:basis-10/20 lg:static lg:justify-start lg:px-4">
+                <Link
+                    to={'/'}
+                    className="text-white flex justify-center items-center text-3xl lg:text-brand lg:basis-6/12"
+                >
                     <BiShoppingBag />
-                    <h1>Fashion Mall</h1>
+                    <h1 className="hidden lg:block lg:basis-10/12">The Fashion</h1>
                 </Link>
+                <SearchInput />
                 <button className="lg:hidden text-2xl" onClick={handleClick}>
                     <GiHamburgerMenu className="text-white" />
                 </button>
             </div>
             <div
-                className="h-0 basis-16/20 overflow-hidden lg:overflow-visible lg:h-auto lg:flex flex-grow items-center"
+                className="h-0 basis-10/20 overflow-hidden lg:overflow-visible lg:h-auto lg:flex flex-grow items-center"
                 id="navbarId"
             >
-                <ul className="flex text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
-                    <li className="nav-item text-black w-full p-2 lg:basis-3/12">
-                        <SearchInput />
-                    </li>
+                <ul className="flex lg:justify-end text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
                     <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`}>
                         <Link to={'/products?category=men'} className={LINK_CLASS} onClick={handleClick}>
                             Men
