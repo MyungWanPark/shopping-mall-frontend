@@ -38,8 +38,6 @@ export default function Analytics() {
         getProducts: { data: products },
     } = useProducts({ category: 'all' });
 
-    console.log(`userInfos in analytics = ${JSON.stringify(userInfos)}`);
-
     return (
         <section className="bg-zinc-200 p-4 py-8 font-Abel">
             <article className={`${ANALYTICS_GRID_CLASS_NAME} md:grid-cols-2`}>

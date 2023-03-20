@@ -16,7 +16,6 @@ export default class CartService {
     }
 
     async getOrderedCartItems(startDate: Date, endDate: Date): Promise<CartItemType[] | any> {
-        // console.log(`startDate in front api = ${startDate}`);
         const allCartItems: CartItemType[] = await this.http.fetch(`/cart?startDate=${startDate}&endDate=${endDate}`, {
             method: 'GET',
         });

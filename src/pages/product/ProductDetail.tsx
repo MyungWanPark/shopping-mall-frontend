@@ -6,6 +6,7 @@ import InputWithPlusMinus from '../../components/ui/InputWithPlusMinus';
 import TextBox from '../../components/ui/TextBox';
 import ProductColor from '../../components/ui/ProductColor';
 import useProducts from './../../hooks/useProducts';
+import { useAuthContext } from '../../context/AuthContext';
 
 const PRODUCT_COLORS = ['pink', 'blue', 'white', 'black'];
 
@@ -15,7 +16,7 @@ export default function ProductDetail() {
     const {
         getProductInfo: { isLoading, data: product },
     } = useProducts({ productId });
-
+    const { user } = useAuthContext();
     let name: string, price: number, category: string, description: string, imgURL: string;
     if (product) {
         name = product.name!;
@@ -35,6 +36,9 @@ export default function ProductDetail() {
     const { addToCart } = useCart();
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        if (!user) {
+            return alert('로그인 진행 후 장바구니에 담을 수 있습니다.');
+        }
         setIsUploaded(true);
         addToCart.mutate(cartProduct, {
             onSuccess: () => setTimeout(() => setIsUploaded(false), 3000),

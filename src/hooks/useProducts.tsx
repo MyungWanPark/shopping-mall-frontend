@@ -48,7 +48,6 @@ export default function useProducts({
         }
     );
 
-    // console.log(`productId in useProduct = ${productId}`);
     const getProductInfo: {
         isLoading: boolean;
         error: any;

@@ -9,7 +9,6 @@ export function getPeriodTime(start: Date, end: Date) {
 }
 
 export function getBetweenTwoDates(start: Date, end: Date) {
-    // console.log(`start = ${start} end = ${end} in getBetween`);
     if (
         start.getFullYear() === end.getFullYear() &&
         start.getMonth() === end.getMonth() &&

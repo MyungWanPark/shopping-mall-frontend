@@ -115,8 +115,6 @@ export function getInflowRouteData(userInfos: User[]) {
         etc: byEtc.length,
     };
 
-    console.log(`inflowInfo = ${JSON.stringify(inflowInfo)}`);
-
     return { inflowInfo, totalNum };
 }
 

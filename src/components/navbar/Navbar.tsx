@@ -16,7 +16,6 @@ const LINK_CLASS = 'inline-block w-full';
 export default function Navbar() {
     const { user, login, logout } = useAuthContext();
     const navigate = useNavigate();
-    console.log(`user = ${JSON.stringify(user)}`);
     const handleClick = (e: React.MouseEvent) => {
         const navContent = document.querySelector('#navbarId') as HTMLDivElement;
         navContent.classList.toggle('h-84');

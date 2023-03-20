@@ -58,10 +58,8 @@ type Prop = {
 export default function PieChart({ data: { orderedCartItems, products } }: Prop) {
     const [series, setSeries] = useState(initialSeries);
     const [option, setOption] = useState(initialOptions);
-    // console.log(`orderedCartItems in PieChart = ${JSON.stringify(orderedCartItems)}`);
 
     useEffect(() => {
-        // console.log('useEffect fired in Piechart');
         if (orderedCartItems && orderedCartItems!.length > 0) {
             const salesData = getPieChartData(orderedCartItems!, products!);
             const newSeries = salesData.map((data) => data.salesAmount);

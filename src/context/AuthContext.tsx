@@ -21,7 +21,6 @@ export function AuthProvider({ authService, children }: Props) {
     const [user, setUser] = useState<User | undefined>(undefined);
 
     useEffect(() => {
-        // console.log('useEffect fired!');
         authService
             .me()
             .then((res) => setUser(res.user))

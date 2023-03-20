@@ -31,15 +31,15 @@ export default function useCart(startDate?: Date, endDate?: Date) {
     );
 
     const addToCart = useMutation((product: CartItemType) => cartService.addToCart(product), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
+        onSuccess: () => queryClient.invalidateQueries(['cart', user?.id ? user.id : '']),
     });
 
     const updateCartItem = useMutation((product: CartItemType) => cartService.updateCartItem(product), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
+        onSuccess: () => queryClient.invalidateQueries(['cart', user?.id ? user.id : '']),
     });
 
     const deleteCartItem = useMutation((productId: number) => cartService.deleteCartItem({ productId }), {
-        onSuccess: () => queryClient.invalidateQueries(['cart', user.id ? user.id : '']),
+        onSuccess: () => queryClient.invalidateQueries(['cart', user?.id ? user.id : '']),
     });
 
     return { getCart, getOrderedCartByPeriod, addToCart, updateCartItem, deleteCartItem };

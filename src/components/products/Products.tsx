@@ -19,7 +19,6 @@ export default function Products({ showAllProduct }: Prop) {
         getProducts: { isLoading: categoryIsLoading, error: categoryError, data: categoryProducts },
         getProductsByKeyword: { isLoading: keywordIsLoading, error: keywordError, data: keywordProducts },
     } = useProducts({ category, keyword });
-    // console.log(`categoryProducts product = ${JSON.stringify(categoryProducts)}`);
 
     return (
         <>
