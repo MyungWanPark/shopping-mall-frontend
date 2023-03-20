@@ -11,6 +11,7 @@ const initialOptions: ApexOptions = {
     chart: {
         // width: '90%',
         type: 'pie',
+        fontFamily: 'Raleway, sans-serif',
     },
     dataLabels: {
         enabled: true,
@@ -20,6 +21,9 @@ const initialOptions: ApexOptions = {
         align: 'center',
         // offsetX: 30,
         offsetY: -5,
+        style: {
+            fontSize: '20px',
+        },
     },
     tooltip: {
         y: {

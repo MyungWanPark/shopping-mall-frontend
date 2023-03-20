@@ -40,6 +40,7 @@ export default function InflowRoute({ chartStyle, value }: Props) {
         chart: {
             height: 350,
             type: 'radialBar',
+            fontFamily: 'Raleway, sans-serif',
         },
         /* title: {
             text: `${chartStyle.title}`,

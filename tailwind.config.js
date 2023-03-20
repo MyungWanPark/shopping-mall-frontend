@@ -3,6 +3,13 @@ module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
     theme: {
         extend: {
+            fontFamily: {
+                Gothic: ['Nanum Gothic', 'sans-serif'],
+                Abel: ['Abel', 'sans-serif'],
+                Raleway: ['Raleway', 'sans-serif'],
+                // RalewayItalic: ['Raleway', 'sans-serif'],
+                RobotoMono: ['Roboto Mono', 'monospace'],
+            },
             colors: {
                 brand: '#f96162',
             },

@@ -24,14 +24,14 @@ export default function Navbar() {
     };
 
     return (
-        <nav className="bg-brand sticky top-0 z-20 w-full flex flex-col items-center justify-between px-2 py-3 border-b border-red-200 lg:bg-white lg:flex-row">
+        <nav className="bg-brand font-Raleway sticky top-0 z-20 w-full flex flex-col items-center justify-between px-2 py-3 border-b border-red-200 lg:bg-white lg:flex-row">
             <div className="flex-1 px-2 w-full relative flex justify-between items-center lg:w-auto lg:basis-10/20 lg:static lg:justify-start lg:px-4">
                 <Link
                     to={'/'}
-                    className="text-white flex justify-center items-center text-3xl lg:text-brand lg:basis-6/12"
+                    className="text-white flex justify-center items-center text-3xl lg:text-brand lg:basis-7/12"
                 >
                     <BiShoppingBag />
-                    <h1 className="hidden lg:block lg:basis-10/12">The Fashion</h1>
+                    <h1 className="hidden lg:block lg:basis-8/12">The Style</h1>
                 </Link>
                 <SearchInput />
                 <button className="lg:hidden text-2xl" onClick={handleClick}>

@@ -63,7 +63,7 @@ export default function NewProducts() {
         }));
     };
     return (
-        <section className="w-full text-center">
+        <section className="w-full text-center font-Raleway">
             <h1 className="text-2xl font-bold py-4">새로운 제품 등록하기</h1>
             <form onSubmit={handleSubmit} className="flex flex-col px-4 mx-auto w-full gap-5 my-2 lg:w-2/3 lg:px-0">
                 {showingImgURL && <img className="w-96 mx-auto" src={showingImgURL} alt="local_img" />}

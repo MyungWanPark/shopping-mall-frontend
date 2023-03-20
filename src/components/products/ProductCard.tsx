@@ -12,7 +12,7 @@ export default function ProductCard({ product: { name, price, category, imgURL, 
     };
     return (
         <li
-            className="cursor-pointer shadow-md rounded-lg overflow-hidden transition-all hover:scale-105"
+            className="cursor-pointer shadow-md rounded-lg font-Raleway overflow-hidden transition-all hover:scale-105"
             onClick={handleClick}
         >
             <img src={imgURL} alt={name} className="h-4/5 w-full" />

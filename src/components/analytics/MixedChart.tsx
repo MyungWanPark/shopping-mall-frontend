@@ -19,12 +19,16 @@ const initialOption: ApexOptions = {
             offsetX: -30,
             offsetY: 0,
         },
+        fontFamily: 'Raleway, sans-serif',
     },
     stroke: {
         width: [0, 4],
     },
     title: {
         text: 'Sales by Day',
+        style: {
+            fontSize: '20px',
+        },
     },
     dataLabels: {
         enabled: true,

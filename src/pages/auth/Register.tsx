@@ -62,7 +62,7 @@ export default function Register() {
     };
 
     return (
-        <section className="flex justify-center gap-8">
+        <section className="flex justify-center gap-8 font-Abel">
             <article className={AUTH_GRID_CLASS}>
                 <form action="" className="mb-4 flex flex-col">
                     <p className="mb-5 font-semibold text-lg">Register</p>

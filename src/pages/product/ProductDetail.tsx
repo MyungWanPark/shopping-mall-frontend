@@ -44,7 +44,7 @@ export default function ProductDetail() {
     return (
         <>
             {product && (
-                <section className="flex flex-col md:flex-row md:justify-center gap-12 p-4">
+                <section className="flex flex-col font-Raleway md:flex-row md:justify-center gap-12 p-4">
                     <div className="w-full basis-6/12">
                         <img className="w-full" src={imgURL!} alt={name!} />
                     </div>
