@@ -10,9 +10,9 @@ type Props = {
 export default function ProtectedRoute({ children, requiredAdmin }: Props) {
     const { user } = useAuthContext();
 
-    if (!user || (requiredAdmin && !user.isAdmin)) {
+    /*     if (!user || (requiredAdmin && !user.isAdmin)) {
         return <Navigate to={'/'} replace={true} />;
-    }
+    } */
 
     return children;
 }
