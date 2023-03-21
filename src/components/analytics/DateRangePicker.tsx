@@ -22,6 +22,7 @@ type Props = {
 export default function DateRangePicker({ setPeriod, dataStatus: { isLoading, allUserInfos } }: Props) {
     const [startDate, setStartDate] = useState<Date | null>(null);
     const [endDate, setEndDate] = useState<Date | null>(null);
+
     let dateRange;
 
     if (allUserInfos && allUserInfos.length > 0) {
