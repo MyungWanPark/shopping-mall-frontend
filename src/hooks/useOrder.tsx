@@ -33,7 +33,8 @@ export default function useOrder(startDate?: Date, endDate?: Date) {
     const createOrder = useMutation((order: OrderType) => orderService.createOrder(order), {
         onSuccess: () => {
             queryClient.invalidateQueries(['cart', user?.id || '']);
-            queryClient.invalidateQueries(['cartOrdered', user?.id || '']);
+            // queryClient.invalidateQueries(['cartOrdered', user?.id || '']);
+            queryClient.invalidateQueries(['orderedCart']);
             queryClient.invalidateQueries(['order']);
         },
     });
