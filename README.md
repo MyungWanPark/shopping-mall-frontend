@@ -4,13 +4,21 @@
 
 ### Theme: 의류 쇼핑 몰
 
+### Version
+React: 18.2.0
+Node: 18.x
+
 ### SKILLS:
 - Language: Typescript
 - UI: TailwindCSS, HTML5
-- Framework: React.js(Function Component, React Hooks, React Router Dom, React Query etc)
+- Framework: React.js
+  - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
 - UI Library: MUI
 - State Management: Context APIs
 - Design Pattern: Dependency Injection
+- Chart Library: ApexChart
+- HTTP Library: Axios
+- Icons: React-icons
 
 
 ## Features 
