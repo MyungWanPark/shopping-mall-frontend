@@ -14,7 +14,7 @@ const NAV_ITEM_CLASS =
 const LINK_CLASS = 'inline-block w-full';
 
 export default function Navbar() {
-    const { user, login, logout } = useAuthContext();
+    const { user, logout } = useAuthContext();
     const navigate = useNavigate();
     const handleClick = (e: React.MouseEvent) => {
         const navContent = document.querySelector('#navbarId') as HTMLDivElement;
