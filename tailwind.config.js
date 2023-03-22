@@ -5,6 +5,13 @@ module.exports = {
         extend: {
             height: {
                 84: '21rem',
+                100: '25rem',
+                104: '26rem',
+                108: '27rem',
+                112: '28rem',
+                128: '32rem',
+                144: '36rem',
+                160: '40rem',
             },
             fontFamily: {
                 Gothic: ['Nanum Gothic', 'sans-serif'],
