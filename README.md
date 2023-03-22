@@ -1,27 +1,23 @@
 # Shopping Mall Side Project
 
-### You can see Demo here!
+### Click the link below to view Demo!
 
 [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
 - [Sections](#sections)
   - [Index](#Index)
   - [Login](#Login)
+  - [Register](#Register)
+  - [After Login](#After-Login)
+  - [Men's Category](#Men's-Category)
+  - [Keyword Search](#Keyword-Search)
+  - [My Cart](#My-Cart)
+  - [Cart Option](#Cart-Option)
+  - [Analytics Set Dates](#Analytics-Set-Dates)
+  - [Analytics Sales](#Analytics-Sales)
   - [Analytics User Inflow](#Analytics-User-Inflow)
-  - [Short Description](#short-description)
-  - [Long Description](#long-description)
-  - [Table of Contents](#table-of-contents-1)
-  - [Security](#security)
-  - [Background](#background)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Extra Sections](#extra-sections)
-  - [API](#api)
-  - [Maintainers](#maintainers)
-  - [Thanks](#thanks)
-  - [Contributing](#contributing)
-  - [License](#license)
-- [Definitions](#definitions)
+  - [New Product](#New-Product)
+  - [After New Product](#After-New-Product)
 
 ## Sections
 
