@@ -1,18 +1,17 @@
 # Shopping Mall Side Project (- Front-end)
 <br/>
 
-### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
-
-Click the link below to view Demo!
-
-[Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
 ### Version
 [![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
 [![node version](https://img.shields.io/badge/Node-18.x-orange.svg?style=flat-square)](https://nodejs.org/en)
 
-<br/>
-Node: 18.x
+
+### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
+
+Click the link below to view Demo!
+
+[Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
 <details open="open">
 <summary>SKILLS</summary>
