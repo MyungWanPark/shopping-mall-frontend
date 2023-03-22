@@ -62,10 +62,17 @@ export default function Navbar() {
                             Shoes
                         </Link>
                     </li>
-                    <li className={`${NAV_ITEM_CLASS} lg:basis-1/20`} onClick={handleClick}>
-                        <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}>
-                            <Cart />
-                        </Link>
+                    <li
+                        className={`${NAV_ITEM_CLASS} lg:basis-1/20 flex justify-center`}
+                        onClick={(e) => {
+                            handleClick(e);
+                            user && navigate('/carts');
+                            !user && alert('로그인이 필요합니다.');
+                        }}
+                    >
+                        {/* <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}> */}
+                        <Cart />
+                        {/* </Link> */}
                     </li>
                 </ul>
                 <ul className="flex lg:justify-end text-white flex-col w-full text-center items-center lg:flex-row lg:text-black list-none mr-auto">
