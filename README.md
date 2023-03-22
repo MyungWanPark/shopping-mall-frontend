@@ -2,9 +2,33 @@
 
 ### You can see Demo here!
 
-[demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
+[Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
-## Index Page
+- [Sections](#sections)
+  - [Title](#title)
+  - [Banner](#banner)
+  - [Badges](#badges)
+  - [Short Description](#short-description)
+  - [Long Description](#long-description)
+  - [Table of Contents](#table-of-contents-1)
+  - [Security](#security)
+  - [Background](#background)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Extra Sections](#extra-sections)
+  - [API](#api)
+  - [Maintainers](#maintainers)
+  - [Thanks](#thanks)
+  - [Contributing](#contributing)
+  - [License](#license)
+- [Definitions](#definitions)
+
+## Sections
+
+### Title
+**Status:** Required.
+
+### Index Page
 
 <img width="1280" alt="index-min" src="https://user-images.githubusercontent.com/56289900/226888377-cb0c276d-1038-40ae-9e76-249edb8fb756.png">
 
