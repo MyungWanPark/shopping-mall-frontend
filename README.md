@@ -1,26 +1,34 @@
 # Shopping Mall Side Project
 <br/>
 <br/>
-Theme: 의류 쇼핑 몰
+### Theme: 의류 쇼핑 몰
+### SKILLS:
+Language: Typescript
+UI: TailwindCSS, HTML5
+Framework: React.js(Function Component, React Hooks, React Router Dom, React Query etc)
+UI Library: MUI
+State Management: Context APIs
+Design Pattern: Dependency Injection
+
 
 ## Features 
 - Responsive Website
 
-- Auth
+- Auth(인증)
   - Login, Register, Keep Session, JWTToken
 
-- Product
+- Product(제품)
   - Show products (by category, by search keyword, by All)
   - Create product
 
-- Cart
-  - Add to Cart
-  - Read Cart
-  - Update Cart
-  - Delete cart
+- Cart(장바구니)
+  - Add to Cart (장바구니에 추가, 중복 상품 추가 방지)
+  - Read Cart (장바구니에 추가한 상품 조회)
+  - Update Cart (상품 수량을 변경 가능)
+  - Delete Cart (상품을 장바구니에서 제거)
 
-- Analytics
-  - Query data based on selected period.
+- Analytics(분석)
+  - Query data based on selected period.(선택한 기간에 따른 데이터 조회)
     - Total Sales amount
     - New Users number
     - Sales Volumn
