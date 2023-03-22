@@ -21,7 +21,10 @@ Click the link below to view Demo!
 <details open="open">
 <summary>SKILLS</summary>
   
-- Language: <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
+- Language: 
+  <p align="center">
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
+  </p>
 - UI: TailwindCSS, HTML5
 - Framework: React.js
   - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
