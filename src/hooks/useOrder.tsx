@@ -36,6 +36,7 @@ export default function useOrder(startDate?: Date, endDate?: Date) {
             // queryClient.invalidateQueries(['cartOrdered', user?.id || '']);
             queryClient.invalidateQueries(['orderedCart']);
             queryClient.invalidateQueries(['order']);
+            queryClient.invalidateQueries(['products']);
         },
     });
 

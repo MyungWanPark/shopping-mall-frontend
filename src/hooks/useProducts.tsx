@@ -53,7 +53,7 @@ export default function useProducts({
         error: any;
         data?: ProductType;
     } = useQuery(
-        ['productsInfo', productId || 'productId not set'],
+        ['products', 'productsInfo', productId || 'productId not set'],
         productId ? () => productService.getProductByProductId(productId!) : () => 'productId not set',
         {
             staleTime: 1000 * 60 * 60 * 24,
