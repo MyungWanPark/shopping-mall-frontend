@@ -9,11 +9,12 @@
 
 ### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
 
+<br/>
+
 Click the link below to view Demo!
 
 [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
-<br/>
 <br/>
 
 <details open="open">
