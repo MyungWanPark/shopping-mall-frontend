@@ -6,6 +6,7 @@ import { InflowRouteType, User } from '../../types/user';
 import TextBox from '../../components/ui/TextBox';
 import { useQueryClient } from '@tanstack/react-query';
 import { AUTH_GRID_CLASS } from './Login';
+import useUser from './../../hooks/useUser';
 
 const INPUT_CLASSNAME = 'border rounded-md p-2 border-gray-300 outline-none mb-2 mt-1';
 
@@ -31,13 +32,12 @@ export default function Register() {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
     const { register, user } = useAuthContext();
+    // const { addUser } = useUser();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        queryClient.invalidateQueries(['cart', user?.id ? user.id : '']);
         await register(userInfo);
-        navigate('/');
     };
 
     const handleEmail = (e: React.ChangeEvent) => {

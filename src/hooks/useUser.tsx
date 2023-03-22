@@ -6,7 +6,7 @@ import AuthService from './../service/auth';
 
 export default function useUser(startDate?: Date, endDate?: Date) {
     const queryClient = useQueryClient();
-    const { authService }: { authService: AuthService } = useAuthContext();
+    const { authService, user }: { authService: AuthService; user: User } = useAuthContext();
 
     const getAllUser: {
         isLoading: boolean;
@@ -29,7 +29,10 @@ export default function useUser(startDate?: Date, endDate?: Date) {
     );
 
     const addUser = useMutation((userInfo: User) => authService.register(userInfo), {
-        onSuccess: () => queryClient.invalidateQueries(['user']),
+        onSuccess: () => {
+            queryClient.invalidateQueries(['user']);
+            queryClient.invalidateQueries(['cart', user?.id ? user.id : '']);
+        },
     });
 
     return { getAllUser, getUserByPeriod, addUser };
