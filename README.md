@@ -28,7 +28,7 @@
 ### Title
 **Status:** Required.
 
-### Index Page
+## Index Page
 
 <img width="1280" alt="index-min" src="https://user-images.githubusercontent.com/56289900/226888377-cb0c276d-1038-40ae-9e76-249edb8fb756.png">
 
