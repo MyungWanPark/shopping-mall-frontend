@@ -8,7 +8,9 @@ Click the link below to view Demo!
 [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
 ### Version
-React: 18.2.0 
+[![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
+[![node version](https://img.shields.io/badge/Node-18.x-orange.svg?style=flat-square)](https://nodejs.org/en)
+
 <br/>
 Node: 18.x
 
