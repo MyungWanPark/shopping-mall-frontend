@@ -29,7 +29,10 @@
 **Status:** Required.
 
 ## Index Page
-
+<br/>
+<br/>
+<br/>
+<br/>
 <img width="1280" alt="index-min" src="https://user-images.githubusercontent.com/56289900/226888377-cb0c276d-1038-40ae-9e76-249edb8fb756.png">
 
 In the project directory, you can run:
