@@ -29,12 +29,12 @@
 ### Login
 <br/>
 
-<img width="1280" alt="login-min" src="https://user-images.githubusercontent.com/56289900/226888384-2fb09b30-323c-4af0-8b9b-69a603b30c42.png">
+<img width="1280" alt="login-min" src="https://user-images.githubusercontent.com/56289900/226905787-d5da9c21-7363-45c5-ac3e-7faa2b4aaa09.png">
 
 ### Register
 <br/>
 
-<img width="1280" alt="register-min" src="https://user-images.githubusercontent.com/56289900/226888401-749da1d3-dc3c-4526-8ab1-7220fb216c0a.png" />
+<img width="1280" alt="register-min" src="https://user-images.githubusercontent.com/56289900/226905780-375b684a-1c7d-43f6-823c-fc84350dc616.png">
 
 ### After Login
 <br/>
