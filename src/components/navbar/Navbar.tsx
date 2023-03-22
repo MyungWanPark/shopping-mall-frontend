@@ -63,7 +63,7 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li
-                        className={`${NAV_ITEM_CLASS} lg:basis-1/20 flex justify-center`}
+                        className={`${NAV_ITEM_CLASS} ${LINK_CLASS} lg:basis-1/20 flex justify-center cursor-pointer`}
                         onClick={(e) => {
                             handleClick(e);
                             user && navigate('/carts');
