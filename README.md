@@ -1,14 +1,16 @@
 # Shopping Mall Side Project
 <br/>
 <br/>
+
 ### Theme: 의류 쇼핑 몰
+
 ### SKILLS:
-Language: Typescript
-UI: TailwindCSS, HTML5
-Framework: React.js(Function Component, React Hooks, React Router Dom, React Query etc)
-UI Library: MUI
-State Management: Context APIs
-Design Pattern: Dependency Injection
+- Language: Typescript
+- UI: TailwindCSS, HTML5
+- Framework: React.js(Function Component, React Hooks, React Router Dom, React Query etc)
+- UI Library: MUI
+- State Management: Context APIs
+- Design Pattern: Dependency Injection
 
 
 ## Features 
