@@ -21,9 +21,12 @@ Click the link below to view Demo!
 <details open="open">
 <summary>SKILLS</summary>
   
-- Language: <p align="center"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" /></p>
-- UI: TailwindCSS, HTML5
-- Framework: React.js
+- Language: 
+    - <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
+- UI: 
+  - <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+- Framework: 
+  - <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
   - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
 - UI Library: MUI
 - State Management: Context API
