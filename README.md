@@ -1,11 +1,15 @@
 # Shopping Mall Side Project
 <br/>
-<br/>
 
 ### Theme: 의류 쇼핑 몰
 
+### Click the link below to view Demo!
+
+[Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
+
 ### Version
-React: 18.2.0
+React: 18.2.0 
+<br/>
 Node: 18.x
 
 ### SKILLS:
@@ -47,10 +51,6 @@ Node: 18.x
     - Top 5 Items of Sales Shown by Chart
     - User's inflow route data Shown by Chart
 
-
-### Click the link below to view Demo!
-
-[Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
 - [Basic](#Basic)
   - [Index](#Index)
