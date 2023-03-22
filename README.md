@@ -1,4 +1,14 @@
 # Shopping Mall Side Project
+<br/>
+<br/>
+Theme: 의류 쇼핑 몰
+
+## Features 
+- Auth
+  - Login, Register, Keep Session, JWTToken
+- Product
+  - Show products (by category, by keyword, by All)
+
 
 ### Click the link below to view Demo!
 
