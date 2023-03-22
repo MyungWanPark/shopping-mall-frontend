@@ -7,7 +7,7 @@
 - [Sections](#sections)
   - [Index](#Index)
   - [Login](#Login)
-  - [Analytics User Inflow](#Analytics User Inflow)
+  - [Analytics User Inflow](#Analytics-User-Inflow)
   - [Short Description](#short-description)
   - [Long Description](#long-description)
   - [Table of Contents](#table-of-contents-1)
