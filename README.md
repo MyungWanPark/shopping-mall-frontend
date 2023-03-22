@@ -4,10 +4,30 @@
 Theme: 의류 쇼핑 몰
 
 ## Features 
+- Responsive Website
+
 - Auth
   - Login, Register, Keep Session, JWTToken
+
 - Product
-  - Show products (by category, by keyword, by All)
+  - Show products (by category, by search keyword, by All)
+  - Create product
+
+- Cart
+  - Add to Cart
+  - Read Cart
+  - Update Cart
+  - Delete cart
+
+- Analytics
+  - Query data based on selected period.
+    - Total Sales amount
+    - New Users number
+    - Sales Volumn
+    - Hot Sales Item
+    - Sales by Day Shown by Chart
+    - Top 5 Items of Sales Shown by Chart
+    - User's inflow route data Shown by Chart
 
 
 ### Click the link below to view Demo!
