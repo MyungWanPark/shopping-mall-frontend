@@ -1,9 +1,9 @@
-# Shopping Mall Side Project
+# Shopping Mall Side Project (- Front-end)
 <br/>
 
 ### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
 
-### Click the link below to view Demo!
+Click the link below to view Demo!
 
 [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
 
