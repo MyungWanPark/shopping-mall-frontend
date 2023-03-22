@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
-import Navbar from './components/navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import SideBar from './components/navbar/SideBar';
+import './App.css';
+import Navbar from './components/navbar/Navbar';
 import HttpClient from './network/http';
 import AuthService from './service/auth';
 import { AuthProvider } from './context/AuthContext';
@@ -14,7 +13,6 @@ import CartService from './service/cart';
 import OrderService from './service/order';
 import { CartProvider } from './context/CartContext';
 import { OrderProvider } from './context/OrderContext';
-import NavbarTest from './components/navbar/NavbarTest';
 
 const queryClient = new QueryClient();
 const baseURL = process.env.REACT_APP_BASE_URL;
@@ -32,18 +30,8 @@ function App() {
                 <ProductProvider productService={productService}>
                     <CartProvider cartService={cartService}>
                         <OrderProvider orderService={orderService}>
-                            {/* <NavbarTest /> */}
                             <Navbar />
                             <Outlet />
-                            {/* 
-                            <div className="flex">
-                                <div className="basis-1/5">
-                                    <SideBar />
-                                </div>
-                                <div className="basis-4/5">
-                                    <Outlet />
-                                </div>
-                            </div> */}
                         </OrderProvider>
                     </CartProvider>
                 </ProductProvider>

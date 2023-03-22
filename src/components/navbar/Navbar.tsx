@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiShoppingBag } from 'react-icons/bi';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { GoGraph } from 'react-icons/go';
 import UserInfo from '../UserInfo';
 import Button from '../ui/Button';
 import Cart from '../cart/CartIcon';
 import SearchInput from './SearchInput';
 import { useAuthContext } from '../../context/AuthContext';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { GoGraph } from 'react-icons/go';
 
 const NAV_ITEM_CLASS =
     'w-full hover:bg-red-500 rounded-lg p-2 transition-all nav-item lg:hover:bg-transparent lg:hover:text-brand';
