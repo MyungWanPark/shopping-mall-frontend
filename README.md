@@ -33,6 +33,7 @@ Node: 18.x
 
 <details open="open">
 <summary>SKILLS</summary>
+  
 - Language: Typescript
 - UI: TailwindCSS, HTML5
 - Framework: React.js
@@ -43,6 +44,7 @@ Node: 18.x
 - Chart Library: ApexCharts.js
 - HTTP Library: Axios
 - Icons: React-icons
+  
 </details>
 
 ## Features 
