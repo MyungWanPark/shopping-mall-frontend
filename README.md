@@ -1,7 +1,7 @@
 # Shopping Mall Side Project
 <br/>
 
-### Theme: 의류 쇼핑 몰
+Theme: 의류 쇼핑 몰
 
 ### Click the link below to view Demo!
 
@@ -18,9 +18,9 @@ Node: 18.x
 - Framework: React.js
   - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
 - UI Library: MUI
-- State Management: Context APIs
+- State Management: Context API
 - Design Pattern: Dependency Injection
-- Chart Library: ApexChart
+- Chart Library: ApexCharts.js
 - HTTP Library: Axios
 - Icons: React-icons
 
