@@ -1,8 +1,12 @@
-# Getting Started with Create React App
+# Shopping Mall Side Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### You can see Demo here!
 
-## Available Scripts
+[demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
+
+## Index Page
+
+<img width="1280" alt="index-min" src="https://user-images.githubusercontent.com/56289900/226888377-cb0c276d-1038-40ae-9e76-249edb8fb756.png">
 
 In the project directory, you can run:
 
