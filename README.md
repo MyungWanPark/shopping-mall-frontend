@@ -1,7 +1,7 @@
 # Shopping Mall Side Project
 <br/>
 
-Theme: 의류 쇼핑 몰
+#### Theme: 의류 쇼핑 몰
 
 ### Click the link below to view Demo!
 
@@ -26,10 +26,9 @@ Node: 18.x
 
 
 ## Features 
-- Responsive Website
 
 - Auth(인증)
-  - Login, Register, Keep Session, JWTToken
+  - Login, Register, Keep Session (by JWT)
 
 - Product(제품)
   - Show products (by category, by search keyword, by All)
@@ -50,6 +49,8 @@ Node: 18.x
     - Sales by Day Shown by Chart
     - Top 5 Items of Sales Shown by Chart
     - User's inflow route data Shown by Chart
+
+- Responsive Website
 
 
 - [Basic](#Basic)
