@@ -1,7 +1,7 @@
 # Shopping Mall Side Project
 <br/>
 
-### Theme: 의류 쇼핑 몰
+### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
 
 ### Click the link below to view Demo!
 
