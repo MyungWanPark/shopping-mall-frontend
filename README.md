@@ -13,25 +13,6 @@ React: 18.2.0
 Node: 18.x
 
 <details open="open">
-<summary>Table of Contents</summary>
-
-- [About](#about)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Usage](#usage)
-    - [Cookiecutter template](#cookiecutter-template)
-    - [Manual setup](#manual-setup)
-    - [Variables reference](#variables-reference)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Support](#support)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-
-</details>
-
-<details open="open">
 <summary>SKILLS</summary>
   
 - Language: Typescript
@@ -74,6 +55,7 @@ Node: 18.x
 
 - Responsive Website
 
+### Detail Images
 
 - [Basic](#Basic)
   - [Index](#Index)
