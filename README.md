@@ -1,11 +1,8 @@
-# Shopping Mall Side Project (- Front-end)
-<br/>
-
+# Shopping Mall Side Project (Front-end)
 
 ### Version
 [![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
 [![node version](https://img.shields.io/badge/Node-18.x-orange.svg?style=flat-square)](https://nodejs.org/en)
-
 
 ### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
 
@@ -26,9 +23,7 @@
   - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
 
 - UI: 
-  - <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> 
-  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+  - <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
 
 - UI Library: MUI
 - State Management: Context API
