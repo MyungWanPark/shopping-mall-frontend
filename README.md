@@ -13,7 +13,7 @@
 <br/>
 
 <details open="open">
-<summary>SKILLS</summary>
+<summary>Skills Used</summary>
   
 - Language: 
     - <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
@@ -25,11 +25,14 @@
 - UI: 
   - <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
 
-- UI Library: MUI
+- UI Library: 
+  - <img src="https://img.shields.io/badge/MUI-007FFF?style=flat&logo=MUI&logoColor=white" />
+  
 - State Management: Context API
 - Design Pattern: Dependency Injection
 - Chart Library: ApexCharts.js
-- HTTP Library: Axios
+- HTTP Library: 
+  - <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
 - Icons: React-icons
   
 </details>
