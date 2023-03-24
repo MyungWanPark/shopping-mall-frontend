@@ -20,13 +20,16 @@ export default function SearchInput() {
     };
 
     return (
-        <form className="flex mx-2 border border-brand rounded-full overflow-hidden w-full" onSubmit={handleSubmit}>
+        <form
+            className="flex basis-4/6 mx-2 border border-brand rounded-full overflow-hidden w-full lg:basis-auto"
+            onSubmit={handleSubmit}
+        >
             <input
                 type="text"
                 placeholder="Search name of product..."
                 onChange={handleInput}
                 value={text}
-                className="outline-none py-2 px-4 basis-5/6"
+                className="outline-none text-sm w-full py-2 px-4 basis-5/6 lg:text-lg"
             />
             <button className="bg-gray-200 border-l-1 px-2 basis-1/6 ">
                 <BsSearch className="mx-auto" />

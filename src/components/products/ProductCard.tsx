@@ -15,12 +15,12 @@ export default function ProductCard({ product: { name, price, category, imgURL, 
             className="cursor-pointer shadow-md rounded-lg font-Raleway overflow-hidden transition-all hover:scale-105"
             onClick={handleClick}
         >
-            <img src={imgURL} alt={name} className="h-4/5 w-full" />
-            <div className="flex justify-between items-center text-xl p-2">
+            <img src={imgURL} alt={name} className="h-5/7 w-full" />
+            <div className="flex justify-between items-center text-xs sm:text-md p-2 lg:text-lg">
                 <h3 className="truncate">{name}</h3>
                 <p>₩{price!.toLocaleString()} 원</p>
             </div>
-            <p className="text-gray-300 px-2 pb-2">{category}</p>
+            <p className="text-gray-300 px-2 pb-2 text-xs sm:text-md">{category}</p>
         </li>
     );
 }
