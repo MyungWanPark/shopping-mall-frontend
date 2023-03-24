@@ -10,13 +10,13 @@ export default function useOrder(startDate?: Date, endDate?: Date) {
     const { orderService } = useOrderContext();
     const { user }: { user: User } = useAuthContext();
 
-    const getAllOrders: {
+    /*     const getAllOrders: {
         isLoading: boolean;
         error: any;
         data?: OrderType[];
     } = useQuery(['order'], () => orderService.getAllOrders(), {
         staleTime: 1000 * 60 * 60 * 24,
-    });
+    }); */
 
     const getOrdersByDate: {
         isLoading: boolean;
@@ -40,5 +40,6 @@ export default function useOrder(startDate?: Date, endDate?: Date) {
         },
     });
 
-    return { getAllOrders, createOrder, getOrdersByDate };
+    // return { getAllOrders, createOrder, getOrdersByDate };
+    return { createOrder, getOrdersByDate };
 }

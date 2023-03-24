@@ -8,11 +8,11 @@ export default class OrderService {
         this.http = http;
     }
 
-    async getAllOrders() {
+    /*     async getAllOrders() {
         return this.http.fetch('/order/all', {
             method: 'GET',
         });
-    }
+    } */
 
     async getOrdersByDate(startDate: Date, endDate: Date) {
         return this.http.fetch(`/order?startDate=${startDate}&endDate=${endDate}`, {
