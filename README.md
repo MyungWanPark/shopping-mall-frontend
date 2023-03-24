@@ -83,7 +83,7 @@
   - [My Cart](#My-Cart)
   - [Cart Option](#Cart-Option)
 - [Analytics](#Analytics)
-  - [Analytics Set Dates](#Analytics-Set-Dates)
+  - [Analytics Set Dates](#Analytics-Date-Setting)
   - [Analytics Sales](#Analytics-Sales)
   - [Analytics User Inflow](#Analytics-User-Inflow)
 - [New Products](#New-Products)
