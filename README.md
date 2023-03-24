@@ -1,31 +1,47 @@
-# Shopping Mall Side Project
-<br/>
-<br/>
-
-### Theme: 의류 쇼핑 몰
+# Shopping Mall Side Project (Front-end)
 
 ### Version
-React: 18.2.0
-Node: 18.x
+[![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
+[![node version](https://img.shields.io/badge/Node-18.x-orange.svg?style=flat-square)](https://nodejs.org/en)
 
-### SKILLS:
-- Language: Typescript
-- UI: TailwindCSS, HTML5
-- Framework: React.js
+### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
+
+<br/>
+
+> Click the link to view Demo.&nbsp;&nbsp; [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
+
+<br/>
+
+<details open="open">
+<summary>Skills Used</summary>
+  
+- Language: 
+    - <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
+
+- Framework: 
+  - <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
   - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
-- UI Library: MUI
-- State Management: Context APIs
-- Design Pattern: Dependency Injection
-- Chart Library: ApexChart
-- HTTP Library: Axios
-- Icons: React-icons
 
+- UI: 
+  - <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+
+- UI Library: 
+  - <img src="https://img.shields.io/badge/MUI-007FFF?style=flat&logo=MUI&logoColor=white" />
+  
+- State Management: Context API
+- Design Pattern: Dependency Injection
+- Chart Library: ApexCharts.js
+- HTTP Library: 
+  - <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
+- Icons: React-icons
+  
+</details>
+<br/>
 
 ## Features 
-- Responsive Website
 
 - Auth(인증)
-  - Login, Register, Keep Session, JWTToken
+  - Login, Register, Keep Session (by JWT)
 
 - Product(제품)
   - Show products (by category, by search keyword, by All)
@@ -47,10 +63,11 @@ Node: 18.x
     - Top 5 Items of Sales Shown by Chart
     - User's inflow route data Shown by Chart
 
+- Responsive Website
+<br/>
 
-### Click the link below to view Demo!
-
-[Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
+### Detail Images 
+(이미지 클릭 시, 큰 화면으로 보실 수 있습니다.)
 
 - [Basic](#Basic)
   - [Index](#Index)
@@ -66,93 +83,158 @@ Node: 18.x
   - [My Cart](#My-Cart)
   - [Cart Option](#Cart-Option)
 - [Analytics](#Analytics)
-  - [Analytics Set Dates](#Analytics-Set-Dates)
+  - [Analytics Set Dates](#Analytics-Date-Setting)
   - [Analytics Sales](#Analytics-Sales)
   - [Analytics User Inflow](#Analytics-User-Inflow)
 - [New Products](#New-Products)
   - [New Product](#New-Product)
   - [After New Product](#After-New-Product)
+<br/>
 
 ## Basic
 
 ### Index
+랜딩 페이지 입니다. 
+
 <br/>
 
 <img width="1280" alt="index-min" src="https://user-images.githubusercontent.com/56289900/226888377-cb0c276d-1038-40ae-9e76-249edb8fb756.png">
 
+<br/>
+
 ## Auth
 
 ### Login
+로그인 화면 입니다. Kakao Login 은 구현할 예정입니다.
+
 <br/>
 
 <img width="1280" alt="login-min" src="https://user-images.githubusercontent.com/56289900/226905787-d5da9c21-7363-45c5-ac3e-7faa2b4aaa09.png">
 
+<br/>
+
 ### Register
+회원가입 화면 입니다. 회원가입 후 자동으로 로그인 되도록 구현하였습니다.
+
 <br/>
 
 <img width="1280" alt="register-min" src="https://user-images.githubusercontent.com/56289900/226905780-375b684a-1c7d-43f6-823c-fc84350dc616.png">
 
+<br/>
+
 ### After Login
+로그인 후 화면 입니다. 네이게이션 바의 우측 상단에 이름을 포함합니다. 
+
 <br/>
 
 <img width="1280" alt="after-login-min" src="https://user-images.githubusercontent.com/56289900/226888354-7ac1fec5-2d4b-4b69-af63-2026e8b4cb7c.png" />
 
+<br/>
+
 ## Products
 
 ### Men's Category
+네비게이션 바에서 Men을 클릭하면, 남성 의류 상품들을 보여줍니다. 
+
 <br/>
 
 <img width="1280" alt="men's category-min" src="https://user-images.githubusercontent.com/56289900/226888386-9ec36e59-ea8a-45e1-a62e-a27928fed086.png" />
 
+<br/>
+
 ### Keyword Search
+검색창에 원하는 제품의 이름을 검색하면, 이름을 포함한 상품들을 보여줍니다.
+
 <br/>
 
 <img width="1280" alt="keyword-list-min" src="https://user-images.githubusercontent.com/56289900/226888382-5a5b6bfe-3f00-4e4d-8f88-5dfc52fda9ac.png" />
 
+<br/>
+
 ### Product Detail
+상품을 클릭하면 상세 상품 페이지로 이동합니다. Size, Color, 수량을 선택한 후, 장바구니에 추가할 수 있습니다.
+
 <br/>
 
 <img width="1280" alt="product-detail-min" src="https://user-images.githubusercontent.com/56289900/226888396-08cebdc5-0a9f-4e2c-ae3e-de0103d87c9a.png" />
 
+<br/>
+
 ## Cart
 
 ### My Cart
+장바구니 페이지 입니다. 
+
 <br/>
 
 <img width="1280" alt="my cart-min" src="https://user-images.githubusercontent.com/56289900/226888389-00b9dc19-6178-4a73-9ea1-1d4e590b25c9.png" />
 
+<br/>
+
 ### Cart Option
+장바구니에 담긴 제품의 수량을 변경할 수 있으며, 삭제도 가능합니다. <br/>
+구입할 제품을 선택할 수 있으며, 이때 선택한 제품만 주문이 가능합니다. <br/>
+주문 후, 선택하지 않은 제품만 장바구니에 남겨다집니다.
+
 <br/>
 
 <img width="1280" alt="cart-change-option-min" src="https://user-images.githubusercontent.com/56289900/226888374-b3f964cd-4af7-46f8-900d-4c63996ad79f.png" />
 
+<br/>
+
 ## Analytics
 
-### Analytics Set Dates
+### Analytics Date Setting
+애널리틱스 페이지 입니다. <br/>
+조회하고 싶은 기간을 선택하여, 해당 기간 안에서의 데이터를 조회합니다. <br/>
+이때 맥락상 최초의 유저가 생성된 날부터 선택 가능하도록 구현하였습니다.
+
 <br/>
 
 <img width="1280" alt="analytics-set-date-min" src="https://user-images.githubusercontent.com/56289900/226888369-6926b0c4-7e5c-4e90-a379-a5f2d039ab77.png" />
 
+<br/>
+
 ### Analytics Sales
+좌측의 막대, 선 혼합 그래프는 선택한 기간 동안의 매출액 현황입니다. <br/>
+막대는 날짜별 발생한 매출액, 선은 평균 매출액(Average)을 의미합니다. 그래프에 호버하면, 상세한 정보가 나옵니다. <br/>
+우측의 원그래프는 Top 5 매출액을 차지하는 상품의 정보를 보여줍니다. 그래프에 호버하면, 제품 이름과 매출액이 나옵니다.
+
 <br/>
 
 <img width="1280" alt="analytics-sales-min" src="https://user-images.githubusercontent.com/56289900/226888368-4f572625-1ef8-476b-ade8-c374862c2352.png" />
 
+<br/>
+
 ### Analytics User Inflow
+새로운 유저가 얼마만큼, 어떤 경로로 오게 되었는지 인원 수, 비율, 경로를 보여주는 그래프 입니다. 
+
 <br/>
 
 <img width="1278" alt="analytics-user-inflow-min" src="https://user-images.githubusercontent.com/56289900/226888371-288b1563-0f25-4a46-ae86-0e85e3318f2d.png" />
 
+<br/>
+
 ## New Products
 
 ### New Product
+새로운 제품을 등록할 수 있는 화면입니다. <br/>
+이미지 파일을 첨부하면, 해당 이미지가 화면에 나타납니다.
+
 <br/>
 
 <img width="1280" alt="new-product-min" src="https://user-images.githubusercontent.com/56289900/226888391-71c561e5-8f08-4d64-9f0c-7be18136ce0c.png" />
 
+<br/>
+
 ### After New Product
+새로운 제품을 등록한 후에 메인 화면에 가보면, 새 제품을 볼 수 있습니다.<br/> 
+새 제품을 클릭하면 마찬가지로 제품 상세 페이지로 이동하며, 장바구니에 추가할 수 있습니다. 
+
 <br/>
 
 <img width="1280" alt="after-new-product-min" src="https://user-images.githubusercontent.com/56289900/226888365-758c7281-c51e-4b03-b5f5-0f7054fbb08c.png" />
+
+<br/>
 
 
