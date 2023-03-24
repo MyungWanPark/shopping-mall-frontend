@@ -55,10 +55,12 @@ export default function ProductDetail() {
                     <article className="w-full basis-6/12">
                         <p className="text-md text-gray-400">{category!}</p>
                         <h1 className="border-b border-gray-300 pb-3">
-                            <span className="text-3xl font-bold">{name!}</span>
-                            <span className="ml-10 text-xl font-semibold">₩{price!.toLocaleString()} 원</span>
+                            <span className="text-xl font-bold md:text-3xl">{name!}</span>
+                            <span className="ml-10 text-lg font-semibold md:text-xl">
+                                ₩{price!.toLocaleString()} 원
+                            </span>
                         </h1>
-                        <p className="text-lg py-7">{description!}</p>
+                        <p className="text-md py-7 md:text-xl">{description!}</p>
                         <div className="flex items-center mb-3">
                             <span className="mr-5 w-12">SIZE</span>
                             <TextBox text="S" setState={setCartProduct} setField="size" customStyle="w-10 rounded-md" />

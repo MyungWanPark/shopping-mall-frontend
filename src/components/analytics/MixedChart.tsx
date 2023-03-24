@@ -4,7 +4,7 @@ import { ApexOptions } from 'apexcharts';
 import { OrderType } from '../../types/order';
 import { getBetweenTwoDates } from '../../utils/analytics/time';
 import { Period } from '../../types/analytics';
-import useOrder from './../../hooks/useOrder';
+// import useOrder from './../../hooks/useOrder';
 import { getLineChartData } from './../../utils/analytics/orderedData';
 import { CartItemType } from '../../types/cart';
 import { ANALYTICS_BOX_CLASS_NAME } from './../../pages/analytics/Analytics';
@@ -18,6 +18,7 @@ const initialOption: ApexOptions = {
         toolbar: {
             offsetX: -30,
             offsetY: 0,
+            // show: false,
         },
         fontFamily: 'Raleway, sans-serif',
     },
@@ -64,11 +65,14 @@ const initialOption: ApexOptions = {
     ],
     responsive: [
         {
-            breakpoint: 1000,
+            breakpoint: 300,
             options: {
-                /* chart: {
+                chart: {
                     width: 300,
-                }, */
+                    toolbar: {
+                        show: false,
+                    },
+                },
                 legend: {
                     position: 'bottom',
                 },
