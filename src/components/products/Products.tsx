@@ -22,7 +22,7 @@ export default function Products({ showAllProduct }: Prop) {
 
     return (
         <>
-            <p className="px-4 pt-2">
+            <p className="px-4 pt-2 text-sm lg:text-lg">
                 {(Array.isArray(categoryProducts) && categoryProducts.length) ||
                     (Array.isArray(keywordProducts) && keywordProducts.length)}{' '}
                 products found.
