@@ -17,6 +17,9 @@ export default function Navbar() {
     const { user, logout } = useAuthContext();
     const navigate = useNavigate();
     const handleClick = (e: React.MouseEvent) => {
+        if (window.innerWidth > 1024) {
+            return;
+        }
         const navContent = document.querySelector('#navbarId') as HTMLDivElement;
         navContent.classList.toggle('h-84');
         navContent.style.transition = 'height 0.5s ease';

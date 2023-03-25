@@ -14,9 +14,13 @@ export default function useCart(startDate?: Date, endDate?: Date) {
         isLoading: boolean;
         error: any;
         data?: CartItemType[];
-    } = useQuery(['cart', user?.id ? user.id : ''], () => cartService.getCartItems(), {
-        staleTime: 1000 * 60 * 60 * 24,
-    });
+    } = useQuery(
+        ['cart', user?.id ? user.id : ''],
+        () => cartService.getCartItems().catch((e) => "Can't get cart data"),
+        {
+            staleTime: 1000 * 60 * 60 * 24,
+        }
+    );
 
     const getOrderedCartByPeriod: {
         isLoading: boolean;

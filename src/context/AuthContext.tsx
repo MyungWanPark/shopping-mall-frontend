@@ -29,7 +29,7 @@ export function AuthProvider({ authService, children }: Props) {
             .me()
             .then((res) => setUser(res.user))
             .catch((err) => {
-                console.error(`errors in useEffect doing me()`);
+                // console.error(`errors in useEffect doing me()`);
             });
     }, [authService]);
 
