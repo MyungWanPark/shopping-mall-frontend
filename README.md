@@ -8,7 +8,9 @@
 
 <br/>
 
-> Click the link to view Demo.&nbsp;&nbsp; [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app)
+> Click the link to view Demo.&nbsp;&nbsp; [Demo 보러가기 ](https://shoppingmall-myungwan.netlify.app) <br/>
+
+(빠른 로그인을 위해 ID: a@a 비밀번호: 1234 이용하셔도 됩니다 😊)
 
 <br/>
 
