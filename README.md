@@ -90,7 +90,7 @@
   - [Analytics Set Dates](#Analytics-Date-Setting)
   - [Analytics Sales](#Analytics-Sales)
   - [Analytics User Inflow](#Analytics-User-Inflow)
-- [제품 추가](#제품 추가)
+- [제품 추가](#제품-추가)
   - [New Product](#New-Product)
   - [After New Product](#After-New-Product)
 <br/>
@@ -219,7 +219,7 @@
 
 <br/>
 
-## 제품 추가
+## 제품-추가
 
 ### New Product
 새로운 제품을 등록할 수 있는 화면입니다. <br/>
