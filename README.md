@@ -76,11 +76,11 @@
 - [Basic](#Basic)
   - [Index](#Index)
 
-- [인증](#Auth)
+- [인증](#인증)
   - [Login](#Login)
   - [Register](#Register)
   - [After Login](#After-Login)
-- [제품](#Products)
+- [제품](#제품)
   - [Men's Category](#Men's-Category)
   - [Keyword Search](#Keyword-Search)
 - [장바구니](#Cart)
@@ -106,7 +106,7 @@
 
 <br/>
 
-## Auth
+## 인증
 
 ### Login
 로그인 화면 입니다. Kakao Login 은 구현할 예정입니다.
@@ -135,7 +135,7 @@
 
 <br/>
 
-## Products
+## 제품
 
 ### Men's Category
 네비게이션 바에서 Men을 클릭하면, 남성 의류 상품들을 보여줍니다. 
