@@ -1,6 +1,6 @@
 # Shopping Mall Side Project (Front-end)
 
-### (현재 배포환경이 유료로 전환되어 서비스 동작이 중지되었습니다. 3월까지 다른 클라우드 환경으로 배포하여 수정하겠습니다.)
+### (현재 배포환경이 유료로 전환되어 서비스 동작이 중지되었습니다.)
 
 ### Version
 [![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
