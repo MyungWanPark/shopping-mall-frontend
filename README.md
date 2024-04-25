@@ -27,7 +27,7 @@
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> 
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
 
-- 개발 언어: 타입스크립트
+- 개발 언어: 타입스크립트 4.4.2
 
 - 프레임워크: React.js 18.2.0
 
