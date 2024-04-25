@@ -1,7 +1,5 @@
 # Shopping Mall Side Project (Front-end)
 
-### (현재 배포환경이 유료로 전환되어 서비스 동작이 중지되었습니다.)
-
 ### Version
 [![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
 [![node version](https://img.shields.io/badge/Node-18.x-orange.svg?style=flat-square)](https://nodejs.org/en)
@@ -18,26 +16,24 @@
 
 <details open="open">
 <summary>Skills Used</summary>
-  
-- 개발 언어: 
-    - <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
 
-- 프레임워크: 
-  - <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
-  - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" /> <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />  <img src="https://img.shields.io/badge/MUI-007FFF?style=flat&logo=MUI&logoColor=white" /> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
 
-- UI: 
-  - <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+- 개발 언어: 타입스크립트
 
-- UI 라이브러리: 
-  - <img src="https://img.shields.io/badge/MUI-007FFF?style=flat&logo=MUI&logoColor=white" />
-  
-- 상태관리: Context API
-- 디자인패턴: Dependency Injection
+- 프레임워크: React.js 18.2.0
+
+- UI: HTML5, CSS3, TailwindCss
+
+- UI 라이브러리: MUI
+
 - Chart 라이브러리: ApexCharts.js
-- HTTP 라이브러리: 
-  - <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
-- Icons: React-icons
+
+- HTTP 라이브러리: Axios
+   
+- 네트워크 상태관리 라이브러리: React-Query
+
+- 배포: Netlify
   
 </details>
 <br/>
@@ -45,17 +41,17 @@
 ## Features 
 
 - 인증
-  - Login, Register, Keep Session (by JWT)
+  - JWT를 활용한 Login, Register
 
 - 제품
-  - Show products (by category, by search keyword, by All)
+  - Show products by category, search keyword
   - Create product
 
 - 장바구니
-  - Add to Cart (장바구니에 추가, 중복 상품 추가 방지)
-  - Read Cart (장바구니에 추가한 상품 조회)
-  - Update Cart (상품 수량을 변경 가능)
-  - Delete Cart (상품을 장바구니에서 제거)
+  - Add to Cart 
+  - Read Cart 
+  - Update Cart 
+  - Delete Cart 
 
 - 애널리틱스
   - Query data based on selected period.(선택한 기간에 따른 데이터 조회)
@@ -109,7 +105,7 @@
 ## 인증
 
 ### Login
-로그인 화면 입니다. Kakao Login 은 구현할 예정입니다.
+로그인 화면 입니다. 
 
 <br/>
 
