@@ -16,46 +16,52 @@
 
 <details open="open">
 <summary>Skills Used</summary>
-  
-- Language: 
-    - <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
 
-- Framework: 
-  - <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
-  - Function Component, React Hooks, React Router Dom, React Query(TanStack Query) etc
+<br/>
 
-- UI: 
-  - <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=TypeScript&logoColor=white" /> 
+<img src="https://img.shields.io/badge/React-3998B6?style=flat&logo=react&logoColor=white" />  
+<img src="https://img.shields.io/badge/MUI-007FFF?style=flat&logo=MUI&logoColor=white" /> 
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" /> 
+<img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=Tailwind CSS&logoColor=white" /> 
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> 
+<img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
 
-- UI Library: 
-  - <img src="https://img.shields.io/badge/MUI-007FFF?style=flat&logo=MUI&logoColor=white" />
-  
-- State Management: Context API
-- Design Pattern: Dependency Injection
-- Chart Library: ApexCharts.js
-- HTTP Library: 
-  - <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
-- Icons: React-icons
+- 개발 언어: 타입스크립트 4.4.2
+
+- 프레임워크: React.js 18.2.0
+
+- UI: HTML5, CSS3, TailwindCss
+
+- UI 라이브러리: MUI
+
+- Chart 라이브러리: ApexCharts.js
+
+- HTTP 라이브러리: Axios
+   
+- 네트워크 상태관리 라이브러리: React-Query
+
+- 배포: Netlify
   
 </details>
 <br/>
 
 ## Features 
 
-- Auth(인증)
-  - Login, Register, Keep Session (by JWT)
+- 인증
+  - JWT를 활용한 Login, Register
 
-- Product(제품)
-  - Show products (by category, by search keyword, by All)
+- 제품
+  - Show products by category, search keyword
   - Create product
 
-- Cart(장바구니)
-  - Add to Cart (장바구니에 추가, 중복 상품 추가 방지)
-  - Read Cart (장바구니에 추가한 상품 조회)
-  - Update Cart (상품 수량을 변경 가능)
-  - Delete Cart (상품을 장바구니에서 제거)
+- 장바구니
+  - Add to Cart 
+  - Read Cart 
+  - Update Cart 
+  - Delete Cart 
 
-- Analytics(분석)
+- 애널리틱스
   - Query data based on selected period.(선택한 기간에 따른 데이터 조회)
     - Total Sales amount
     - New Users number
@@ -65,7 +71,7 @@
     - Top 5 Items of Sales Shown by Chart
     - User's inflow route data Shown by Chart
 
-- Responsive Website
+- 반응형 웹사이트
 <br/>
 
 ### Detail Images 
@@ -74,21 +80,21 @@
 - [Basic](#Basic)
   - [Index](#Index)
 
-- [Auth](#Auth)
+- [인증](#인증)
   - [Login](#Login)
   - [Register](#Register)
   - [After Login](#After-Login)
-- [Products](#Products)
+- [제품](#제품)
   - [Men's Category](#Men's-Category)
   - [Keyword Search](#Keyword-Search)
-- [Cart](#Cart)
+- [장바구니](#장바구니)
   - [My Cart](#My-Cart)
   - [Cart Option](#Cart-Option)
-- [Analytics](#Analytics)
+- [애널리틱스](#애널리틱스)
   - [Analytics Set Dates](#Analytics-Date-Setting)
   - [Analytics Sales](#Analytics-Sales)
   - [Analytics User Inflow](#Analytics-User-Inflow)
-- [New Products](#New-Products)
+- [제품 추가](#제품-추가)
   - [New Product](#New-Product)
   - [After New Product](#After-New-Product)
 <br/>
@@ -104,10 +110,10 @@
 
 <br/>
 
-## Auth
+## 인증
 
 ### Login
-로그인 화면 입니다. Kakao Login 은 구현할 예정입니다.
+로그인 화면 입니다. 
 
 <br/>
 
@@ -133,7 +139,7 @@
 
 <br/>
 
-## Products
+## 제품
 
 ### Men's Category
 네비게이션 바에서 Men을 클릭하면, 남성 의류 상품들을 보여줍니다. 
@@ -162,7 +168,7 @@
 
 <br/>
 
-## Cart
+## 장바구니
 
 ### My Cart
 장바구니 페이지 입니다. 
@@ -184,7 +190,7 @@
 
 <br/>
 
-## Analytics
+## 애널리틱스
 
 ### Analytics Date Setting
 애널리틱스 페이지 입니다. <br/>
@@ -217,7 +223,7 @@
 
 <br/>
 
-## New Products
+## 제품-추가
 
 ### New Product
 새로운 제품을 등록할 수 있는 화면입니다. <br/>
