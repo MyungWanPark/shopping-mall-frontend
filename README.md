@@ -1,10 +1,9 @@
-# Shopping Mall Side Project (Front-end)
+## 주제: React.js, Express(Node.js 환경)를 활용한 온라인 쇼핑몰 구현 (Front-end 레포)
+역할 및 범위: 풀스택, 개인 프로젝트
 
 ### Version
 [![react version](https://img.shields.io/badge/React-18.2.0-green.svg?style=flat-square)](https://react.dev)
 [![node version](https://img.shields.io/badge/Node-18.x-orange.svg?style=flat-square)](https://nodejs.org/en)
-
-### Theme: Clothing Shopping Mall (의류 쇼핑 몰)
 
 <br/>
 
