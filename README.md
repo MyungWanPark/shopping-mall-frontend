@@ -1,4 +1,4 @@
-## 주제: React.js, Express(Node.js 환경)를 활용한 온라인 쇼핑몰 구현 (Front-end 레포)
+## 주제: React, Express를 활용한 온라인 쇼핑몰 구현 (Front-end 저장소)
 역할 및 범위: 풀스택, 개인 프로젝트
 
 ### Version
@@ -28,7 +28,7 @@
 
 - 개발 언어: 타입스크립트 4.4.2
 
-- 프레임워크: React.js 18.2.0
+- 프레임워크: React 18.2.0
 
 - UI: HTML5, CSS3, TailwindCss
 
