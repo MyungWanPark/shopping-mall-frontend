@@ -12,6 +12,7 @@ import useUser from './../../hooks/useUser';
 import InflowRoutes from '../../components/analytics/InflowRoutes';
 import 'dayjs/locale/ko';
 import dayjs from 'dayjs';
+import { PaginationData } from '../../types/product';
 
 export const ANALYTICS_BOX_CLASS_NAME = 'bg-white rounded-xl shadow-sm';
 export const ANALYTICS_GRID_CLASS_NAME = 'grid grid-cols-1 gap-4 mb-5';
@@ -35,8 +36,12 @@ export default function Analytics() {
     } = useUser(period.start, period.end);
 
     const {
-        getProducts: { data: products },
+        getProducts: { data, isLoading: ProductsLoading, error },
     } = useProducts({ category: 'all' });
+
+    if (error) return <div>상품을 받아오는데 실패하였습니다..</div>;
+    if (ProductsLoading) return <div>로딩중... 상품을 받아오고 있습니다..</div>;
+    const { products } = data as unknown as PaginationData;
 
     return (
         <section className="bg-zinc-200 p-4 py-8 font-Abel">

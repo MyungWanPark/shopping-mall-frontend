@@ -30,3 +30,9 @@ export type CartProductType = {
     imgURL: string;
     quantity: number;
 };
+
+export type PaginationData = {
+    totalPages: number;
+    products: ProductType[];
+    count: number;
+};

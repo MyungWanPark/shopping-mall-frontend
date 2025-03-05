@@ -15,14 +15,14 @@ export default class ProductService {
         });
     }
 
-    async getProductsByCategory(category: Category): Promise<ProductType[] | any> {
-        return this.http.fetch(`/products?category=${category}`, {
+    async getProductsByCategory(category: Category, page: number): Promise<ProductType[] | any> {
+        return this.http.fetch(`/products?category=${category}&page=${page}`, {
             method: 'GET',
         });
     }
 
-    async getProductsByKeyword(keyword: string): Promise<ProductType[] | any> {
-        return this.http.fetch(`/products?keyword=${keyword}`, {
+    async getProductsByKeyword(keyword: string, page: number): Promise<ProductType[] | any> {
+        return this.http.fetch(`/products?keyword=${keyword}&page=${page}`, {
             method: 'GET',
         });
     }

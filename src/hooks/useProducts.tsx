@@ -1,17 +1,16 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { Category, ProductType } from '../types/product';
+import { Category, PaginationData, ProductType } from '../types/product';
 import { useProductContext } from '../context/ProductContext';
 
-export default function useProducts({
-    category = 'all',
-    productId,
-    keyword,
-}: {
+type Props = {
     category?: Category;
     productId?: number;
     keyword?: string;
-}) {
+    page?: number;
+};
+
+export default function useProducts({ category = 'all', productId, keyword, page = 1 }: Props) {
     const { productService } = useProductContext();
 
     const queryClient = useQueryClient();
@@ -27,22 +26,20 @@ export default function useProducts({
     const getProducts: {
         isLoading: boolean;
         error: any;
-        data?: ProductType[];
+        data?: PaginationData[];
     } = useQuery(
-        ['products', category || 'category not set'],
-        category ? () => productService.getProductsByCategory(category!) : () => 'category not set',
-        {
-            staleTime: 1000 * 60 * 60 * 24,
-        }
-    );
+        ['products', category || 'category not set', keyword || 'keyword not set'],
 
-    const getProductsByKeyword: {
-        isLoading: boolean;
-        error: any;
-        data?: ProductType[];
-    } = useQuery(
-        ['products', keyword || 'keyword not set'],
-        keyword ? () => productService.getProductsByKeyword(keyword) : () => 'keyword not set',
+        () => {
+            if (keyword) {
+                return productService.getProductsByKeyword(keyword, page);
+            } else if (category) {
+                return productService.getProductsByCategory(category, page);
+            } else {
+                return [];
+            }
+        },
+
         {
             staleTime: 1000 * 60 * 60 * 24,
         }
@@ -60,5 +57,5 @@ export default function useProducts({
         }
     );
 
-    return { addNewProduct, getProducts, getProductsByKeyword, getProductInfo };
+    return { addNewProduct, getProducts, getProductInfo };
 }
