@@ -1,4 +1,4 @@
-## 주제: React.js, Express(Node.js 환경)를 활용한 온라인 쇼핑몰 구현 (Front-end 레포)
+## 주제: React, Express를 활용한 온라인 쇼핑몰 구현 (Front-end 저장소)
 역할 및 범위: 풀스택, 개인 프로젝트
 
 ### Version
@@ -26,9 +26,9 @@
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" /> 
 <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white" />
 
-- 개발 언어: 타입스크립트 4.4.2
+- 개발 언어: TypeScript 4.4.2
 
-- 프레임워크: React.js 18.2.0
+- 프레임워크: React 18.2.0
 
 - UI: HTML5, CSS3, TailwindCss
 
