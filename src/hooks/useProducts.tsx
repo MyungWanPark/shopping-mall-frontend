@@ -28,7 +28,7 @@ export default function useProducts({ category = 'all', productId, keyword, page
         error: any;
         data?: PaginationData[];
     } = useQuery(
-        ['products', category || 'category not set', keyword || 'keyword not set'],
+        ['products', category || 'category not set', keyword || 'keyword not set', page || 'page not set'],
 
         () => {
             if (keyword) {

@@ -4,6 +4,7 @@ import useProducts from '../../hooks/useProducts';
 import { useSearchParams } from 'react-router-dom';
 import { Category, PaginationData } from '../../types/product';
 import { getPaginaionButtons } from '../../utils/pagination/pagination';
+import PaginationButtons from '../pagination/PaginationButtons';
 
 type Prop = {
     showAllProduct?: boolean;
@@ -40,6 +41,7 @@ export default function Products({ showAllProduct }: Prop) {
                     ))}
                 </ul>
             )}
+            <PaginationButtons totalPages={totalPages} PaginationButtonArr={PaginationButtonArr} />
         </>
     );
 }
