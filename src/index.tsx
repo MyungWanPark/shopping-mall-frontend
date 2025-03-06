@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -7,7 +7,6 @@ import NotFound from './pages/notFound/NotFound';
 import Home from './pages/Home';
 import AllProducts from './pages/product/AllProducts';
 import NewProducts from './pages/product/NewProducts';
-import ProductDetail from './pages/product/ProductDetail';
 import MyCart from './pages/cart/MyCart';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Analytics from './pages/analytics/Analytics';
@@ -21,6 +20,12 @@ import Login from './pages/auth/Login';
   /products/:id =>  <ProductDetail />
   /carts        =>  <MyCart />      
 */
+
+const ProductDetail = lazy(() => import('./pages/product/ProductDetail'));
+
+const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
+    <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+);
 
 const router = createBrowserRouter([
     {
@@ -38,7 +43,14 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
-            { path: '/products/:id', element: <ProductDetail /> },
+            {
+                path: '/products/:id',
+                element: (
+                    <SuspenseWrapper>
+                        <ProductDetail />
+                    </SuspenseWrapper>
+                ),
+            },
             {
                 path: '/carts',
                 element: (
