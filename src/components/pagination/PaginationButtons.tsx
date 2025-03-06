@@ -15,10 +15,10 @@ export default function PaginationButtons({ totalPages, PaginationButtonArr }: P
     };
 
     return (
-        <div className="flex justify-center items-center space-x-2 mt-4">
+        <div className="flex justify-center items-center space-x-2 my-4">
             {page > 1 && (
                 <Link to={getPageUrl(page - 1)}>
-                    <button className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors duration-200">
+                    <button className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors duration-200 text-sm">
                         이전
                     </button>
                 </Link>
@@ -42,7 +42,7 @@ export default function PaginationButtons({ totalPages, PaginationButtonArr }: P
 
             {page < totalPages && (
                 <Link to={getPageUrl(page + 1)}>
-                    <button className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors duration-200">
+                    <button className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 transition-colors duration-200 text-sm">
                         다음
                     </button>
                 </Link>

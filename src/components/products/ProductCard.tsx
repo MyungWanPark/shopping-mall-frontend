@@ -29,7 +29,7 @@ export default function ProductCard({
                 </div>
             )}
             <img src={imgURL} alt={name} className="h-[80%] w-full" loading="lazy" onLoad={setLoadedImg} />
-            <div className="flex justify-between items-center text-xs sm:text-md p-2 lg:text-lg">
+            <div className="flex justify-between items-center text-xs sm:text-md py-2 px-4 lg:text-lg">
                 <h3 className="truncate w-[60%]">{name}</h3>
                 <p className="text-sm">₩{price!.toLocaleString()} 원</p>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import useProducts from '../../hooks/useProducts';
 import { useSearchParams } from 'react-router-dom';
@@ -23,6 +23,10 @@ export default function Products({ showAllProduct }: Prop) {
     const {
         getProducts: { isLoading, error, data },
     } = useProducts({ category, keyword, page });
+
+    useEffect(() => {
+        setLoadedImg(0);
+    }, [page]);
 
     if (error) return <div>상품을 받아오는데 실패하였습니다..</div>;
     if (isLoading) return <div>로딩중... 상품을 받아오고 있습니다..</div>;
