@@ -24,16 +24,24 @@ export default function ProductCard({
             onClick={handleClick}
         >
             {showSkeleton && (
-                <div className="absolute inset-0">
-                    <Skeleton className="rounded-2xl h-80" height="" />
+                <div className="absolute inset-0 z-10">
+                    <Skeleton className="rounded-2xl h-full !absolute inset-0" />
                 </div>
             )}
-            <img src={imgURL} alt={name} className="h-[80%] w-full" loading="lazy" onLoad={setLoadedImg} />
-            <div className="flex justify-between items-center text-xs sm:text-md py-2 px-4 lg:text-lg">
-                <h3 className="truncate w-[60%]">{name}</h3>
-                <p className="text-sm">₩{price!.toLocaleString()} 원</p>
+            <div className="h-full relative">
+                <img
+                    src={imgURL}
+                    alt={name}
+                    className="h-[80%] w-full relative inset-0"
+                    loading="lazy"
+                    onLoad={setLoadedImg}
+                />
+                <div className="flex justify-between  items-center text-xs sm:text-md py-2 px-4 lg:text-lg">
+                    <h3 className="truncate w-[60%]">{name}</h3>
+                    <p className="text-sm">₩{price!.toLocaleString()} 원</p>
+                </div>
+                <p className="text-gray-400 px-2 pb-2 text-xs sm:text-md text-center">{category}</p>
             </div>
-            <p className="text-gray-400 px-2 pb-2 text-xs sm:text-md text-center">{category}</p>
         </li>
     );
 }

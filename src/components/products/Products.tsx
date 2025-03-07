@@ -26,7 +26,7 @@ export default function Products({ showAllProduct }: Prop) {
 
     useEffect(() => {
         setLoadedImg(0);
-    }, [page]);
+    }, [page, category, keyword]);
 
     if (error) return <div>상품을 받아오는데 실패하였습니다..</div>;
     if (isLoading) return <div>로딩중... 상품을 받아오고 있습니다..</div>;
