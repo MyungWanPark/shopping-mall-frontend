@@ -22,7 +22,6 @@ export default function MyCart() {
     const { user }: { user: User } = useAuthContext();
     const reduxCartItems = useSelector((state: RootState) => state.cart.items);
     const [cartItems, setCartItems] = useState(reduxCartItems);
-    // let cartItems = reduxCartItems;
 
     useEffect(() => {
         setCartItems(reduxCartItems);
