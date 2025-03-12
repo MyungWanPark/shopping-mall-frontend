@@ -29,6 +29,13 @@ export default class CartService {
         });
     }
 
+    async syncCart(cartItems: CartItemType[]) {
+        return this.http.fetch('/cart/sync', {
+            method: 'POST',
+            body: JSON.stringify({ cartItems }),
+        });
+    }
+
     async updateCartItem(cartItem: CartItemType) {
         return this.http.fetch('/cart/update', {
             method: 'PUT',
@@ -36,7 +43,7 @@ export default class CartService {
         });
     }
 
-    async deleteCartItem({ productId }: CartItemType) {
+    async deleteCartItem({ productId }: Pick<CartItemType, 'productId'>) {
         return this.http.fetch('/cart/delete', {
             method: 'DELETE',
             body: JSON.stringify({ productId }),

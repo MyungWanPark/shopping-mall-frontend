@@ -2,6 +2,9 @@ import React from 'react';
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 import { CartItemType } from '../../types/cart';
 import useCart from './../../hooks/useCart';
+import { User } from '../../types/user';
+import { useDispatch } from 'react-redux';
+import { updateItem } from '../../redux/slices/cartSlice';
 
 const ICON_CLASS = 'cursor-pointer opacity-70 transition-all hover:text-brand hover:scale-105';
 
@@ -10,30 +13,42 @@ type Props = {
     setCartProduct?: React.Dispatch<React.SetStateAction<CartItemType>>;
     cartProduct?: CartItemType;
     fontSize?: string;
+    user?: User;
 };
 
-export default function InputWithPlusMinus({ type, setCartProduct, cartProduct, fontSize }: Props) {
+export default function InputWithPlusMinus({ type, setCartProduct, cartProduct, fontSize, user }: Props) {
     const { updateCartItem } = useCart();
+    const dispatch = useDispatch();
     const handleMinus = (e: React.MouseEvent) => {
         if (cartProduct?.quantity! < 2) return;
         if (type === 'productDetail') {
             setCartProduct!((prev) => ({ ...prev, quantity: prev.quantity! - 1 }));
             return;
         }
-        updateCartItem.mutate({
+        const updatedItem = {
             ...cartProduct,
             quantity: cartProduct?.quantity! - 1,
-        });
+        };
+        if (!user) {
+            return dispatch(updateItem(updatedItem));
+        }
+        updateCartItem.mutate(updatedItem);
     };
     const handlePlus = (e: React.MouseEvent) => {
         if (type === 'productDetail') {
             setCartProduct!((prev) => ({ ...prev, quantity: prev.quantity! + 1 }));
             return;
         }
-        updateCartItem.mutate({
+
+        const updatedItem = {
             ...cartProduct,
             quantity: cartProduct?.quantity! + 1,
-        });
+        };
+        if (!user) {
+            return dispatch(updateItem(updatedItem));
+        }
+
+        updateCartItem.mutate(updatedItem);
     };
 
     return (

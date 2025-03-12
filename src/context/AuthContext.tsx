@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthService from '../service/auth';
 import { User } from '../types/user';
+import useCart from '../hooks/useCart';
 
 type Context = {
     user: any;
@@ -27,7 +28,9 @@ export function AuthProvider({ authService, children }: Props) {
     useEffect(() => {
         authService
             .me()
-            .then((res) => setUser(res.user))
+            .then((res) => {
+                setUser(res.user);
+            })
             .catch((err) => {
                 // console.error(`errors in useEffect doing me()`);
             });

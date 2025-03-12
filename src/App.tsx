@@ -13,6 +13,8 @@ import CartService from './service/cart';
 import OrderService from './service/order';
 import { CartProvider } from './context/CartContext';
 import { OrderProvider } from './context/OrderContext';
+import { Provider as CartStoreProvider } from 'react-redux';
+import store from './redux/store';
 
 const queryClient = new QueryClient();
 const baseURL = process.env.REACT_APP_BASE_URL;
@@ -26,16 +28,18 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={true} />
-            <AuthProvider authService={authService}>
-                <ProductProvider productService={productService}>
-                    <CartProvider cartService={cartService}>
-                        <OrderProvider orderService={orderService}>
-                            <Navbar />
-                            <Outlet />
-                        </OrderProvider>
-                    </CartProvider>
-                </ProductProvider>
-            </AuthProvider>
+            <CartStoreProvider store={store}>
+                <CartProvider cartService={cartService}>
+                    <AuthProvider authService={authService}>
+                        <ProductProvider productService={productService}>
+                            <OrderProvider orderService={orderService}>
+                                <Navbar />
+                                <Outlet />
+                            </OrderProvider>
+                        </ProductProvider>
+                    </AuthProvider>
+                </CartProvider>
+            </CartStoreProvider>
         </QueryClientProvider>
     );
 }

@@ -69,8 +69,9 @@ export default function Navbar() {
                         className={`${NAV_ITEM_CLASS} ${LINK_CLASS} lg:basis-1/20 flex justify-center cursor-pointer`}
                         onClick={(e) => {
                             handleClick(e);
-                            user && navigate('/carts');
-                            !user && alert('로그인이 필요합니다.');
+                            navigate('/carts');
+                            /*                             user && navigate('/carts');
+                            !user && alert('로그인이 필요합니다.'); */
                         }}
                     >
                         {/* <Link to={'/carts'} className={`${LINK_CLASS} flex justify-center`}> */}

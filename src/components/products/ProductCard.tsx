@@ -28,14 +28,8 @@ export default function ProductCard({
                     <Skeleton className="rounded-2xl h-full !absolute inset-0" />
                 </div>
             )}
-            <div className="h-full relative">
-                <img
-                    src={imgURL}
-                    alt={name}
-                    className="h-[80%] w-full relative inset-0"
-                    loading="lazy"
-                    onLoad={setLoadedImg}
-                />
+            <div className="h-full">
+                <img src={imgURL} alt={name} className="h-[80%] w-full" loading="lazy" onLoad={setLoadedImg} />
                 <div className="flex justify-between  items-center text-xs sm:text-md py-2 px-4 lg:text-lg">
                     <h3 className="truncate w-[60%]">{name}</h3>
                     <p className="text-sm">₩{price!.toLocaleString()} 원</p>

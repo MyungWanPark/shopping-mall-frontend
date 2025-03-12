@@ -2,25 +2,36 @@ import React from 'react';
 import { CartProductType } from '../../types/product';
 import { BsTrash } from 'react-icons/bs';
 import { CartItemType } from '../../types/cart';
-// import useCart from '../../hooks/useCart';
 import useProducts from './../../hooks/useProducts';
 import InputWithPlusMinus from './../ui/InputWithPlusMinus';
 import useCart from './../../hooks/useCart';
+import { User } from '../../types/user';
+import { useDispatch } from 'react-redux';
+import { deleteItem, updateItem } from '../../redux/slices/cartSlice';
 
 type Props = {
     cartItem: CartItemType;
+    user?: User;
 };
 
 const ICON_CLASS = 'cursor-pointer transition-all hover:text-brand hover:scale-105';
 
-export default function CartItem({ cartItem }: Props) {
+export default function CartItem({ cartItem, user }: Props) {
     const {
         getProductInfo: { isLoading, error, data: productInfo },
     } = useProducts({ productId: cartItem.productId });
     const { updateCartItem, deleteCartItem } = useCart();
-
+    const dispatch = useDispatch();
     const handleSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
         const isSelected = e.target.checked;
+        if (!user) {
+            return dispatch(
+                updateItem({
+                    ...cartItem,
+                    isSelected,
+                })
+            );
+        }
         updateCartItem.mutate({
             ...cartItem,
             isSelected,
@@ -28,6 +39,10 @@ export default function CartItem({ cartItem }: Props) {
     };
 
     const handleDelete = (e: React.MouseEvent) => {
+        // console.log('handleDelete clicked!');
+        if (!user) {
+            return dispatch(deleteItem(cartItem.productId!));
+        }
         deleteCartItem.mutate(cartItem.productId!);
     };
     return (
@@ -64,7 +79,7 @@ export default function CartItem({ cartItem }: Props) {
                 <span className="inline-block">₩ {productInfo?.price!.toLocaleString()}</span>
             </div>
             <div className="basis-3/12 flex justify-center items-center md:basis-2/12">
-                <InputWithPlusMinus type="cart" cartProduct={cartItem} />
+                <InputWithPlusMinus type="cart" cartProduct={cartItem} user={user} />
             </div>
             <div className="hidden basis-1/12 justify-center items-center md:flex">
                 <span className="">₩ {cartItem.totalPricePerProduct!.toLocaleString()}</span>

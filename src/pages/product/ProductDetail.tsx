@@ -7,6 +7,8 @@ import TextBox from '../../components/ui/TextBox';
 import ProductColor from '../../components/ui/ProductColor';
 import useProducts from './../../hooks/useProducts';
 import { useAuthContext } from '../../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { addItem as addToCartRedux } from '../../redux/slices/cartSlice';
 
 const PRODUCT_COLORS = ['pink', 'blue', 'white', 'black'];
 
@@ -17,15 +19,7 @@ export default function ProductDetail() {
         getProductInfo: { isLoading, data: product },
     } = useProducts({ productId });
     const { user } = useAuthContext();
-    let name: string, price: number, category: string, description: string, imgURL: string;
-    if (product) {
-        name = product.name!;
-        price = product.price!;
-        category = product.category!;
-        description = product.description!;
-        imgURL = product.imgURL!;
-    }
-
+    const dispatch = useDispatch();
     const [isUploaded, setIsUploaded] = useState(false);
     const [cartProduct, setCartProduct] = useState<CartItemType>({
         quantity: 1,
@@ -35,14 +29,33 @@ export default function ProductDetail() {
     });
     const { addToCart } = useCart();
 
+    if (isLoading) {
+        return <div>...로딩 중 입니다.</div>;
+    }
+
+    if (!product) {
+        return <div>...상품 정보를 불러올 수 없습니다.</div>;
+    }
+
+    const { name, price, category, description, imgURL } = product;
+
     const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (!user) {
-            return alert('로그인 진행 후 장바구니에 담을 수 있습니다.');
+            let productToCart = {
+                ...cartProduct,
+                productId,
+                productPrice: price,
+                totalPricePerProduct: price! * cartProduct.quantity!,
+                isSelected: true,
+            };
+            dispatch(addToCartRedux(productToCart));
+            setTimeout(() => setIsUploaded(false), 3000);
+        } else {
+            addToCart.mutate(cartProduct, {
+                onSuccess: () => setTimeout(() => setIsUploaded(false), 3000),
+            });
         }
         setIsUploaded(true);
-        addToCart.mutate(cartProduct, {
-            onSuccess: () => setTimeout(() => setIsUploaded(false), 3000),
-        });
     };
 
     return (
