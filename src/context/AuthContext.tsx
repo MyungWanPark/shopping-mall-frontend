@@ -10,6 +10,7 @@ type Context = {
     register: ({ email, password, name, gender, age, inflowRoute }: User) => Promise<void>;
     login: ({ email, password }: User) => Promise<void>;
     logout: () => Promise<void>;
+    kakaoLogin: () => void;
     authService: AuthService;
 };
 
@@ -54,6 +55,12 @@ export function AuthProvider({ authService, children }: Props) {
             queryClient.invalidateQueries(['cart']);
         });
 
+    const kakaoLogin = async () => {
+        const response = await authService.kakaoLogin();
+        console.log('response = ', response);
+        window.location.href = response.url;
+    };
+
     const logout = async () => authService.logout().then(() => setUser(undefined));
 
     const context = {
@@ -61,6 +68,7 @@ export function AuthProvider({ authService, children }: Props) {
         register,
         login,
         logout,
+        kakaoLogin,
         authService,
     };
     return <AuthContext.Provider value={context}>{children}</AuthContext.Provider>;

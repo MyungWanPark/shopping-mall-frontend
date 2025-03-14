@@ -39,6 +39,12 @@ export default class AuthService {
         });
     }
 
+    async kakaoLogin() {
+        return this.http.fetch('/auth/kakao', {
+            method: 'GET',
+        });
+    }
+
     async me() {
         return this.http.fetch('/auth/me', {
             method: 'GET',

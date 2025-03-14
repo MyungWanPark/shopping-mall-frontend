@@ -8,7 +8,7 @@ export const AUTH_GRID_CLASS = 'basis-full p-4 flex flex-col md:basis-1/3';
 
 export default function Login() {
     const navigate = useNavigate();
-    const { user, login, logout } = useAuthContext();
+    const { user, login, logout, kakaoLogin } = useAuthContext();
     const queryClient = useQueryClient();
 
     const [loginInfo, setLoginInfo] = useState<User>({
@@ -60,7 +60,9 @@ export default function Login() {
                         Login
                     </button>
                 </form>
-                <button className="bg-yellow-300 block w-full py-1 rounded-md">Kakao Login</button>
+                <button className="bg-yellow-300 block w-full py-1 rounded-md" onClick={kakaoLogin}>
+                    Kakao Login
+                </button>
                 <p className="mt-5">
                     Don't have an account?{' '}
                     <Link to={'/auth/register'} className="underline">
