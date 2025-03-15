@@ -57,8 +57,7 @@ export function AuthProvider({ authService, children }: Props) {
 
     const kakaoLogin = async () => {
         const response = await authService.kakaoLogin();
-        console.log('response = ', response);
-        window.location.href = response.url;
+        const loginWindow = window.open(response.url, '_blank', 'width=500,height=600');
     };
 
     const logout = async () => authService.logout().then(() => setUser(undefined));
