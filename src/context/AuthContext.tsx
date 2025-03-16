@@ -29,9 +29,7 @@ export function AuthProvider({ authService, children }: Props) {
     useEffect(() => {
         authService
             .me()
-            .then((res) => {
-                setUser(res.user);
-            })
+            .then((res) => setUser(res.user))
             .catch((err) => {
                 // console.error(`errors in useEffect doing me()`);
             });
@@ -58,6 +56,13 @@ export function AuthProvider({ authService, children }: Props) {
     const kakaoLogin = async () => {
         const response = await authService.kakaoLogin();
         const loginWindow = window.open(response.url, '_blank', 'width=500,height=600');
+
+        const checkPopup = setInterval(() => {
+            if (loginWindow?.closed) {
+                clearInterval(checkPopup);
+                window.location.href = '/';
+            }
+        }, 1000);
     };
 
     const logout = async () => authService.logout().then(() => setUser(undefined));

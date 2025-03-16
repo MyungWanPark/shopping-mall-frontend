@@ -12,6 +12,7 @@ import ProtectedRoute from './pages/ProtectedRoute';
 import Analytics from './pages/analytics/Analytics';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
+import KakaoAuth from './components/auth/KakaoAuth';
 
 /*
   /             =>  <Home />
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
             { path: '/auth/register', element: <Register /> },
             { path: '/auth/login', element: <Login /> },
         ],
+    },
+    {
+        path: '/auth', // 별도 레이아웃 없이 KakaoAuth만 실행
+        element: <KakaoAuth />,
     },
 ]);
 
