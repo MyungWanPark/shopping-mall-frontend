@@ -13,6 +13,7 @@ import Analytics from './pages/analytics/Analytics';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import KakaoAuth from './components/auth/KakaoAuth';
+import { RedirectHandler } from './components/RedirectHandler';
 
 /*
   /             =>  <Home />
@@ -31,7 +32,12 @@ const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <App />,
+        element: (
+            <>
+                <RedirectHandler />
+                <App />
+            </>
+        ),
         errorElement: <NotFound />,
         children: [
             { index: true, path: '/', element: <Home /> },
