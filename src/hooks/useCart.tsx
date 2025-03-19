@@ -28,7 +28,6 @@ export default function useCart(startDate?: Date, endDate?: Date) {
 
     useEffect(() => {
         syncLocalCart();
-        // console.log('🟢 장바구니 상태 변경됨!', cartItems);
     }, [user]);
 
     const getCart: {

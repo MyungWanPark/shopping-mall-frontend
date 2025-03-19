@@ -37,7 +37,7 @@ export default function Analytics() {
 
     const {
         getProducts: { data, isLoading: ProductsLoading, error },
-    } = useProducts({ category: 'all' });
+    } = useProducts({ category: 'allWithoutPage' });
 
     if (error) return <div>상품을 받아오는데 실패하였습니다..</div>;
     if (ProductsLoading) return <div>로딩중... 상품을 받아오고 있습니다..</div>;

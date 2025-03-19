@@ -30,7 +30,6 @@ export default function GeneralBoxes({ data: { orderedCartItems, products, userI
         salesAmount = orderedCartItems
             .map((item) => item.totalPricePerProduct)
             .reduce((prev, curr) => prev! + curr!, 0);
-
         salesVolumn = orderedCartItems.map((item) => item.quantity).reduce((prev, curr) => prev! + curr!, 0);
         const nameVolumnArr = getHotItem(orderedCartItems, products);
         hotItemVol = Math.max(...nameVolumnArr.map((item) => item.volumn));

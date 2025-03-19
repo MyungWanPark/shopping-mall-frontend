@@ -39,7 +39,6 @@ export default function CartItem({ cartItem, user }: Props) {
     };
 
     const handleDelete = (e: React.MouseEvent) => {
-        // console.log('handleDelete clicked!');
         if (!user) {
             return dispatch(deleteItem(cartItem.productId!));
         }

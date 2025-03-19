@@ -71,34 +71,24 @@ export function getPieChartData(orderedCartItem: CartItemType[], products: Produ
 }
 
 export function getHotItem(orderedCartItem: CartItemType[], products: ProductType[]) {
-    const quantityProducts = orderedCartItem.map((item) => ({
-        quantity: item.quantity,
-        productId: item.productId,
-    }));
-
-    const result: SalesVolumnData = [];
-    for (let i = 0; i < products.length; i++) {
-        for (let j = 0; j < quantityProducts.length; j++) {
-            if (products[i].id === quantityProducts[j].productId) {
-                // check array if it already exist
-                let isExist = false;
-                for (let r = 0; r < result.length; r++) {
-                    if (result[r].productName === products[i].name) {
-                        isExist = true;
-                        result[r].volumn += quantityProducts[j].quantity!;
-                        break;
-                    }
-                }
-                if (isExist) continue;
-                // insert to result
-                result.push({
-                    productName: products[i].name!,
-                    volumn: quantityProducts[j].quantity!,
-                });
-            }
+    const salesMap = new Map<string, number>(); // key: productName, value: total quantity
+    for (const item of orderedCartItem) {
+        if (!item.quantity || !item.productId) {
+            continue;
+        } // undefined 방지
+        const product = products.find((p) => {
+            return p.id === item.productId;
+        });
+        if (!product || !product.name) {
+            continue; // 제품이 없거나 이름이 없으면 무시
         }
+
+        salesMap.set(product.name, (salesMap.get(product.name) || 0) + item.quantity);
     }
-    return result;
+    const result = Array.from(salesMap, ([productName, volumn]) => ({ productName, volumn })).sort(
+        (a, b) => b.volumn - a.volumn
+    );
+    return result; // 판매량 내림차순 정렬
 }
 
 export function getInflowRouteData(userInfos: User[]) {
