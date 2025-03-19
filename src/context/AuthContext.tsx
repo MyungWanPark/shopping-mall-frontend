@@ -54,7 +54,7 @@ export function AuthProvider({ authService, children }: Props) {
         });
 
     const kakaoLogin = async () => {
-        const response = await authService.kakaoLogin();
+        /* const response = await authService.kakaoLogin();
         const loginWindow = window.open(response.url, '_blank', 'width=500,height=600');
 
         const checkPopup = setInterval(() => {
@@ -62,7 +62,9 @@ export function AuthProvider({ authService, children }: Props) {
                 clearInterval(checkPopup);
                 window.location.href = '/';
             }
-        }, 1000);
+        }, 1000); */
+        const response = await authService.kakaoLogin();
+        window.location.href = response.url;
     };
 
     const logout = async () => authService.logout().then(() => setUser(undefined));
