@@ -28,18 +28,18 @@
 
 - 개발 언어: TypeScript 4.4.2
 
-- 프레임워크: React 18.2.0
+- UI: React, MUI
 
-- UI: HTML5, CSS3, TailwindCss
+- 스타일: TailwindCSS
 
-- UI 라이브러리: MUI
+- Chart 라이브러리: ApexCharts
 
-- Chart 라이브러리: ApexCharts.js
-
-- HTTP 라이브러리: Axios
+- 전역 상태 관리: Redux
    
 - 네트워크 상태관리 라이브러리: React-Query
 
+- HTTP 라이브러리: Axios
+  
 - 배포: Netlify
   
 </details>
