@@ -1,4 +1,4 @@
-## 주제: React, Express를 활용한 온라인 쇼핑몰 구현 (Front-end 저장소)
+## React, Express를 활용한 온라인 쇼핑몰 구현 (Front-end)
 역할 및 범위: 풀스택, 개인 프로젝트
 
 ### Version
