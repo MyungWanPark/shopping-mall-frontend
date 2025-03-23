@@ -29,7 +29,16 @@ export default function ProductCard({
                 </div>
             )}
             <div className="h-full">
-                <img src={imgURL} alt={name} className="h-[80%] w-full" loading="lazy" onLoad={setLoadedImg} />
+                <img
+                    src={imgURL}
+                    alt={name}
+                    className="h-[80%] w-full"
+                    loading="lazy"
+                    onLoad={() => {
+                        // console.log(`product id ${id} is loaded!`);
+                        setLoadedImg();
+                    }}
+                />
                 <div className="flex justify-between  items-center text-xs sm:text-md py-2 px-4 lg:text-lg">
                     <h3 className="truncate w-[60%]">{name}</h3>
                     <p className="text-sm">₩{price!.toLocaleString()} 원</p>

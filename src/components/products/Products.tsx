@@ -35,7 +35,7 @@ export default function Products({ showAllProduct }: Prop) {
     const PaginationButtonArr = getPaginaionButtons(page, totalPages);
 
     const totalImgs = products.length;
-    const isAllImgLoaded = totalImgs === loadedImg;
+    const isAllImgLoaded = totalImgs <= loadedImg;
 
     return (
         <>

@@ -29,11 +29,9 @@ export default function MyCart() {
             setCartItems(data!);
         }
     }, [user, reduxCartItems, data]);
-
     const { createOrder } = useOrder();
     const cartItemIdsToOrder = cartItems?.filter((cartItem) => cartItem.isSelected).map((cartItem) => cartItem.id);
     const navigate = useNavigate();
-
     const handleOrder = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (!user) {
             alert('주문하기 위해선 로그인이 필요합니다.');
