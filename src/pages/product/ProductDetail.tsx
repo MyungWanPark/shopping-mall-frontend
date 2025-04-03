@@ -61,11 +61,15 @@ export default function ProductDetail() {
     return (
         <>
             {product && (
-                <section className="flex flex-col font-Raleway md:flex-row md:justify-center gap-12 p-4">
-                    <div className="w-full basis-6/12">
-                        <img className="w-full" src={imgURL!} alt={name!} />
+                <section className="flex flex-col font-Raleway md:flex-row md:justify-center md:items-center gap-12 p-8 md:h-128 lg:h-144">
+                    <div className="w-full h-full flex basis-6/12">
+                        <img
+                            className="w-full h-[80%] object-cover object-center rounded-lg"
+                            src={imgURL!}
+                            alt={name!}
+                        />
                     </div>
-                    <article className="w-full basis-6/12">
+                    <article className="w-full h-full basis-6/12 flex flex-col justify-self-start">
                         <p className="text-md text-gray-400">{category!}</p>
                         <h1 className="border-b border-gray-300 pb-3">
                             <span className="text-xl font-bold md:text-3xl">{name!}</span>

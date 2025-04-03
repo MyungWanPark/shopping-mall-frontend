@@ -34,7 +34,7 @@ export default function Login() {
     };
 
     return (
-        <section className="flex justify-center gap-10 mt-10 font-Abel h-auto md:h-144">
+        <section className="flex justify-center gap-10 mt-10 font-Abel h-auto md:h-128">
             <article className={`${AUTH_GRID_CLASS} my-auto`}>
                 <form action="" className="mb-4 flex flex-col">
                     <p className="mb-5 font-semibold text-lg">Login</p>
@@ -76,7 +76,11 @@ export default function Login() {
                 </p>
             </article>
             <div className="hidden h-full items-center basis-1/3 md:flex">
-                <img className="h-full" src={process.env.PUBLIC_URL + '/images/auth/login.jpg'} alt="login_img" />
+                <img
+                    className="w-[90%] h-[80%] rounded-lg object-cover object-top"
+                    src={process.env.PUBLIC_URL + '/images/auth/login.jpg'}
+                    alt="login_img"
+                />
             </div>
         </section>
     );
