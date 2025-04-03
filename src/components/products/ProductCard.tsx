@@ -32,7 +32,7 @@ export default function ProductCard({
                 <img
                     src={imgURL}
                     alt={name}
-                    className="h-[80%] w-full"
+                    className="h-[80%] w-full object-cover object-center"
                     loading="lazy"
                     onLoad={() => {
                         // console.log(`product id ${id} is loaded!`);

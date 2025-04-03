@@ -58,7 +58,7 @@ export default function CartItem({ cartItem, user }: Props) {
             </div>
             <div className="flex justify-center basis-6/12">
                 <img
-                    className="hidden md:block md:w-48 md:h-32 rounded-lg mr-3 object-cover"
+                    className="hidden md:block md:w-48 md:h-32 rounded-lg mr-3 object-cover object-center"
                     src={productInfo?.imgURL}
                     alt={productInfo?.name}
                 />
