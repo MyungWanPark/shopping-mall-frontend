@@ -64,7 +64,7 @@ export default function ProductDetail() {
                 <section className="flex flex-col font-Raleway md:flex-row md:justify-center md:items-center gap-12 p-8 md:h-128 lg:h-144">
                     <div className="w-full h-full flex basis-6/12">
                         <img
-                            className="w-full h-[80%] object-cover object-center rounded-lg"
+                            className="w-full h-full object-cover object-center rounded-lg"
                             src={imgURL!}
                             alt={name!}
                         />
@@ -77,7 +77,7 @@ export default function ProductDetail() {
                                 ₩{price!.toLocaleString()} 원
                             </span>
                         </h1>
-                        <p className="text-md py-7 md:text-xl">{description!}</p>
+                        <p className="text-md py-7 md:text-xl">{`${description!} ${description!}`}</p>
                         <div className="flex items-center mb-3">
                             <span className="mr-5 w-12">SIZE</span>
                             <TextBox text="S" setState={setCartProduct} setField="size" customStyle="w-10 rounded-md" />
