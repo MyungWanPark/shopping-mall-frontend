@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { RiKakaoTalkFill } from 'react-icons/ri';
 import { useAuthContext } from '../../context/AuthContext';
 import { User } from '../../types/user';
 
@@ -60,8 +61,12 @@ export default function Login() {
                         Login
                     </button>
                 </form>
-                <button className="bg-yellow-300 block w-full py-1 rounded-md" onClick={kakaoLogin}>
-                    Kakao Login
+                <button
+                    className="bg-yellow-300 w-full py-1 rounded-md flex items-center justify-center"
+                    onClick={kakaoLogin}
+                >
+                    <RiKakaoTalkFill className="mr-1 text-xl" />
+                    <span>Kakao Login</span>
                 </button>
                 <p className="mt-5">
                     Don't have an account?{' '}
