@@ -13,7 +13,6 @@ import Analytics from './pages/analytics/Analytics';
 import Register from './pages/auth/Register';
 import Login from './pages/auth/Login';
 import KakaoAuth from './components/auth/KakaoAuth';
-import { RedirectHandler } from './components/RedirectHandler';
 
 /*
   /             =>  <Home />
@@ -32,22 +31,26 @@ const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
 const router = createBrowserRouter([
     {
         path: '/',
-        element: (
-            <>
-                <RedirectHandler />
-                <App />
-            </>
-        ),
+        element: <App />,
         errorElement: <NotFound />,
         children: [
             { index: true, path: '/', element: <Home /> },
-            { path: '/products', element: <AllProducts /> },
+            {
+                path: '/products',
+                element: (
+                    <SuspenseWrapper>
+                        <AllProducts />
+                    </SuspenseWrapper>
+                ),
+            },
             {
                 path: '/products/new',
                 element: (
-                    <ProtectedRoute requiredAdmin={false}>
-                        <NewProducts />
-                    </ProtectedRoute>
+                    <SuspenseWrapper>
+                        <ProtectedRoute requiredAdmin={false}>
+                            <NewProducts />
+                        </ProtectedRoute>
+                    </SuspenseWrapper>
                 ),
             },
             {
@@ -61,21 +64,39 @@ const router = createBrowserRouter([
             {
                 path: '/carts',
                 element: (
-                    <ProtectedRoute requiredAdmin={false}>
-                        <MyCart />
-                    </ProtectedRoute>
+                    <SuspenseWrapper>
+                        <ProtectedRoute requiredAdmin={false}>
+                            <MyCart />
+                        </ProtectedRoute>
+                    </SuspenseWrapper>
                 ),
             },
             {
                 path: '/analytics',
                 element: (
-                    <ProtectedRoute requiredAdmin={false}>
-                        <Analytics />
-                    </ProtectedRoute>
+                    <SuspenseWrapper>
+                        <ProtectedRoute requiredAdmin={false}>
+                            <Analytics />
+                        </ProtectedRoute>
+                    </SuspenseWrapper>
                 ),
             },
-            { path: '/auth/register', element: <Register /> },
-            { path: '/auth/login', element: <Login /> },
+            {
+                path: '/auth/register',
+                element: (
+                    <SuspenseWrapper>
+                        <Register />
+                    </SuspenseWrapper>
+                ),
+            },
+            {
+                path: '/auth/login',
+                element: (
+                    <SuspenseWrapper>
+                        <Login />
+                    </SuspenseWrapper>
+                ),
+            },
         ],
     },
     {
