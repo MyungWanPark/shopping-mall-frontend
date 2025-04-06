@@ -5,13 +5,7 @@ import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './pages/notFound/NotFound';
 import Home from './pages/Home';
-import AllProducts from './pages/product/AllProducts';
-import NewProducts from './pages/product/NewProducts';
-import MyCart from './pages/cart/MyCart';
 import ProtectedRoute from './pages/ProtectedRoute';
-import Analytics from './pages/analytics/Analytics';
-import Register from './pages/auth/Register';
-import Login from './pages/auth/Login';
 import KakaoAuth from './components/auth/KakaoAuth';
 
 /*
@@ -23,6 +17,12 @@ import KakaoAuth from './components/auth/KakaoAuth';
 */
 
 const ProductDetail = lazy(() => import('./pages/product/ProductDetail'));
+const AllProducts = lazy(() => import('./pages/product/AllProducts'));
+const NewProducts = lazy(() => import('./pages/product/NewProducts'));
+const MyCart = lazy(() => import('./pages/cart/MyCart'));
+const Analytics = lazy(() => import('./pages/analytics/Analytics'));
+const Register = lazy(() => import('./pages/auth/Register'));
+const Login = lazy(() => import('./pages/auth/Login'));
 
 const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
     <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
