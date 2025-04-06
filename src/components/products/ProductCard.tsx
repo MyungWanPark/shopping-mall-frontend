@@ -20,8 +20,9 @@ export default function ProductCard({
     };
     return (
         <li
-            className="relative cursor-pointer h-80 shadow-md rounded-lg font-Raleway overflow-hidden duration-300 transition-all hover:scale-105"
+            className="relative cursor-pointer h-80 shadow-md rounded-lg font-Raleway overflow-hidden duration-300 transition-all hover:-translate-y-1"
             onClick={handleClick}
+            style={{ willChange: 'transform' }}
         >
             {showSkeleton && (
                 <div className="absolute inset-0 z-10">
@@ -32,7 +33,9 @@ export default function ProductCard({
                 <img
                     src={imgURL}
                     alt={name}
-                    className="h-[80%] w-full object-cover object-center"
+                    // className="h-[80%] w-full object-cover"
+                    className="h-64 w-full object-cover object-center"
+                    style={{ willChange: 'transform' }}
                     loading="lazy"
                     onLoad={() => {
                         // console.log(`product id ${id} is loaded!`);
