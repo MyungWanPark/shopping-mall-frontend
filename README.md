@@ -2,6 +2,19 @@
 온라인 쇼핑몰 프로젝트의 **프론트엔드** 파트 입니다. <br/>
 실시간 상품 검색, 데이터 시각화, 장바구니, 페이지네이션, 상품 등록 등을 구현하였습니다. <br/>
 
+## 🛠️ Tech Stack
+
+- **Framework**: React
+- **Language**: TypeScript
+- **UI Library**: MUI
+- **Routing**: React Router Dom
+- **State Management**: Redux
+- **Network State Management**: TanStack Query (React Query)
+- **Styling**: Tailwind CSS
+- **Charting**: ApexCharts
+- **Deployment**: Netlify
+<br/>
+  
 ## 🚀 Key Features
 
 ### 🛍️ 상품 조회 및 생성
@@ -24,17 +37,6 @@
 - **Pagination** – 많은 양의 상품 데이터를 페이지 단위로 분할해 클라이언트 렌더링 속도 개선 및 서버/부하 감소  
 - **Skeleton UI** – 로딩 시간 동안 사용자 피로감을 줄이기 위한 Skeleton 화면 제공  
 - **반응형 UI** – 데스크탑, 태블릿, 모바일 환경에 최적화된 반응형 레이아웃  
-<br/>
-
-## 🛠️ Tech Stack
-
-- **UI** - React, MUI <br/>
-- **Language** - TypeScript  <br/>
-- **네비게이션** - React Router Dom  <br/>
-- **전역 상태 관리** - Redux  <br/>
-- **네트워크 상태 관리** - Tanstack Query  <br/>
-- **스타일링** - Tailwind CSS <br/> 
-- **차트 라이브러리** - Apex Chart <br/>
 <br/>
 
 ## 🔗 Related Repositories
